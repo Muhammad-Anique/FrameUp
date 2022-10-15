@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+###configs####
+src/main/resources/application.propertiesgit
