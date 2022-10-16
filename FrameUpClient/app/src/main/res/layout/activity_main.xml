@@ -9,30 +9,72 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="391dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="327dp"
+        android:layout_height="142dp"
         android:orientation="vertical"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.649">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/rollno_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:backgroundTint="@color/Primary_Color_2_a"
             android:hint="@string/roll_no"
-            android:minHeight="50dp" />
+            android:minHeight="50dp"
+            android:textColor="@color/Primary_Color_2"
+            android:textColorHint="@color/Primary_Color_1_a" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/Primary_Color_2_a"
             android:hint="@string/str_password"
-            android:minHeight="50dp" />
+            android:minHeight="50dp"
+            android:textColor="@color/Primary_Color_2"
+            android:textColorHint="@color/Primary_Color_1_a" />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="297dp"
+        android:layout_height="139dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_style_gradient"
+            android:textColor="@color/white"
+            android:text="@string/str_login"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@drawable/button_style_gradient"
+            android:text="@string/str_register"
+            app:backgroundTint="@null" />
 
     </LinearLayout>
 

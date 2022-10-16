@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">FrameUp</string>
     <string name="roll_no">Rollno</string>
-    <string name="rolly">Rollno</string>
-    <string name="str_password">password</string>
+    <string name="str_password">Password</string>
+    <string name="str_login">Login</string>
+    <string name="str_register">Register</string>
+
 </resources>
