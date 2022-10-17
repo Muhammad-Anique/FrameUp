@@ -18,6 +18,7 @@ public class FrameUpServerApplication {
 		SpringApplication.run(FrameUpServerApplication.class, args);
 	}
 
+
 //	@EventListener(ApplicationReadyEvent.class)
 //	public void Trigger()
 //	{
