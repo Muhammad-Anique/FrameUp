@@ -24,7 +24,7 @@ public class PersonDao {
         return person;
     }
 
-    public List<Person> getPersonByRoll(String roll)
+    public Person getPersonByRoll(String roll)
     {
         return personRepository.retrievePersonByRoll_rp(roll);
     }

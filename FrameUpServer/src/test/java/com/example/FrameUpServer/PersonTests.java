@@ -1,5 +1,6 @@
 package com.example.FrameUpServer;
 
+import com.example.FrameUpServer.GlobalFunctions.GlobalFunctions;
 import com.example.FrameUpServer.Model.Person.Person;
 import com.example.FrameUpServer.Model.Person.PersonDao;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,10 @@ public class PersonTests {
     @Test
     void FetchingPersonByRollTest()
     {
-        List<Person> p = personDao.getPersonByRoll("20l-2020");
+        GlobalFunctions fg =new GlobalFunctions();
+        Person p = personDao.getPersonByRoll("20l-2120");
+        fg.PrintStart();
         System.out.println(p);
+        fg.PrintEnd();
     }
 }

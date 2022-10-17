@@ -21,11 +21,10 @@ public class PersonController {
     {
         return personDao.savePerson(P);
     }
-
     @GetMapping("/person/{roll}")
-    public List<Person> getPersonByRollNo(@PathVariable String roll)
+    public Person getPersonByRollNo(@PathVariable String roll)
     {
         return personDao.getPersonByRoll(roll);
-       // return employeeDao.getEmployeeBYid(Integer.parseInt(id));
+       //For Int Path variables (Integer.parseInt(id));
     }
 }
