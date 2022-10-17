@@ -16,8 +16,18 @@ public class PersonDao {
         return personRepository.save(person);
     }
 
+    public List<Person> getAllPersons()
+    {
+        List<Person> person = new ArrayList<>();
+        Streamable.of(personRepository.findAll())
+                .forEach(person::add);
+        return person;
+    }
 
-
+    public List<Person> getPersonByRoll(String roll)
+    {
+        return personRepository.retrievePersonByRoll_rp(roll);
+    }
 
 
 }

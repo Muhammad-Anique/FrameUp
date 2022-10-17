@@ -22,14 +22,14 @@ public class VisitorTests {
         Gender gen = Gender.Male;
 
         Visitor visitor = new Visitor();
-        visitor.set_Name_Email_Roll("Muhamamd Akbar","l202020@lhr.nu.edu.pk","20l-2020");
+        visitor.set_Name_Email_Roll("Muhammad Ali","l202120@lhr.nu.edu.pk","20l-2120");
         visitor.setGender(gen);
         visitor.setOTP(otp);
         visitor.setAccountStatus("Active");
-        visitor.setIsVerified(false);
-        visitor.setPassword("123456");
-        visitor.setJoiningDate("20-Nov-2020");
-        visitor.setPhoneNumber("03364274008");
+        visitor.setIsVerified(true);
+        visitor.setPassword("112233");
+        visitor.setJoiningDate("24-Nov-2020");
+        visitor.setPhoneNumber("03364274908");
         GlobalFunctions gb = new GlobalFunctions();
 
         gb.PrintStart();
