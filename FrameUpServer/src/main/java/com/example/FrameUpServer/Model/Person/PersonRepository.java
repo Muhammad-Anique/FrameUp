@@ -12,7 +12,7 @@ public interface PersonRepository extends CrudRepository<Person, Integer> {
 
     //Queries
     @Query(value = "select * from person where person.roll_no = :rollNumber",nativeQuery = true)
-    List<Person> retrievePersonByRoll_rp(@Param("rollNumber") String roll);
+    Person retrievePersonByRoll_rp(@Param("rollNumber") String roll);
 
 
 }
