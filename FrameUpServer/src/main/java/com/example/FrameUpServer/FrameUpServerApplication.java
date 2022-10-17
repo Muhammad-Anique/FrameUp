@@ -18,12 +18,13 @@ public class FrameUpServerApplication {
 		SpringApplication.run(FrameUpServerApplication.class, args);
 	}
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void Trigger()
-	{
-		service.sendSimpleEmail("l202171@lhr.nu.edu.pk",
-				"OTP is 29990",
-				"Verification");
-	}
+
+//	@EventListener(ApplicationReadyEvent.class)
+//	public void Trigger()
+//	{
+//		service.sendSimpleEmail("l202171@lhr.nu.edu.pk",
+//				"OTP is 29990",
+//				"Verification");
+//	}
 
 }
