@@ -1,15 +1,5 @@
-package com.example.FrameUpServer.Model.Visitor;
-
-import com.example.FrameUpServer.Model.Person.Person;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-
-
-@Entity
-@DiscriminatorValue("Visitor")
+package com.example.frameupclient.Model;
 public class Visitor extends Person {
-
 
     String OTP;
     String password;
