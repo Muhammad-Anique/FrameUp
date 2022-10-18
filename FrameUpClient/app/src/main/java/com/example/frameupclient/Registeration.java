@@ -57,6 +57,8 @@ public class Registeration extends AppCompatActivity {
             v.setPassword(password);
             v.setEmail(email);
             v.setName(name);
+            v.setRollNo(rollno);
+            v.setPhoneNumber(phone);
             v.setJoiningDate("30-Dec-2022");
             v.setGender(g);
 
