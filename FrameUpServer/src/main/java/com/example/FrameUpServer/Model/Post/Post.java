@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@DiscriminatorValue("Post")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
