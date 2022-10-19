@@ -25,7 +25,10 @@ public class PersonTests {
 
     @Test
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> backend
     void getally()
     {
         List<Person> P = personDao.getAllPersons();
@@ -36,7 +39,10 @@ public class PersonTests {
     }
 
     //@Test
+<<<<<<< HEAD
 >>>>>>> 8af41bb10b71714214dd57d03fcea077060eb459
+=======
+>>>>>>> backend
     void FetchingPersonByRollTest()
     {
         GlobalFunctions fg =new GlobalFunctions();
