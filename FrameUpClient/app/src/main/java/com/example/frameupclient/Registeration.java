@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.frameupclient.Model.Gender;
+import com.example.frameupclient.Model.Person;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.Retrofit.RetrofitService;
@@ -46,6 +47,19 @@ public class Registeration extends AppCompatActivity {
             String rollno = String.valueOf(rollNo_TF.getText());
             String phone = String.valueOf(phone_TF.getText());
             String password = String.valueOf(password_TF.getText());
+
+            visitorAPI.getPersonByRollNo("20l-2171").enqueue(new Callback<Person>() {
+                @Override
+                public void onResponse(Call<Person> call, Response<Person> response) {
+                    Toast.makeText(Registeration.this, "HEHEHEHEHEHEEHHE", Toast.LENGTH_SHORT).show();
+                    System.out.println(response.body());
+                }
+
+                @Override
+                public void onFailure(Call<Person> call, Throwable t) {
+                    Toast.makeText(Registeration.this, "ERRRRROORORORORORO", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             Gender g = Gender.Male;
             int i = (int)(Math.random() * 1000000);

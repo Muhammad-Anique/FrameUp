@@ -88,6 +88,15 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gender : "
+                android:textColor="@color/Dark_Primary_color_1"
+                android:textSize="20dp" />
+
             <RadioButton
                 android:id="@+id/radioButton1"
                 android:layout_width="127dp"
