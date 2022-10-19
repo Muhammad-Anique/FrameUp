@@ -42,4 +42,15 @@ public class PersonTests {
         System.out.println(p);
         fg.PrintEnd();
     }
+<<<<<<< HEAD
+=======
+
+    @Test
+    void GetAllPersons()
+    {
+        List<Person> p = personDao.getAllPersons();
+        System.out.println(p);
+    }
+
+>>>>>>> 8af41bb10b71714214dd57d03fcea077060eb459
 }
