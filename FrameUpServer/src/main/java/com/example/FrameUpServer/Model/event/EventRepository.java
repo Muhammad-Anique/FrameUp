@@ -1,6 +1,8 @@
 package com.example.FrameUpServer.Model.event;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface EventRepository extends CrudRepository<Event,Integer> {
+@Repository
+public interface EventRepository extends CrudRepository<Event, Integer> {
 }

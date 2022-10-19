@@ -1,5 +1,6 @@
 package com.example.FrameUpServer.Model.event;
 
+import com.example.FrameUpServer.Model.Person.Person;
 import com.example.FrameUpServer.Model.Visitor.Visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
@@ -23,11 +24,13 @@ public class EventDao {
     {
         repository.delete(event);
     }
+
     public List<Event> getAllEvents()
     {
-        List<Event> events=new ArrayList<>();
-        Streamable.of(repository.findAll()).forEach(events::add);
-        return events;
+        List<Event> event = new ArrayList<>();
+        Streamable.of(repository.findAll())
+                .forEach(event::add);
+        return event;
     }
 
 
