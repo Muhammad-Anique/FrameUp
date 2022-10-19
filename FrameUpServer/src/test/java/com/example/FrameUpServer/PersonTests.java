@@ -24,6 +24,16 @@ public class PersonTests {
     }
 
     @Test
+    void getally()
+    {
+        List<Person> P = personDao.getAllPersons();
+        GlobalFunctions gb = new GlobalFunctions();
+        gb.PrintStart();
+        System.out.println(P);
+        gb.PrintEnd();
+    }
+
+    //@Test
     void FetchingPersonByRollTest()
     {
         GlobalFunctions fg =new GlobalFunctions();
@@ -39,4 +49,5 @@ public class PersonTests {
         List<Person> p = personDao.getAllPersons();
         System.out.println(p);
     }
+
 }
