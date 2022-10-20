@@ -12,9 +12,9 @@ public class PollDao {
 
     @Autowired PollRepository repository;
 
-    public void save (Poll poll)
+    public Poll save (Poll poll)
     {
-        repository.save(poll);
+       return repository.save(poll);
     }
     public void delete (Poll poll)
     {

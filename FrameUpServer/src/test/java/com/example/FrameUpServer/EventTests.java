@@ -32,13 +32,10 @@ public class EventTests {
     void getAllEvent()
     {
         List<Event> event=eventDao.getAllEvents();
-        GlobalFunctions fg = new GlobalFunctions();
-        fg.PrintStart();
         System.out.println(event);
-        fg.PrintEnd();
 
     }
-    //@Test
+    @Test
     void getAllEventsAndDeleteThem()
     {
         List<Event> events=eventDao.getAllEvents();

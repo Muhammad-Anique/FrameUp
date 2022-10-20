@@ -82,4 +82,18 @@ public class Poll {
     public void setPollOptions(String pollOptions) {
         this.pollOptions = pollOptions;
     }
+
+    @Override
+    public String toString() {
+        return "Poll{" +
+                "pollId=" + pollId +
+                ", pollSubject='" + pollSubject + '\'' +
+                ", pollType='" + pollType + '\'' +
+                ", datePollCreated='" + datePollCreated + '\'' +
+                ", createdBy='" + createdBy + '\'' +
+                ", noOfResponses=" + noOfResponses +
+                ", pollText='" + pollText + '\'' +
+                ", pollOptions='" + pollOptions + '\'' +
+                '}';
+    }
 }
