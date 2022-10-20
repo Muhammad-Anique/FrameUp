@@ -17,4 +17,7 @@ public interface VisitorAPI {
 
     @GET("/person/{roll}")
     Call<Person> getPersonByRollNo(@Path("roll") String roll);
+
+    @GET("/visitor/{roll}")
+    Call<Visitor> getVisitorByRollNo(@Path("roll") String roll);
 }

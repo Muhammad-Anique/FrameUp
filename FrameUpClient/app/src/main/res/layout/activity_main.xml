@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginbg"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.649">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/rollno_tf"
+            android:id="@+id/rollno_lg_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -33,7 +33,7 @@
             android:textColorHint="@color/Primary_Color_1_a" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_tf"
+            android:id="@+id/password_lg_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/log_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
