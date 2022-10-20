@@ -15,9 +15,9 @@ public class EventDao {
     @Autowired
     private EventRepository repository;
 
-    public void save (Event event)
+    public Event save (Event event)
     {
-        repository.save(event);
+       return repository.save(event);
     }
     public void delete(Event event)
     {
