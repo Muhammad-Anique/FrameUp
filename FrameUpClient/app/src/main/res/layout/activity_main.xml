@@ -26,11 +26,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="3dp"
-            android:backgroundTint="@color/Primary_Color_2_a"
+            android:backgroundTint="@color/Primary_Color_2"
             android:hint="@string/roll_no"
             android:minHeight="50dp"
             android:textColor="@color/Primary_Color_2"
-            android:textColorHint="@color/Primary_Color_1_a" />
+            android:textColorHint="@color/Secondary_Color_1" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_lg_tf"
@@ -38,18 +38,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/Primary_Color_2_a"
+            android:backgroundTint="@color/Primary_Color_2"
             android:hint="@string/str_password"
+            android:inputType="textPassword"
             android:minHeight="50dp"
             android:textColor="@color/Primary_Color_2"
-            android:textColorHint="@color/Primary_Color_1_a" />
+            android:textColorHint="@color/Secondary_Color_1" />
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="297dp"
-        android:layout_height="139dp"
+        android:id="@+id/linearLayout6"
+        android:layout_width="303dp"
+        android:layout_height="174dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,21 +63,35 @@
             android:id="@+id/log_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/button_style_gradient"
-            android:textColor="@color/white"
             android:text="@string/str_login"
+            android:textColor="@color/white"
             app:backgroundTint="@null" />
 
         <Button
             android:id="@+id/reg_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:background="@drawable/button_style_gradient"
             android:text="@string/str_register"
+            android:textColor="@color/white"
             app:backgroundTint="@null" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/Error"
+        android:layout_width="260dp"
+        android:layout_height="18dp"
+        android:text=" "
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="gravity"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.931" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
