@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VisitorRepository extends CrudRepository<Visitor, Integer> {
-
+    @Query(value = "select * from person where person.roll_no = :rollNumber",nativeQuery = true)
+    Visitor retrieveVisitorByRoll_rp(@Param("rollNumber") String roll);
 }

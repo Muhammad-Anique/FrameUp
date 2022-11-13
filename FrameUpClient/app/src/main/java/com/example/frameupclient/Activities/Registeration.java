@@ -2,9 +2,11 @@ package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.frameupclient.Model.Gender;
@@ -28,6 +30,68 @@ import retrofit2.Response;
 
 public class Registeration extends AppCompatActivity {
 
+    private boolean password_valid=false;
+    private boolean email_valid=false;
+    private boolean phone_valid=false;
+    private boolean verifyOTP =false;
+
+    public boolean getVerifyOTP() {
+        return verifyOTP;
+    }
+
+    public void setVerifyOTP(boolean verifyOTP) {
+        this.verifyOTP = verifyOTP;
+    }
+
+    public boolean isPassword_valid() {
+        return password_valid;
+    }
+
+    public void setPassword_valid(boolean password_valid) {
+        this.password_valid = password_valid;
+    }
+
+    public boolean isEmail_valid() {
+        return email_valid;
+    }
+
+    public void setEmail_valid(boolean email_valid) {
+        this.email_valid = email_valid;
+    }
+
+    public boolean isPhone_valid() {
+        return phone_valid;
+    }
+
+    public void setPhone_valid(boolean phone_valid) {
+        this.phone_valid = phone_valid;
+    }
+
+
+    protected void displayErrors()
+    {
+        TextView reg_error = findViewById(R.id.Reg_Error);
+        if(!isPassword_valid() && isEmail_valid()) {
+            reg_error.setText("Password Does Not Match");
+        }
+        else if(!isEmail_valid() && isPassword_valid())
+        {
+            reg_error.setText("Email Invalid");
+        }
+        else if(!isEmail_valid() && !isPassword_valid())
+        {
+            reg_error.setText("Email and Password Invalid");
+        }
+        else if(!isPhone_valid())
+        {
+            reg_error.setText("Phone Number Invalid");
+        }
+        else if(!isPassword_valid() || !isEmail_valid() || !isPhone_valid()){
+           reg_error.setText("Invalid Entry in One of the Field");
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +104,11 @@ public class Registeration extends AppCompatActivity {
         TextInputEditText email_TF = findViewById(R.id.email_tf);
         TextInputEditText phone_TF = findViewById(R.id.phone_tf);
         TextInputEditText password_TF = findViewById(R.id.password_tf);
+        TextInputEditText confirm_password_TF = findViewById(R.id.confirm_password_tf);
         RadioButton male = (RadioButton) findViewById(R.id.male);
         RadioButton female = (RadioButton) findViewById(R.id.female);
         Button verify = findViewById(R.id.verify_btn);
+
 
 
 
@@ -61,42 +127,72 @@ public class Registeration extends AppCompatActivity {
             String email = String.valueOf(email_TF.getText());
             String phone = String.valueOf(phone_TF.getText());
             String password = String.valueOf(password_TF.getText());
-            char[] r = new char[8] ;
-             r[0] = email.charAt(1);
-             r[1] = email.charAt(2);
-             r[2] = email.charAt(0);
-             r[3] = '-';
-             r[4] = email.charAt(3);
-             r[5] = email.charAt(4);
-             r[6] = email.charAt(5);
-             r[7] = email.charAt(6);
+            String confirm_password = String.valueOf(confirm_password_TF.getText());
+
+            System.out.println("comparing password");
+
+            if (password.compareTo(confirm_password) != 0)
+            {
+               setPassword_valid(false);
+            }
+            else
+            {
+                setPassword_valid(true);
+            }
+
+            System.out.println("Comparing password");
+
+            if(phone.length()==11)
+            {
+                setPhone_valid(true);
+            }
+            else
+            {
+                setPhone_valid(false);
+            }
+
+            System.out.println("Comparing Email");
+
+
+            if(email.length()==21){
+                String pattern = email.substring(7);
+                if(pattern.compareTo("@lhr.nu.edu.pk")==0 && email.charAt(0)=='l')
+                {
+                    System.out.println("Email Compared");
+                    setEmail_valid(true);
+                }
+                else
+                {
+                    setEmail_valid(false);
+                }
+            }else{
+                setEmail_valid(false);
+            }
+
+
+
+
+            char[] r = new char[8];
+            r[0] = email.charAt(1);
+            r[1] = email.charAt(2);
+            r[2] = email.charAt(0);
+            r[3] = '-';
+            r[4] = email.charAt(3);
+            r[5] = email.charAt(4);
+            r[6] = email.charAt(5);
+            r[7] = email.charAt(6);
 
             String rollno = new String(r);
 
-            visitorAPI.getPersonByRollNo("20l-2171").enqueue(new Callback<Person>() {
-                @Override
-                public void onResponse(Call<Person> call, Response<Person> response) {
-                    Toast.makeText(Registeration.this, "HEHEHEHEHEHEEHHE", Toast.LENGTH_SHORT).show();
-                    System.out.println(response.body());
-                }
-
-                @Override
-                public void onFailure(Call<Person> call, Throwable t) {
-                    Toast.makeText(Registeration.this, "ERRRRROORORORORORO", Toast.LENGTH_SHORT).show();
-                }
-            });
-
             Gender g = Gender.Male;
 
-            if(maleState)
-            {
-                 g = Gender.Male;
-            }
-            else if(femaleState){
-                 g = Gender.Female;
+            if (maleState) {
+                g = Gender.Male;
+            } else if (femaleState) {
+                g = Gender.Female;
             }
 
-            int i = (int)(Math.random() * 1000000);
+            int i = (int) (Math.random() * 10000);
             String otp = Integer.toString(i);
             Visitor v = new Visitor();
             v.setAccountStatus("Active");
@@ -109,24 +205,45 @@ public class Registeration extends AppCompatActivity {
             v.setPhoneNumber(phone);
             Date c = Calendar.getInstance().getTime();
             System.out.println("Current time => " + c);
-            SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
             String formattedDate = df.format(c);
             v.setJoiningDate(formattedDate);
             v.setGender(g);
 
-            visitorAPI.save(v).enqueue(new Callback<Visitor>() {
-                @Override
-                public void onResponse(Call<Visitor> call, Response<Visitor> response) {
-                    Toast.makeText(Registeration.this, "SaveFinished", Toast.LENGTH_SHORT).show();
-                }
+            System.out.println("*************************************************");
+            System.out.println(v);
 
-                @Override
-                public void onFailure(Call<Visitor> call, Throwable t) {
-                    Toast.makeText(Registeration.this, "ErrorOccurred", Toast.LENGTH_SHORT).show();
-                    Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
-                }
+            displayErrors();
+            TextView reg_error = findViewById(R.id.Reg_Error);
 
-            });
+
+
+            if(isPassword_valid() && isPhone_valid() && isEmail_valid()) {
+                reg_error.setText("All Entries are Acceptable");
+
+                System.out.println("sending Api");
+
+                visitorAPI.save(v).enqueue(new Callback<Visitor>() {
+                    @Override
+                    public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                        Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
+                       setVerifyOTP(true);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Visitor> call, Throwable t) {
+                        Toast.makeText(Registeration.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+                        reg_error.setText("Account Already Exist or Server is Down");
+                        setVerifyOTP(false);
+                        Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
+                    }
+
+                });
+            }
+
+            if(getVerifyOTP()){
+            Intent intent =new Intent(this, OTP_verification.class);
+            startActivity(intent);}
 
 
 

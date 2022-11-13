@@ -18,10 +18,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.Login"
+            android:exported="false" />
+        <activity
             android:name=".Activities.OTP_verification"
             android:exported="false" />
         <activity
-            android:name=".Activities.Home"
+            android:name=".Activities.HomeVisitor"
             android:exported="false" />
         <activity
             android:name=".Activities.VisitorList"
@@ -30,11 +33,10 @@
             android:name=".Activities.Registeration"
             android:exported="true" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.Main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

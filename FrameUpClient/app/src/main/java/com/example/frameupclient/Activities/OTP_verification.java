@@ -14,4 +14,6 @@ public class OTP_verification extends AppCompatActivity {
         setContentView(R.layout.activity_otp_verification);
     }
 
+
+
 }

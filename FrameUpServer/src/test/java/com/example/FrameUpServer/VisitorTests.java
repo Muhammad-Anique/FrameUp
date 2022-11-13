@@ -14,15 +14,22 @@ public class VisitorTests {
     @Autowired
     private VisitorDao visitorDao;
 
+
+    //@Test
+    public void VisitorById()
+    {
+        Visitor v =  visitorDao.getVisitorByRoll("20l-2171");
+        System.out.println(v);
+
+    }
     @Test
     public void VisitorSavingTest()
     {
-        int num = (int)(Math.random()*1000000);
+        int num = (int)(Math.random()*10000);
         String otp =Integer.toString(num);
         Gender gen = Gender.Male;
-
         Visitor visitor = new Visitor();
-        visitor.set_Name_Email_Roll("Muhammad Ali","l202120@lhr.nu.edu.pk","20l-2120");
+        visitor.set_Name_Email_Roll("Muhammad Khan Ghori","l202171@lhr.nu.edu.pk","20l-2120");
         visitor.setGender(gen);
         visitor.setOTP(otp);
         visitor.setAccountStatus("Active");
@@ -31,7 +38,6 @@ public class VisitorTests {
         visitor.setJoiningDate("24-Nov-2020");
         visitor.setPhoneNumber("03364274908");
         GlobalFunctions gb = new GlobalFunctions();
-
         gb.PrintStart();
         System.out.println(visitorDao.saveVisitor(visitor));
         gb.PrintEnd();

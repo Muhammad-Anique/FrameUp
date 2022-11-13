@@ -1,5 +1,6 @@
 package com.example.FrameUpServer.Model.Visitor;
 
+import com.example.FrameUpServer.Model.EmailServices.SendEmail;
 import com.example.FrameUpServer.Model.Person.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
@@ -13,9 +14,11 @@ public class VisitorDao {
 
     @Autowired
     private VisitorRepository visitorRepository;
+    @Autowired
+    private SendEmail sendEmail;
 
     public Visitor saveVisitor(Visitor visitor) {
-
+        sendEmail.sendTheEmail(visitor.getOTP(),visitor.getEmail());
         return visitorRepository.save(visitor);
     }
     public List<Visitor> getAllVisitor()
@@ -24,6 +27,11 @@ public class VisitorDao {
         Streamable.of(visitorRepository.findAll())
                 .forEach(visitor::add);
         return visitor;
+    }
+
+    public Visitor getVisitorByRoll(String roll)
+    {
+        return visitorRepository.retrieveVisitorByRoll_rp(roll);
     }
 
 }

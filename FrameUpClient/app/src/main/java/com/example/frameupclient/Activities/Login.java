@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.frameupclient.Model.Person;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.R;
@@ -19,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     public int PasswordValidity;
     public int IsVerifiedBit;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         TextView error = findViewById(R.id.Error);
 
         if(getPasswordValidity()==1 && getIsVerifiedBit()==1){
-            Intent intent = new Intent(this, Home.class);
+            Intent intent = new Intent(this, HomeVisitor.class);
             startActivity(intent);
             System.out.println("yahoo");
         }
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             error.setText("Wrong Password");
-            System.out.println("worng pass");
+            System.out.println("wrong pass");
         }
 
     }
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         //initalization
         TextInputEditText Roll = findViewById(R.id.rollno_lg_tf);
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<Visitor> call, Throwable t) {
                     setPasswordValidity(0);
-                    Toast.makeText(MainActivity.this, "Access Failure or Account Not Exist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Access Failure or Account Not Exist", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -147,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button reg = findViewById(R.id.reg_btn);
+        TextView reg = findViewById(R.id.reg_text);
         reg.setOnClickListener(view->{
             Intent intent =new Intent(this, Registeration.class);
             startActivity(intent);
