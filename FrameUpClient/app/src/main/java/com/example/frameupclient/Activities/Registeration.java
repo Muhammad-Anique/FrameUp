@@ -21,9 +21,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,15 +35,8 @@ public class Registeration extends AppCompatActivity {
     private boolean password_valid=false;
     private boolean email_valid=false;
     private boolean phone_valid=false;
-    private boolean verifyOTP =false;
+     public boolean verifyOTP =false;
 
-    public boolean getVerifyOTP() {
-        return verifyOTP;
-    }
-
-    public void setVerifyOTP(boolean verifyOTP) {
-        this.verifyOTP = verifyOTP;
-    }
 
     public boolean isPassword_valid() {
         return password_valid;
@@ -67,6 +62,13 @@ public class Registeration extends AppCompatActivity {
         this.phone_valid = phone_valid;
     }
 
+    public void start_verify_activity(String email, String Roll)
+    {
+        Intent intent =new Intent(this, OTP_verification.class);
+        intent.putExtra("userEmail",email);
+        intent.putExtra("userRoll", Roll);
+        startActivity(intent);
+    }
 
     protected void displayErrors()
     {
@@ -192,12 +194,10 @@ public class Registeration extends AppCompatActivity {
                 g = Gender.Female;
             }
 
-            int i = (int) (Math.random() * 10000);
-            String otp = Integer.toString(i);
+
             Visitor v = new Visitor();
-            v.setAccountStatus("Active");
+            v.setAccountStatus("uv");
             v.setIsVerified(false);
-            v.setOTP(otp);
             v.setPassword(password);
             v.setEmail(email);
             v.setName(name);
@@ -227,23 +227,22 @@ public class Registeration extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Visitor> call, Response<Visitor> response) {
                         Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
-                       setVerifyOTP(true);
+                        System.out.println("hi");
+                        start_verify_activity(email,rollno);
                     }
 
                     @Override
                     public void onFailure(Call<Visitor> call, Throwable t) {
                         Toast.makeText(Registeration.this, "Error Occurred", Toast.LENGTH_SHORT).show();
                         reg_error.setText("Account Already Exist or Server is Down");
-                        setVerifyOTP(false);
                         Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
                     }
 
                 });
+
             }
 
-            if(getVerifyOTP()){
-            Intent intent =new Intent(this, OTP_verification.class);
-            startActivity(intent);}
+
 
 
 

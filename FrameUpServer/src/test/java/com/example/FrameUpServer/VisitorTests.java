@@ -1,5 +1,6 @@
 package com.example.FrameUpServer;
 import com.example.FrameUpServer.GlobalFunctions.GlobalFunctions;
+import com.example.FrameUpServer.Model.EmailServices.SendEmail;
 import com.example.FrameUpServer.Model.Visitor.Gender;
 import com.example.FrameUpServer.Model.Visitor.VisitorDao;
 import org.junit.jupiter.api.Test;
@@ -7,12 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.FrameUpServer.Model.Visitor.Visitor;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 
 public class VisitorTests {
 
+
     @Autowired
     private VisitorDao visitorDao;
+    @Autowired
+    private SendEmail sendEmail;
 
 
     //@Test
@@ -22,7 +28,22 @@ public class VisitorTests {
         System.out.println(v);
 
     }
+
     @Test
+    public void Emails(){
+
+        visitorDao.getOTPByEmail("l202171@lhr.nu.edu.pk");
+        List<String> S = visitorDao.getemailofuvperson();
+        for (int i = 0; i < S.size(); i++) {
+            System.out.println(S.get(i));
+            String Otp = visitorDao.getOTPByEmail(S.get(i));
+            System.out.println(Otp);
+            sendEmail.sendTheEmail(Otp,S.get(i));
+        }
+        System.out.println(S);
+    }
+
+   // @Test
     public void VisitorSavingTest()
     {
         int num = (int)(Math.random()*10000);

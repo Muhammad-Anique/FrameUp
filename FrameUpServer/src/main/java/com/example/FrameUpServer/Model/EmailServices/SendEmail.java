@@ -19,6 +19,10 @@ public class SendEmail {
         String text = "This is Your OTP = ";
         String subject ="FrameUp Verification OTP"   ;
         String body = text.concat(otp);
-        service.sendSimpleEmail(toEmail,body,subject);
+        System.out.println("otp = ");
+        System.out.println(otp);
+        System.out.println("email");
+        System.out.println(toEmail);
+        service.sendSimpleEmail(toEmail.toString(),body.toString(),subject.toString());
     }
 }

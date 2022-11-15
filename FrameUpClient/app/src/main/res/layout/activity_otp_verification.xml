@@ -74,18 +74,18 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/verifyotp"
-        android:layout_width="252dp"
-        android:layout_height="50dp"
+        android:id="@+id/verify_otp_btn"
+        android:layout_width="221dp"
+        android:layout_height="43dp"
         android:background="@drawable/button_style_gradient"
         android:text="@string/str_verify"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.321" />
 
     <TextView
         android:id="@+id/error_verify"
@@ -94,10 +94,22 @@
         android:layout_marginTop="32dp"
         android:text=" "
         android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/verifyotp"
+        app:layout_constraintBottom_toTopOf="@+id/verify_otp_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/userEmailid"
+        android:layout_width="114dp"
+        android:layout_height="17dp"
+        android:text=" "
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

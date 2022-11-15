@@ -2,6 +2,9 @@ package com.example.frameupclient.Retrofit;
 
 import com.google.gson.Gson;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -17,9 +20,17 @@ public class RetrofitService {
     //IP ADDRESS IS DYNAMIC, IT MUST BE UPDATED EVERYTIME
 
     private void initializeRetrofit() {
+
+        OkHttpClient innerClient = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+                .readTimeout(5, TimeUnit.MINUTES) // read timeout
+                .build();
+
         retrofit = new Retrofit.Builder()
-          .baseUrl("http://192.168.10.29:8080")
+          .baseUrl("http://192.168.2.170:8080")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                .client(innerClient)
                 .build();
     }
 
