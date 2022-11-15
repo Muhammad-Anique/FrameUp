@@ -3,6 +3,7 @@
     <style name="Theme.FrameUpClient" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
+<!--        <item name="android:statusBarColor">@color/Primary_Color_1</item>-->
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.FrameUpClient.R;
 import com.example.frameupclient.Model.Gender;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
@@ -81,6 +82,3 @@ public class Registeration extends AppCompatActivity {
         });
 
 
-
-    }
-}
