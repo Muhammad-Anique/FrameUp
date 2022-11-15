@@ -15,9 +15,4 @@ public interface PersonRepository extends CrudRepository<Person, Integer> {
     Person retrievePersonByRoll_rp(@Param("rollNumber") String roll);
 
 
-    //Query2
-
-
-
-
 }

@@ -5,159 +5,173 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/frameupregisterationbg"
-    tools:context=".Registeration">
+    tools:context=".Activities.Registeration">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="353dp"
-        android:layout_height="399dp"
-        android:layout_marginBottom="200dp"
+        android:layout_width="323dp"
+        android:layout_height="317dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fullname_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/Primary_Color_2_a"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="3dp"
+            android:backgroundTint="@color/Secondary_Color_1"
+            android:fontFamily="@font/montserrat_medium"
             android:hint="@string/str_name"
             android:minHeight="50dp"
-            android:textColor="@color/Primary_Color_2"
-            android:textColorHint="@color/Primary_Color_1_a" />
+            android:textColor="@color/Primary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="15dp"
+
+            />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/Primary_Color_2_a"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="3dp"
+            android:backgroundTint="@color/Secondary_Color_1"
+            android:fontFamily="@font/montserrat_medium"
             android:hint="@string/str_email"
             android:minHeight="50dp"
-            android:textColor="@color/Primary_Color_2"
-            android:textColorHint="@color/Primary_Color_1_a" />
+            android:textColor="@color/Primary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="15dp"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/roll_tf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/Primary_Color_2_a"
-            android:hint="@string/roll_no"
-            android:minHeight="50dp"
-            android:textColor="@color/Primary_Color_2"
-            android:textColorHint="@color/Primary_Color_1_a" />
+            />
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phone_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/Primary_Color_2_a"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="3dp"
+            android:backgroundTint="@color/Secondary_Color_1"
+            android:fontFamily="@font/montserrat_medium"
             android:hint="@string/str_phone"
             android:minHeight="50dp"
-            android:textColor="@color/Primary_Color_2"
-            android:textColorHint="@color/Primary_Color_1_a" />
-
+            android:textColor="@color/Primary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="15dp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_tf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/Primary_Color_2_a"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="3dp"
+            android:backgroundTint="@color/Secondary_Color_1"
+            android:fontFamily="@font/montserrat_medium"
             android:hint="@string/str_setPass"
+            android:inputType="textPassword"
             android:minHeight="50dp"
-            android:textColor="@color/Primary_Color_2"
-            android:textColorHint="@color/Primary_Color_1_a" />
+            android:textColor="@color/Primary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="15dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirm_password_tf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="3dp"
+            android:backgroundTint="@color/Secondary_Color_1"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="@string/str_confirmPass"
+            android:inputType="textPassword"
+            android:minHeight="50dp"
+            android:textColor="@color/Primary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="15dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="2dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:padding="5dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Gender : "
+                android:textColor="@color/Secondary_Color_1"
+                android:textSize="15dp" />
+
             <RadioButton
-                android:id="@+id/radioButton1"
+                android:id="@+id/male"
                 android:layout_width="127dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_weight="1"
-                android:buttonTint="@color/Dark_Primary_color_1"
+                android:buttonTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="@string/str_male"
-                android:textSize="16dp"
-                android:textColor="@color/Primary_Color_1" />
+                android:textColor="@color/Secondary_Color_1"
+                android:textSize="15dp" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/female"
                 android:layout_width="128dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:buttonTint="@color/Dark_Primary_color_1"
+                android:buttonTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="@string/str_female"
-                android:textSize="16dp"
-                android:textColor="@color/Primary_Color_1" />
+                android:textColor="@color/Secondary_Color_1"
+                android:textSize="15dp" />
 
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="219dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="172dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+    <Button
+        android:id="@+id/verify_btn"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="@string/str_verify"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.117" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/Dark_Primary_color_1"
-            android:textSize="30dp"
-            android:text="SignUp"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <TextView
+        android:id="@+id/Reg_Error"
         android:layout_width="316dp"
-        android:layout_height="95dp"
-        android:layout_marginBottom="32dp"
-        android:orientation="vertical"
+        android:layout_height="52dp"
+        android:layout_marginTop="88dp"
+        android:text=" "
+        android:textColor="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-        <Button
-            android:id="@+id/verify_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/button_style_gradient"
-            android:textColor="@color/white"
-            android:text="@string/str_verify"
-            app:backgroundTint="@null" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
