@@ -1,4 +1,5 @@
 package com.example.frameupclient.Model;
+
 public class Visitor extends Person {
 
     String OTP;
@@ -6,7 +7,7 @@ public class Visitor extends Person {
     boolean isVerified;
     String accountStatus;
     String joiningDate;
-    String phoneNumber;
+    String phoneNumber; 
 
     Gender gender;
 
