@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/frameupotpbg"
+    tools:context=".Activities.OTP_verification">
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="253dp"
+        android:layout_height="77dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518">
+
+
+        <EditText
+            android:id="@+id/num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textSize="40dp"
+            android:textAlignment="center"
+            android:backgroundTint="@color/Primary_Color_1"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/Primary_Color_1" />
+
+        <EditText
+            android:id="@+id/num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:backgroundTint="@color/Primary_Color_1"
+            android:ems="10"
+            android:textSize="40dp"
+            android:maxLength="1"
+            android:inputType="number"
+            android:textColor="@color/Primary_Color_1" />
+
+        <EditText
+            android:id="@+id/num3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:backgroundTint="@color/Primary_Color_1"
+            android:textSize="40dp"
+            android:ems="10"
+            android:maxLength="1"
+            android:inputType="number"
+            android:textColor="@color/Primary_Color_1" />
+
+        <EditText
+            android:id="@+id/num4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:backgroundTint="@color/Primary_Color_1"
+            android:textSize="40dp"
+            android:maxLength="1"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="@color/Primary_Color_1" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/verify_otp_btn"
+        android:layout_width="221dp"
+        android:layout_height="43dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="@string/str_verify"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.321" />
+
+    <TextView
+        android:id="@+id/error_verify"
+        android:layout_width="83dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="32dp"
+        android:text=" "
+        android:textAlignment="gravity"
+        app:layout_constraintBottom_toTopOf="@+id/verify_otp_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/userEmailid"
+        android:layout_width="114dp"
+        android:layout_height="17dp"
+        android:text=" "
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
