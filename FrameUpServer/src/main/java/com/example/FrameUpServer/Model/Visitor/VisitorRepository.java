@@ -8,20 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VisitorRepository extends CrudRepository<Visitor, Integer> {
-<<<<<<< HEAD
-
-    //Querie
-=======
-    //Queries
-
-<<<<<<< HEAD
-=======
-    //Queries
 
 
->>>>>>> 8af41bb10b71714214dd57d03fcea077060eb459
-=======
->>>>>>> 8af41bb10b71714214dd57d03fcea077060eb459
 
->>>>>>> backend
+
 }
