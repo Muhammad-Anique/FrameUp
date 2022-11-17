@@ -12,7 +12,9 @@ public class Person {
     private int accountId;
     private String name;
     private String email;
-    private String rollNo;
+    protected String rollNo;
+
+
 
     public int getAccountId() {
         return accountId;

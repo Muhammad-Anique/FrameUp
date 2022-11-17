@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootTest
 public class SocietyTest {
 
@@ -19,11 +22,18 @@ public class SocietyTest {
 
         society.setDateCreated("15-11-22");
         society.setSocietyCategory("Intellectual");
-        society.setSocietyHead("Afzal");
+        society.setSocietyHead("ALI");
         society.setSocietyMotive("Skills Improvement");
-        society.setSocietyName("Career Counselling");
+        society.setSocietyName("IEEE");
 
         societyDao.save(society);
 
+    }
+    //@Test
+    void deleteSociety()
+    {
+        List<Society> society = societyDao.getAllSociety();
+        for (Society society1 : society)
+            societyDao.delete(society1);;
     }
 }

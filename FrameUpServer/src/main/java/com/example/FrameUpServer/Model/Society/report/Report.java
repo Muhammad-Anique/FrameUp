@@ -1,4 +1,4 @@
-package com.example.FrameUpServer.Model.report;
+package com.example.FrameUpServer.Model.Society.report;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
