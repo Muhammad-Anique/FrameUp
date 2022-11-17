@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="24dp">
+
+
+    <TextView
+        android:id="@+id/societylist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="23dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:paddingTop="50dp"
+        android:text="Society Name"
+        android:textColor="@color/Primary_Color_1"
+        android:textColorHint="@color/Secondary_Color_1"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/societyHead_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="23dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Society Head"
+            android:textColor="@color/Secondary_Color_2"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/societylist_name" />
+
+        <TextView
+        android:id="@+id/societyCategory_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="23dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Society Category"
+        android:textColor="@color/Secondary_Color_2"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/societyHead_name" />
+
+    <ImageView
+        android:id="@+id/societyImage"
+        android:layout_width="159dp"
+        android:layout_height="124dp"
+        app:srcCompat="@drawable/logomakr_2xfhue"
+        tools:layout_editor_absoluteX="371dp"
+        tools:layout_editor_absoluteY="76dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="@id/societylist_name"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,11 @@
     <string name="str_login">Login</string>
     <string name="str_register">Register</string>
     <string name="str_name">Full Name</string>
+    <string name="society_name">Society Name</string>
+    <string name="societyCategory_name">Society Category</string>
+    <string name="str_create">Create</string>
+    <string name="date_str">Date</string>
+    <string name="motive_str">Details of Society</string>
     <string name="str_phone">Phone</string>
     <string name="str_setPass">Password</string>
     <string name="str_confirmPass">Confirm Password</string>
