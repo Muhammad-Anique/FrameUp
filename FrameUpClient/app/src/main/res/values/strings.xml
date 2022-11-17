@@ -13,5 +13,7 @@
     <string name="str_male">Male</string>
     <string name="str_female">Female</string>
     <string name="str_verify">Verify</string>
+    <string name="check_report">Check Report</string>
+    <string name="check_report_">Check Report</string>
 
 </resources>

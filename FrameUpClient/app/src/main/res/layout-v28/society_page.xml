@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="drawable/frameupregisterationbg.png"
+    >
+
+    <TextView
+        android:id="@+id/Society_name"
+        android:layout_width="316dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="624dp"
+        android:textAlignment="center"
+      android:textSize="50sp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="SOFTEC"
+        android:textColor="@color/design_default_color_primary_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/Society_Motive"
+        android:layout_width="316dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="516dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Software Development Society"
+
+        android:textColor="@color/Secondary_Color_1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/Society_Head"
+        android:layout_width="70dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="456dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Head : "
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/Society_Head_Name"
+        android:layout_width="250dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="436dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Ali Khan"
+        android:textColor="@color/Secondary_Color_1"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/Society_Category"
+        android:layout_width="120dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="372dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Category : "
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/Society_Cat_Name"
+        android:layout_width="220dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="352dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Softtware Development"
+        android:textColor="@color/Secondary_Color_1"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/Society_date"
+        android:layout_width="120dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="292dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Date : "
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/Society_DateCreated"
+        android:layout_width="220dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="272dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="20/10/2022"
+        android:textColor="@color/Secondary_Color_1"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <RatingBar
+        android:id="@+id/simpleRatingBar"
+        style="@style/Widget.AppCompat.RatingBar"
+        android:layout_width="198dp"
+        android:layout_height="52dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:outlineAmbientShadowColor="@color/black"
+        android:rating="2.5"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="499dp" />
+
+    <Button
+        android:id="@+id/verify_btn"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="96dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Check Report"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

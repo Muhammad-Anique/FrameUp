@@ -1,6 +1,6 @@
 package com.example.FrameUpServer.Model.Society;
 
-import com.example.FrameUpServer.Model.report.Report;
+import com.example.FrameUpServer.Model.Person.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
@@ -12,23 +12,26 @@ import java.util.List;
 public class SocietyDao {
 
     @Autowired
-    private SocietyRepository repository;
+    private SocietyRepository societyRepository;
 
     public Society save(Society society)
     {
-        return repository.save(society);
+        return societyRepository.save(society);
     }
     public void delete (Society society)
     {
-       repository.delete(society);
+       societyRepository.delete(society);
     }
     public List<Society> getAllSociety()
     {
         List<Society> societies=new ArrayList<>();
-        Streamable.of(repository.findAll()).forEach(societies::add);
+        Streamable.of(societyRepository.findAll()).forEach(societies::add);
         return societies;
     }
-
+    public Society getSocietyByName(String name)
+    {
+        return societyRepository.ret
+    }
 
 
 }
