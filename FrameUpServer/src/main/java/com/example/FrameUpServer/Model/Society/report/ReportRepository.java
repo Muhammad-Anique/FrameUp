@@ -1,4 +1,4 @@
-package com.example.FrameUpServer.Model.report;
+package com.example.FrameUpServer.Model.Society.report;
 
 import org.springframework.data.repository.CrudRepository;
 

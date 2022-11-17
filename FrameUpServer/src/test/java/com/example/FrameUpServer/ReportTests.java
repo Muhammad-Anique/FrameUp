@@ -1,7 +1,7 @@
 package com.example.FrameUpServer;
 
-import com.example.FrameUpServer.Model.report.Report;
-import com.example.FrameUpServer.Model.report.ReportDao;
+import com.example.FrameUpServer.Model.Society.report.Report;
+import com.example.FrameUpServer.Model.Society.report.ReportDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
