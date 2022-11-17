@@ -30,7 +30,7 @@ public class SocietyDao {
     }
     public Society getSocietyByName(String name)
     {
-        return societyRepository.ret
+        return societyRepository.retrieveSocietyByName(name);
     }
 
 
