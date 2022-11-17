@@ -26,11 +26,11 @@ public class ReportController {
         return reportDao.save(report);
     }
 
-    @GetMapping("/report/{societyName}")
-    public long countSocietyMembers(@PathVariable String societyName )
-    {
-        return countSocietyMembers(societyName);
-    }
+//    @GetMapping("/report/{societyName}")
+//    public long countSocietyMembers(@PathVariable String societyName )
+//    {
+//        return countSocietyMembers(societyName);
+//    }
     public long countMaleSocietyMembers(@PathVariable String societyName)
     {
         return countMaleSocietyMembers(societyName);
@@ -40,15 +40,14 @@ public class ReportController {
         return countFemaleSociety(societyName);
     }
 
-    @RequestMapping(value="/report/{societyName}",method = GET)
-    @ResponseBody
-    public boolean getMemberInfo(@PathVariable String societyName)
+    @GetMapping("/report/{societyName}")
+    public String getMemberInfo(@PathVariable String societyName)
     {
         long societyMemberCount= reportDao.countMaleSocietyMembers(societyName);
         long maleMemberCount=reportDao.countMaleSocietyMembers(societyName);
         long femaleMemberCount= reportDao.countFemaleSocietyMembers(societyName);
 
-        return true;
+        return "success";
     }
 
 
