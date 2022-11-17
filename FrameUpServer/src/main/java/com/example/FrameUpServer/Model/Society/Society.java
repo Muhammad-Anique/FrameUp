@@ -17,6 +17,7 @@ public class Society {
     private float societyRating;
     private int societyLikes;
 
+    private int societyMembers;
     public int getSocietyId() {
         return societyId;
     }
@@ -81,6 +82,14 @@ public class Society {
         this.societyLikes = societyLikes;
     }
 
+    public int getSocietyMembers() {
+        return societyMembers;
+    }
+
+    public void setSocietyMembers(int societyMembers) {
+        this.societyMembers = societyMembers;
+    }
+
     @Override
     public String toString() {
         return "Society{" +
@@ -92,6 +101,7 @@ public class Society {
                 ", societyHead='" + societyHead + '\'' +
                 ", societyRating=" + societyRating +
                 ", societyLikes=" + societyLikes +
+                ", societyMembers=" + societyMembers +
                 '}';
     }
 }

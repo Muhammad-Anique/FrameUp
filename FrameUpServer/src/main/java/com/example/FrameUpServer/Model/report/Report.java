@@ -12,7 +12,7 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String reportAuthor;
+
     private String dateReportCreated;
     private float overallRating;
     private String reportSubject;
@@ -33,13 +33,6 @@ public class Report {
         this.id = id;
     }
 
-    public String getReportAuthor() {
-        return reportAuthor;
-    }
-
-    public void setReportAuthor(String reportAuthor) {
-        this.reportAuthor = reportAuthor;
-    }
 
     public String getDateReportCreated() {
         return dateReportCreated;
@@ -133,7 +126,6 @@ public class Report {
     public String toString() {
         return "Report{" +
                 "id=" + id +
-                ", reportAuthor='" + reportAuthor + '\'' +
                 ", dateReportCreated='" + dateReportCreated + '\'' +
                 ", overallRating=" + overallRating +
                 ", reportSubject='" + reportSubject + '\'' +

@@ -1,5 +1,6 @@
 package com.example.FrameUpServer.Model.report;
 
+import com.example.FrameUpServer.Model.SocietyParticipation.SocietyParticipationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import java.util.List;
 public class ReportDao {
     @Autowired
     private ReportRepository repository;
+    @Autowired
+    private SocietyParticipationRepository societyRepository;
 
     public Report save (Report report)
     {
@@ -27,9 +30,22 @@ public class ReportDao {
         return reports;
 
     }
-    public float calculateMembers(int NoOfFemales,int NoOfMales)
+    public long countSocietyMembers(String societyName)
     {
-        return NoOfFemales+NoOfMales;
+        return societyRepository.retrieveMemberCountBySocietyName(societyName);
+
+    }
+    public long countMaleSocietyMembers(String societyName)
+    {
+        return societyRepository.retrieveMaleGenderCountByRollNo(societyName);
+    }
+    public long countFemaleSocietyMembers(String societyName)
+    {
+        return societyRepository.retrieveFemaleGenderCountByRollNo(societyName);
+    }
+    public float calculateAverageRating(String societyName)
+    {
+        return societyRepository.retrieveAverageRatingOfSociety(societyName);
     }
 
 

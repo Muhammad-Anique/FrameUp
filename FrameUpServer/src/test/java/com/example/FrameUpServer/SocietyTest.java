@@ -17,11 +17,12 @@ public class SocietyTest {
     {
         Society society=new Society();
 
-        society.setDateCreated("15-11-22");
-        society.setSocietyCategory("Intellectual");
-        society.setSocietyHead("Afzal");
-        society.setSocietyMotive("Skills Improvement");
-        society.setSocietyName("Career Counselling");
+        society.setDateCreated("16-11-22");
+        society.setSocietyCategory("Entertainment");
+        society.setSocietyHead("Ali");
+        society.setSocietyMotive("Refreshment");
+        society.setSocietyName("Music");
+        society.setSocietyMembers(10);
 
         societyDao.save(society);
 

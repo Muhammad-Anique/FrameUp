@@ -29,7 +29,7 @@ public class VisitorTests {
 
     }
 
-    @Test
+    //@Test
     public void Emails(){
 
         visitorDao.getOTPByEmail("l202171@lhr.nu.edu.pk");
@@ -43,7 +43,7 @@ public class VisitorTests {
         System.out.println(S);
     }
 
-   // @Test
+   @Test
     public void VisitorSavingTest()
     {
         int num = (int)(Math.random()*10000);

@@ -1,5 +1,7 @@
 package com.example.FrameUpServer;
 
+
+import com.example.FrameUpServer.Model.EmailServices.EmailSenderService;
 import com.example.FrameUpServer.Model.EmailServices.EmailSenderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -16,7 +16,7 @@ public class ReportTests {
     {
         Report report = new Report();
 
-        report.setReportAuthor("Laiba");
+
         report.setDateReportCreated("14-11-22");
         report.setNoOfFemales(20);
         report.setNoOfMales(30);
@@ -27,7 +27,7 @@ public class ReportTests {
         report.setReportBody("Hey Welcome to report Number 01");
         report.setReportConclusion("Report concluded");
         report.setReportSubject("Annual report");
-        report.setSocietyName("Career");
+        report.setSocietyName("Music");
 
         reportDao.save(report);
     }
