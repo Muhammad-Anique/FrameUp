@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.FrameUpClient.R;
+//import com.example.FrameUpClient.R;
 import com.example.frameupclient.Model.Gender;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
@@ -32,24 +32,24 @@ public class Registeration extends AppCompatActivity {
     private void intializeComponents() {
         TextInputEditText name_TF = findViewById(R.id.fullname_tf);
         TextInputEditText email_TF = findViewById(R.id.email_tf);
-        TextInputEditText rollNo_TF = findViewById(R.id.roll_tf);
+        // TextInputEditText rollNo_TF = findViewById(R.id.roll_tf);
         TextInputEditText phone_TF = findViewById(R.id.phone_tf);
         TextInputEditText password_TF = findViewById(R.id.password_tf);
 
         Button verify = findViewById(R.id.verify_btn);
 
         RetrofitService retrofitService = new RetrofitService();
-        VisitorAPI visitorAPI =  retrofitService.getRetrofit().create(VisitorAPI.class);
+        VisitorAPI visitorAPI = retrofitService.getRetrofit().create(VisitorAPI.class);
 
         verify.setOnClickListener(view -> {
             String name = String.valueOf(name_TF.getText());
             String email = String.valueOf(email_TF.getText());
-            String rollno = String.valueOf(rollNo_TF.getText());
+            //String rollno = String.valueOf(rollNo_TF.getText());
             String phone = String.valueOf(phone_TF.getText());
             String password = String.valueOf(password_TF.getText());
 
             Gender g = Gender.Male;
-            int i = (int)(Math.random() * 1000000);
+            int i = (int) (Math.random() * 1000000);
             String otp = Integer.toString(i);
             Visitor v = new Visitor();
             v.setAccountStatus("Active");
@@ -58,7 +58,7 @@ public class Registeration extends AppCompatActivity {
             v.setPassword(password);
             v.setEmail(email);
             v.setName(name);
-            v.setRollNo(rollno);
+            // v.setRollNo(rollno);
             v.setPhoneNumber(phone);
             v.setJoiningDate("30-Dec-2022");
             v.setGender(g);
@@ -78,7 +78,7 @@ public class Registeration extends AppCompatActivity {
             });
 
 
-
         });
-
+    }
+}
 

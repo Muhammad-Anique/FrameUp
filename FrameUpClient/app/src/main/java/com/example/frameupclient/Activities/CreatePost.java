@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.frameupclient.R;
-import com.github.dhaval2404.imagepicker.ImagePicker;
+//import com.github.dhaval2404.imagepicker.ImagePicker;
 
 public class CreatePost extends AppCompatActivity {
 
@@ -32,11 +32,11 @@ public class CreatePost extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImagePicker.with(CreatePost.this)
-                        .crop()
-                        .compress(1024)
-                        .maxResultSize(1080,1080)
-                        .start(101);
+               // ImagePicker.with(CreatePost.this)
+                 //       .crop()
+                   //     .compress(1024)
+                     //   .maxResultSize(1080,1080)
+                       // .start(101);
 
             }
         });

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.CreateSociety">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="323dp"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.516">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/societyName_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="3dp"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="@string/society_name"
+                android:minHeight="50dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="15dp"
+
+                />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/societyCategory_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="3dp"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="@string/societyCategory_name"
+                android:minHeight="50dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="15dp"
+
+                />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Date_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="3dp"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="@string/date_str"
+                android:minHeight="50dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="15dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Details_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="3dp"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:minHeight="60dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:hint="@string/motive_str" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/create_Error"
+            android:layout_width="316dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="88dp"
+            android:text=" "
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/create_btn"
+            android:layout_width="232dp"
+            android:layout_height="44dp"
+            android:background="@drawable/button_style_gradient"
+            android:text="@string/str_create"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0.117" />
+
+
+    <TextView
+        android:id="@+id/heading_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Secondary_Color_1"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:minHeight="80dp"
+        android:text="Create Society"
+        android:textAllCaps="true"
+        android:textColor="@color/Secondary_Color_1"
+        android:textColorHint="@color/Secondary_Color_1"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="153dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

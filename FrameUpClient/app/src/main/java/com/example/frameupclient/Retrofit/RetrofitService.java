@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
+
     private Retrofit retrofit;
 
     public RetrofitService()
@@ -28,7 +29,7 @@ public class RetrofitService {
                 .build();
 
         retrofit = new Retrofit.Builder()
-          .baseUrl("http://192.168.2.170:8080")
+          .baseUrl("http://10.0.2.2:8080")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .client(innerClient)
                 .build();
