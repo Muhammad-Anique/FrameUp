@@ -28,6 +28,13 @@ public class SocietyDao {
         Streamable.of(repository.findAll()).forEach(societies::add);
         return societies;
     }
+    public List<String> getSocietyNameList()
+    {
+        List<String> societyName=new ArrayList<>();
+        Streamable.of(repository.retrieveSocietyName()).forEach(societyName::add);
+        return societyName;
+    }
+
 
 
 

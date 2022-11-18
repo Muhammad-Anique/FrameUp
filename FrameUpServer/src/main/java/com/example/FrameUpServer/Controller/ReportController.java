@@ -44,9 +44,11 @@ public class ReportController {
     public String getMemberInfo(@PathVariable String societyName)
     {
         long societyMemberCount= reportDao.countMaleSocietyMembers(societyName);
+        System.out.println(societyMemberCount);
         long maleMemberCount=reportDao.countMaleSocietyMembers(societyName);
+        System.out.println(maleMemberCount);
         long femaleMemberCount= reportDao.countFemaleSocietyMembers(societyName);
-
+        System.out.println(femaleMemberCount);
         return "success";
     }
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/create_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Report"
+            android:textSize="18dp"
+            android:textColor="@color/grey"
+            android:textAlignment="center"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="150dp"
+
+            >
+
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/SelectSociety"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginEnd="57dp"
+            android:layout_marginTop="220dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+        </Spinner>
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <EditText
+            android:layout_width="287dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="280dp"
+            android:text="Report Body"
+            android:textAlignment="center"
+            android:minLines="5"
+            android:lines="20"
+
+           >
+
+        </EditText>
+        </ScrollView>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
