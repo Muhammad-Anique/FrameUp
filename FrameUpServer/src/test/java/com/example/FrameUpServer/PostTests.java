@@ -14,7 +14,7 @@ public class PostTests {
     @Test
     void postSaveTest(){
         Post post=new Post();
-        post.setPostAll("Event","02/33/2022","Event","DramaF","Sadia","This is event for something");
+        post.setPostAll("Event","02/33/2022","Event","DramaF","Sadia","This is event for something", "http://", "#anique",4);
         postDoa.savePost(post);
     }
 

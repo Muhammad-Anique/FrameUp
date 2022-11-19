@@ -13,5 +13,7 @@
     <string name="str_male">Male</string>
     <string name="str_female">Female</string>
     <string name="str_verify">Verify</string>
+    <string name="select">Select</string>
+    <string name="internal_storage">strorage</string>
 
 </resources>

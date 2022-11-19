@@ -1,12 +1,6 @@
-package com.example.FrameUpServer.Model.Post;
+package com.example.frameupclient.Model;
 
-import javax.persistence.*;
-import java.util.Date;
-
-@Entity
 public class Post {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int postId;
     private String postSubject;
     private String postCreationDate;
