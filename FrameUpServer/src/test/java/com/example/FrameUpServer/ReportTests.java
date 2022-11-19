@@ -17,7 +17,7 @@ public class ReportTests {
         Report report = new Report();
 
 
-        report.setDateReportCreated("14-11-22");
+        report.setDateReportCreated("2022-03-02");
         report.setNoOfFemales(20);
         report.setNoOfMales(30);
         report.setNoOfLikes(40);

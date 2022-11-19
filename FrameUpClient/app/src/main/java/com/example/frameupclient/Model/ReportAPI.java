@@ -17,7 +17,19 @@ public interface ReportAPI {
     Call<Report> save(@Body Report report);
 
     @GET("/report/{societyName")
-    Call<Report> countSocietyMembers(@Path("societyName")String societyName);
+    long countSocietyMembers(@Path("societyName")String societyName);
+
+    @GET("/report/{societyName")
+    long countMaleSocietyMembers(@Path("societyName")String societyName);
+
+    @GET("/report/{societyName")
+    long countFemaleSocietyMembers(@Path("societyName")String societyName);
+
+    @GET("/report/{societyName")
+    Call<Report> calculateAverageRating(@Path("societyName")String societyName);
+
+
+
 
 
     @GET("/person/{roll}")

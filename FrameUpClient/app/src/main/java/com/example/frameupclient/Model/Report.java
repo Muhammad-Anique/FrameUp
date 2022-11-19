@@ -1,5 +1,7 @@
 package com.example.frameupclient.Model;
 
+import retrofit2.Call;
+
 public class Report {
 
 
@@ -11,9 +13,9 @@ public class Report {
     private String reportBody;
     private String reportConclusion;
     private String societyName;
-    private int noOfMembers;
-    private int noOfFemales;
-    private int noOfMales;
+    private long noOfMembers;
+    private long noOfFemales;
+    private long noOfMales;
     private int noOfLikes;
     private int popularity;
 
@@ -74,27 +76,27 @@ public class Report {
         this.societyName = societyName;
     }
 
-    public int getNoOfMembers() {
+    public long getNoOfMembers() {
         return noOfMembers;
     }
 
-    public void setNoOfMembers(int noOfMembers) {
+    public void setNoOfMembers(long noOfMembers) {
         this.noOfMembers = noOfMembers;
     }
 
-    public int getNoOfFemales() {
+    public long getNoOfFemales() {
         return noOfFemales;
     }
 
-    public void setNoOfFemales(int noOfFemales) {
+    public void setNoOfFemales(long noOfFemales) {
         this.noOfFemales = noOfFemales;
     }
 
-    public int getNoOfMales() {
+    public long getNoOfMales() {
         return noOfMales;
     }
 
-    public void setNoOfMales(int noOfMales) {
+    public void setNoOfMales(long noOfMales) {
         this.noOfMales = noOfMales;
     }
 

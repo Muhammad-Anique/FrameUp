@@ -19,9 +19,9 @@ public class Report {
     private String reportBody;
     private String reportConclusion;
     private String societyName;
-    private int noOfMembers;
-    private int noOfFemales;
-    private int noOfMales;
+    private long noOfMembers;
+    private long noOfFemales;
+    private long noOfMales;
     private int noOfLikes;
     private int popularity;
 
@@ -82,7 +82,7 @@ public class Report {
         this.societyName = societyName;
     }
 
-    public int getNoOfMembers() {
+    public long getNoOfMembers() {
         return noOfMembers;
     }
 
@@ -90,7 +90,7 @@ public class Report {
         this.noOfMembers = noOfMembers;
     }
 
-    public int getNoOfFemales() {
+    public long getNoOfFemales() {
         return noOfFemales;
     }
 
@@ -98,7 +98,7 @@ public class Report {
         this.noOfFemales = noOfFemales;
     }
 
-    public int getNoOfMales() {
+    public long getNoOfMales() {
         return noOfMales;
     }
 

@@ -29,6 +29,7 @@
         </TextView>
 
         <Spinner
+
             android:id="@+id/SelectSociety"
             android:layout_width="280dp"
             android:layout_height="40dp"
@@ -37,6 +38,7 @@
             android:layout_marginTop="220dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+
             >
 
         </Spinner>
@@ -47,11 +49,12 @@
 
 
         <EditText
+            android:id="@+id/Report_body"
             android:layout_width="287dp"
             android:layout_height="150dp"
             android:layout_marginStart="57dp"
             android:layout_marginTop="280dp"
-            android:text="Report Body"
+            android:hint="Report Body"
             android:textAlignment="center"
             android:minLines="5"
             android:lines="20"
@@ -60,6 +63,15 @@
 
         </EditText>
         </ScrollView>
+
+        <Button
+            android:id="@+id/Save_Button"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="500dp"
+            android:text="Create Report"
+            android:layout_marginStart="80dp"/>
+
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

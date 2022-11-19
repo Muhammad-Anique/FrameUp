@@ -19,7 +19,7 @@ public class SocietyParticipationTest {
 
         society.setRating(4);
         society.setParticipationId(5);
-        society.setRollNo("20L-1098");
+        society.setRollNo("19L-1098");
         society.setSocietyName("Music");
 
 
