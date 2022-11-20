@@ -96,7 +96,6 @@ public class CreatePost extends AppCompatActivity   {
         autoCompleteTxt.setAdapter(adapterItems);
 
 
-
         //listners
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -178,7 +177,7 @@ public class CreatePost extends AppCompatActivity   {
         Date = df.format(c);
         Priority = 1;
         String roll ="20l-2179";
-        AuthorRoll=String.valueOf(roll);
+        AuthorRoll= String.valueOf(roll);
         Post p = new Post();
 
         p.setPostAll(PostSubject,Date, PostType,SocietyAssociated,AuthorRoll,Caption, MediaUrl,Hashtag,Priority);

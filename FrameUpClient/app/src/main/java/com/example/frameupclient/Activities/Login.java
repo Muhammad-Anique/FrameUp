@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
 
     public int PasswordValidity;
     public int IsVerifiedBit;
+    public String RollNumber;
 
     public int getIsVerifiedBit() { return IsVerifiedBit;}
 
@@ -42,9 +43,10 @@ public class Login extends AppCompatActivity {
         TextView error = findViewById(R.id.Error);
 
         if(getPasswordValidity()==1 && getIsVerifiedBit()==1){
-//            Intent intent = new Intent(this, HomeVisitor.class);
-//            startActivity(intent);
-//            System.out.println("yahoo");
+            Intent intent = new Intent(this, VisitorHome.class);
+            intent.putExtra("userRoll", RollNumber);
+            startActivity(intent);
+            System.out.println("yahoo");
         }
         else if(getPasswordValidity()==1 && getIsVerifiedBit()==0){
             System.out.println("notverified");
@@ -75,8 +77,6 @@ public class Login extends AppCompatActivity {
         TextInputEditText Pass = findViewById(R.id.password_lg_tf);
         Button login = findViewById(R.id.log_btn);
 
-
-
         //login click
         login.setOnClickListener(view -> {
 
@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity {
             //stringing
             String password = String.valueOf(Pass.getText());
             String roll = String.valueOf(Roll.getText());
-
+            RollNumber =String.valueOf(Roll.getText());
 
             //consoling
             System.out.println("*****************************88\n");

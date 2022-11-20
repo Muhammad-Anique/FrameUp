@@ -1,33 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.UserProfile">
+    tools:context=".Activities.VisitorHome">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="181dp"
-        android:layout_height="171dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user" />
-
-    <Button
-        android:id="@+id/heart_button_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/heart_notclicked"
-        android:text=""
-        app:backgroundTint="@null"
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="740dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="90dp"
+        android:background="@null"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/title_bar"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo"
+                android:layout_width="145dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="7dp"
+                android:adjustViewBounds="true"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/frameuplogo"
+                app:srcCompat="@drawable/frameuplogo" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/chatbox_visitor_home_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/messanger_icon_not_clicked"
+                android:text=""
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/visitor_home_page_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="40dp"
+                android:adjustViewBounds="true"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/circleImageView"
+                app:srcCompat="@drawable/avatar" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="263dp"
+                android:layout_height="26dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Muhammad Anique"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_pic"
+                app:layout_constraintVertical_bias="0.025" />
+
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="l202171@lhr.nu.edu.pk"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+
+            <TextView
+                android:id="@+id/profile_type"
+                android:layout_width="79dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_style_gradient"
+                android:gravity="center"
+                android:text="Visitor"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_email" />
+
+            <TextView
+                android:id="@+id/profile_extra_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Click on Image to Upload Profile Picture"
+                android:textColor="@color/grey"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_type"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                app:layout_constraintBottom_toTopOf="@+id/profile_extra_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/upload_profile_pic"
+                android:layout_width="156dp"
+                android:layout_height="43dp"
+                android:layout_marginBottom="9dp"
+                android:background="@drawable/button_stroke"
+                android:text="Upload Profile Pic"
+                android:textColor="@color/Primary_Color_1"
+                android:textSize="9sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toTopOf="@+id/profile_extra_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/visitor_line"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+
+        android:elevation="6dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+        <Button
+            android:id="@+id/visitor_profile_page_home_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/society_icon"
+            android:text=""
+            app:backgroundTint="@color/black"
+            />
+
+        <Button
+            android:id="@+id/visitor_profile_page_poll_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/requestbox_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/visitor_profile_page_request_box"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/visitor_profile_page_star_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/poll_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/visitor_profile_page_profile_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/person_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

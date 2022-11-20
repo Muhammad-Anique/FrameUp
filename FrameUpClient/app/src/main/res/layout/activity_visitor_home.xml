@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.VisitorHome">
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="740dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="90dp"
+        android:background="@null"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@drawable/title_bar"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo"
+                android:layout_width="145dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="7dp"
+                android:adjustViewBounds="true"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/frameuplogo"
+                app:srcCompat="@drawable/frameuplogo" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/chatbox_visitor_home_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/messanger_icon_not_clicked"
+                android:text=""
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/visitor_home_page_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/visitor_line"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+
+        android:elevation="6dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+        <Button
+            android:id="@+id/visitor_home_page_home_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/society_icon"
+            android:text=""
+            app:backgroundTint="@color/black"
+             />
+
+        <Button
+            android:id="@+id/visitor_home_page_poll_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/requestbox_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/visitor_home_page_request_box"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/visitor_home_page_star_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/poll_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+        <Button
+            android:id="@+id/visitor_home_profile_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/person_icon"
+            android:text=""
+            app:backgroundTint="@color/black" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

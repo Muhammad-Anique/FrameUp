@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable-v24/ic_baseline_home_24.xml" value="0.1055" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable-v24/ic_baseline_notifications_none_24.xml" value="0.1055" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable-v24/ic_baseline_settings_24.xml" value="0.1055" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1055" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/button_stroke.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/button_style_gradient.xml" value="0.1" />
@@ -13,24 +17,33 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/ic_outline_person_24.xml" value="0.201" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/like_button_heart.xml" value="0.208" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/radio_button.xml" value="0.2495" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/selector.xml" value="0.1055" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/spinner_backgorund.xml" value="0.2635" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/textfield.xml" value="0.1" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/title_bar.xml" value="0.1055" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_post.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_home_visitor.xml" value="0.264" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_login.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_main.xml" value="0.1581081081081081" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_main2.xml" value="0.24375" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_main_test.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_newsfeed.xml" value="0.259375" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_otp_verfication.xml" value="0.176" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_otp_verification.xml" value="0.2" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_registeration.xml" value="0.2" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_user_profile.xml" value="0.4" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_user_profile.xml" value="0.3077720207253886" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_view_post.xml" value="0.176" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_visitor_home.xml" value="0.2" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_visitor_list.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/droplist_item.xml" value="0.259375" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/fragment_home.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/fragment_notification.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/fragment_settings.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/fragment_test.xml" value="0.2015625" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_newsfeed.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_post.xml" value="0.2453125" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/menu/bottom_nav_menu.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/menu/visitor_nav_menu.xml" value="0.19322916666666667" />
       </map>
     </option>
