@@ -42,9 +42,9 @@ public class Login extends AppCompatActivity {
         TextView error = findViewById(R.id.Error);
 
         if(getPasswordValidity()==1 && getIsVerifiedBit()==1){
-            Intent intent = new Intent(this, HomeVisitor.class);
-            startActivity(intent);
-            System.out.println("yahoo");
+//            Intent intent = new Intent(this, HomeVisitor.class);
+//            startActivity(intent);
+//            System.out.println("yahoo");
         }
         else if(getPasswordValidity()==1 && getIsVerifiedBit()==0){
             System.out.println("notverified");

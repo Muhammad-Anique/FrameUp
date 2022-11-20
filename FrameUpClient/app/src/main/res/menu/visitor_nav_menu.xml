@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:title="home"
+    android:id="@+id/visitor_home_menu_button"
+    android:icon="@drawable/ic_outline_home_24"
+    />
+    <item
+        android:title="person"
+        android:id="@+id/visitor_person_menu_button"
+        android:icon="@drawable/ic_outline_person_24"
+        />
+</menu>

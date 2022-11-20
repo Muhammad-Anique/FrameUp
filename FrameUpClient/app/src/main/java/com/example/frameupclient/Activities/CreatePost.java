@@ -48,12 +48,10 @@ import retrofit2.Response;
 
 
 
-
-
 public class CreatePost extends AppCompatActivity   {
 
     ImageView cover;
-    Button uploadBtn, showbtn;
+    Button uploadBtn;
     ProgressBar progressbar;
     Uri uri;
     String path;
@@ -91,7 +89,6 @@ public class CreatePost extends AppCompatActivity   {
         cover = findViewById(R.id.img);
         progressbar =findViewById(R.id.progressbar);
         uploadBtn= findViewById(R.id.create_post_btn);
-        showbtn = findViewById(R.id.show_post_btn);
 
         autoCompleteTxt = findViewById(R.id.auto_complete_txt);
 
@@ -140,16 +137,6 @@ public class CreatePost extends AppCompatActivity   {
 
             }
         });
-
-
-
-        showbtn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, ViewPost.class);
-            startActivity(intent);
-        });
-
-
-
         
     }
 
