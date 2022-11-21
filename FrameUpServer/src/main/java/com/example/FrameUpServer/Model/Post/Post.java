@@ -18,6 +18,7 @@ public class Post {
     private String postText;
     private String link;
 
+
     public String getHashtag() {
         return hashtag;
     }

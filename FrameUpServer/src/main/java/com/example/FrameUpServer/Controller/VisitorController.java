@@ -38,6 +38,14 @@ public class VisitorController {
     }
 
 
+    @PutMapping("/visitor/{roll}/update/pic")
+    public Visitor updateProfilePic(@PathVariable String roll,@RequestBody String url ){
+        Visitor V =  visitorDao.getVisitorByRoll(roll);
+        V.setProfileUrl(url);
+        return visitorDao.saveVisitor(V);
+    }
+
+
     @GetMapping("/visitor/{roll}")
     public Visitor getVisitorByRoll(@PathVariable String roll){
         return visitorDao.getVisitorByRoll(roll);

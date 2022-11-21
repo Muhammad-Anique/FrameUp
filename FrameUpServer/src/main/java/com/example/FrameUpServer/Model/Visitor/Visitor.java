@@ -10,13 +10,41 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Visitor")
 public class Visitor extends Person {
 
-
     String OTP;
     String password;
     boolean isVerified;
     String accountStatus;
     String joiningDate;
     String phoneNumber;
+
+    String profileUrl;
+
+    String profileType;
+
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean verified) {
+        isVerified = verified;
+    }
+
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
+    }
+
+    public String getProfileType() {
+        return profileType;
+    }
+
+    public void setProfileType(String profileType) {
+        this.profileType = profileType;
+    }
 
     Gender gender;
 
@@ -81,12 +109,13 @@ public class Visitor extends Person {
         return "Visitor{" +
                 "OTP='" + OTP + '\'' +
                 ", password='" + password + '\'' +
-                ", isVerified='" + isVerified + '\'' +
+                ", isVerified=" + isVerified +
                 ", accountStatus='" + accountStatus + '\'' +
                 ", joiningDate='" + joiningDate + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", Gender='" + gender.toString() + '\'' +
+                ", profileUrl='" + profileUrl + '\'' +
+                ", profileType='" + profileType + '\'' +
+                ", gender=" + gender +
                 '}';
     }
-
 }
