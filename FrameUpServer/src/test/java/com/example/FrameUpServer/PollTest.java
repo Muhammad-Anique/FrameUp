@@ -15,16 +15,28 @@ public class PollTest {
     @Test
     void addPollTest()
     {
-        Poll poll=new Poll();
-        poll.setPollSubject("Voting");
-        poll.setPollType("Binary");
-        poll.setDatePollCreated("20-10-22");
-        poll.setCreatedBy("Ali Afzal");
-        poll.setNoOfResponses(12);
-        poll.setPollText("Come and vote for you favourite society");
-        poll.setPollOptions("vote or don't vote");
 
-        pollDao.save(poll);
+
+        Poll poll =new Poll();
+        poll.setCreatedBy("20l-2171");
+        poll.setPollStatement("Which is society is best?");
+        poll.setSocietyRelated("General");
+        poll.setNoOfResponses(20);
+        poll.setTotalOptions(5);
+        poll.setPollOption1("Music");
+        poll.setOption1Responses(20);
+        poll.setPollOption2("Arts");
+        poll.setOption2Responses(0);
+        poll.setPollOption3("Softec");
+        poll.setOption3Responses(0);
+        poll.setPollOption4("Python");
+        poll.setOption4Responses(0);
+        poll.setPollOption5("Javascript");
+        poll.setOption5Responses(0);
+        pollDao.savePoll(poll);
+
+        System.out.println("**************8");
+        System.out.println(pollDao.getAllPolls());
 
     }
 

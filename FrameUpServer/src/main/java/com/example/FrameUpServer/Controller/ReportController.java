@@ -22,7 +22,7 @@ public class ReportController {
     }
 
     @PostMapping("/report/save")
-    public Report save (@RequestBody Report report)
+    public Report save(@RequestBody Report report)
     {
         return reportDao.save(report);
     }

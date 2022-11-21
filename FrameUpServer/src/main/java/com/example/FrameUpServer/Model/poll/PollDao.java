@@ -1,5 +1,6 @@
 package com.example.FrameUpServer.Model.poll;
 
+import com.example.FrameUpServer.Model.Visitor.Visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
@@ -10,24 +11,24 @@ import java.util.List;
 @Service
 public class PollDao {
 
-    @Autowired PollRepository repository;
+    @Autowired
+    private PollRepository repository;
 
-    public void save (Poll poll)
-    {repository.save(poll);
-
-
-    }
-    public void delete (Poll poll)
+    public Poll savePoll(Poll poll)
     {
-        repository.delete(poll);
-
+       return repository.save(poll);
     }
-    public List<Poll> getAllPoll()
+
+    public List<Poll> getAllPolls()
     {
-        List<Poll> polls=new ArrayList<>();
+        List<Poll> polls = new ArrayList<>();
         Streamable.of(repository.findAll()).forEach(polls::add);
         return polls;
     }
 
+    public Poll getPollByPollId(String pollid)
+    {
+        return repository.retrievePollById(pollid);
+    }
 
 }

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    tools:context=".Activities.PollStructure">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_question"
+        android:text="Which programming language is your favourite?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seek_bar1"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginTop="16dp"
+        android:thumb="@android:color/transparent"
+        android:progressDrawable="@drawable/progress_track"
+        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/tv_option1"
+        android:text="Java"
+        android:paddingStart="32dp"
+        android:paddingEnd="0dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/tv_percent1"
+        android:text="25%"
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seek_bar2"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginTop="8dp"
+        android:thumb="@android:color/transparent"
+        android:progressDrawable="@drawable/progress_track"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/tv_option2"
+        android:text="Python"
+        android:textColor="@color/white"
+        android:paddingStart="32dp"
+        android:paddingEnd="0dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/tv_percent2"
+        android:text="25%"
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seek_bar3"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginTop="8dp"
+        android:thumb="@android:color/transparent"
+        android:progressDrawable="@drawable/progress_track"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/tv_option3"
+        android:text="C++"
+        android:textColor="@color/white"
+        android:paddingStart="32dp"
+        android:paddingEnd="0dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/tv_percent3"
+        android:text="25%"
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seek_bar4"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginTop="8dp"
+        android:thumb="@android:color/transparent"
+        android:progressDrawable="@drawable/progress_track"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar3"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/tv_option4"
+        android:text="Php"
+        android:textColor="@color/white"
+        android:paddingStart="32dp"
+        android:paddingEnd="0dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent4"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/tv_percent4"
+        android:text="25%"
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar3"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

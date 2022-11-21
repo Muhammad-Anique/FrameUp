@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.CreatePoll"
+            android:name=".Activities.ViewPoll"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +27,13 @@
         </activity>
 
         <activity
+            android:name=".Activities.PollStructure"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Activities.CreatePoll"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".Activities.UserProfile"
             android:exported="false" />
         <activity
@@ -34,8 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.VisitorHome"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.ViewPost"
             android:exported="false" />
@@ -44,8 +50,7 @@
             android:exported="true" />
         <activity
             android:name=".Activities.Login"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.OTP_verification"
             android:exported="false" />

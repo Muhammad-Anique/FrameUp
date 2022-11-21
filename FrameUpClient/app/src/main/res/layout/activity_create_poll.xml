@@ -1,173 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:background="@drawable/createpollpng"
     tools:context=".Activities.CreatePoll">
 
+
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/Heading_Create_Poll"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Create Poll"
+        android:textColor="@color/Primary_Color_2"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/poll_instructions"
+        android:layout_width="265dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Fill the Following to Create a Poll and Check the Box if You Want to Keep the Option. Note that Poll will be Visible to Members of the Respective Society only  "
+        android:textColor="@color/grey"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Heading_Create_Poll" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="319dp"
+        android:layout_height="214dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/Submit_poll_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Poll_Caption"
+        app:layout_constraintVertical_bias="0.097">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Primary_Color_2"
+                android:buttonTint="@color/Primary_Color_2"
+                android:checked="true"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:text=""
+                android:textColor="@color/Primary_Color_2" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Poll_Option1_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Option 1"
+                android:minHeight="40dp"
+                android:padding="0dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Primary_Color_2"
+                android:buttonTint="@color/Primary_Color_2"
+                android:checked="true"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:text=""
+                android:textColor="@color/Primary_Color_2" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Poll_Option2_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Option 2"
+                android:minHeight="40dp"
+                android:padding="0dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Primary_Color_2"
+                android:buttonTint="@color/Primary_Color_2"
+                android:checked="true"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:text=""
+                android:textColor="@color/Primary_Color_2" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Poll_Option3_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Option 3"
+                android:minHeight="40dp"
+                android:padding="0dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Primary_Color_2"
+                android:buttonTint="@color/Primary_Color_2"
+                android:checked="true"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:text=""
+                android:textColor="@color/Primary_Color_2" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Poll_Option4_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Option 4"
+                android:minHeight="40dp"
+                android:padding="0dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Primary_Color_2"
+                android:buttonTint="@color/Primary_Color_2"
+                android:checked="true"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:text=""
+                android:textColor="@color/Primary_Color_2" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Poll_Option5_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/Secondary_Color_1"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Option 5"
+                android:minHeight="40dp"
+                android:padding="0dp"
+                android:textColor="@color/Primary_Color_1"
+                android:textColorHint="@color/Secondary_Color_1"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/Poll_Caption"
+        android:layout_width="316dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/box_stroke"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:padding="5dp"
+        android:hint="Poll Statement"
+        android:inputType="textEmailAddress|textMultiLine"
+        android:lines="20"
+        android:minLines="5"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:textColor="@color/Primary_Color_1"
+        android:textColorHint="@color/Secondary_Color_1"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/poll_instructions" />
+
+    <Button
+        android:id="@+id/Submit_poll_btn"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Upload Poll"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/poll_info"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_question"
-        android:text="Which programming language is your favourite?"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginTop="112dp"
+        android:layout_marginBottom="58dp"
+        android:text=""
         android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/seek_bar1"
-        android:max="100"
-        android:progress="0"
-        android:layout_marginTop="16dp"
-        android:thumb="@android:color/transparent"
-        android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/tv_question"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:id="@+id/tv_option1"
-        android:text="Java"
-        android:paddingStart="32dp"
-        android:paddingEnd="0dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        android:textColor="@color/Primary_Color_2"
+        app:layout_constraintBottom_toBottomOf="@+id/Submit_poll_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent1"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
-    <TextView
+    <ProgressBar
+        android:id="@+id/progressBar_poll"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/tv_percent1"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/tv_question"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <SeekBar
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seek_bar2"
-        android:max="100"
-        android:progress="0"
-        android:layout_marginTop="8dp"
-        android:thumb="@android:color/transparent"
-        android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:id="@+id/tv_option2"
-        android:text="Python"
-        android:textColor="@color/white"
-        android:paddingStart="32dp"
-        android:paddingEnd="0dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent2"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/tv_percent2"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/seek_bar3"
-        android:max="100"
-        android:progress="0"
-        android:layout_marginTop="8dp"
-        android:thumb="@android:color/transparent"
-        android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:id="@+id/tv_option3"
-        android:text="C++"
-        android:textColor="@color/white"
-        android:paddingStart="32dp"
-        android:paddingEnd="0dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent3"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/tv_percent3"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/seek_bar4"
-        android:max="100"
-        android:progress="0"
-        android:layout_marginTop="8dp"
-        android:thumb="@android:color/transparent"
-        android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar3"/>
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:id="@+id/tv_option4"
-        android:text="Php"
-        android:textColor="@color/white"
-        android:paddingStart="32dp"
-        android:paddingEnd="0dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent4"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/tv_percent4"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar3"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,174 +2,200 @@ package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.SeekBar;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.frameupclient.Model.Poll;
+import com.example.frameupclient.Model.PollAPI;
+import com.example.frameupclient.Model.PostAPI;
 import com.example.frameupclient.R;
+import com.example.frameupclient.Retrofit.RetrofitService;
+import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CreatePoll extends AppCompatActivity {
 
-    // Initialize variable
-    SeekBar seekBar1,seekBar2,seekBar3,seekBar4;
-    TextView tvOption1,tvOption2,tvOption3,tvOption4;
-    TextView tvPercent1,tvPercent2,tvPercent3,tvPercent4;
-    double count1=0,count2=0,count3=0,count4=0;
-    boolean flag1=true,flag2=true,flag3=true,flag4=true;
+    CheckBox checkBox1,checkBox2,checkBox3,checkBox4,checkBox5;
+    Button uploadBtn;
+    TextInputEditText caption, option1, option2, option3,option4,option5;
+    boolean O1,O2,O3,O4,O5;
+    ProgressBar prg;
+    int count=5;
 
-    @SuppressLint("ClickableViewAccessibility")
+    void set_count_down(){
+        if(count>0)
+            count--;
+    }
+
+    void set_count_up(){
+            count++;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_poll);
-
-        // Assign variable
-        seekBar1=findViewById(R.id.seek_bar1);
-        seekBar2=findViewById(R.id.seek_bar2);
-        seekBar3=findViewById(R.id.seek_bar3);
-        seekBar4=findViewById(R.id.seek_bar4);
-        tvOption1=findViewById(R.id.tv_option1);
-        tvOption2=findViewById(R.id.tv_option2);
-        tvOption3=findViewById(R.id.tv_option3);
-        tvOption4=findViewById(R.id.tv_option4);
-
-
-
-        tvPercent1=findViewById(R.id.tv_percent1);
-        tvPercent2=findViewById(R.id.tv_percent2);
-        tvPercent3=findViewById(R.id.tv_percent3);
-        tvPercent4=findViewById(R.id.tv_percent4);
-
-        seekBar1.setProgress(0);
-        seekBar2.setProgress(0);
-        seekBar3.setProgress(0);
-        seekBar4.setProgress(0);
-
-       
-
-
-
-
-        tvOption1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // check condition
-                if(flag1)
-                {
-                    resetSelection();
-                    // when flag two is true
-                    calculatePecent();
-                    count1++;
-//                    count2=0;
-//                    count3=0;
-//                    count4=0;
-                    flag1=false;
-                    flag2=true;
-                    flag3=true;
-                    flag4=true;
-                    // calculate percentage
-                    calculatePecent();
-                }
-            }
-        });
-
-        tvOption2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // check condition
-                if(flag2)
-                {
-                    resetSelection();
-                    calculatePecent();
-                    // when flag two is true
-//                    count1=1;
-                    count2++;
-//                    count3=1;
-//                    count4=1;
-                    flag1=true;
-                    flag2=false;
-                    flag3=true;
-                    flag4=true;
-                    // calculate percentage
-                    calculatePecent();
-                }
-            }
-        });
-
-
-        tvOption3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // check condition
-                if(flag3)
-                {
-                    resetSelection();
-                    calculatePecent();
-                    // when flag two is true
-//                    count1=1;
-//                    count2=1;
-                    count3++;
-//                    count4=1;
-                    flag1=true;
-                    flag2=true;
-                    flag3=false;
-                    flag4=true;
-                    // calculate percentage
-                    calculatePecent();
-                }
-            }
-        });
-
-
-        tvOption4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // check condition
-                if(flag4)
-                {
-                    resetSelection();
-                    calculatePecent();
-                    // when flag two is true
-
-                    count4++;
-                    flag1=true;
-                    flag2=true;
-                    flag3=true;
-                    flag4=false;
-                    // calculate percentage
-                    calculatePecent();
-                }
-            }
-        });
+        intializeComponents();
     }
 
-    private void resetSelection(){
-        count1=0;
-        count2=0;
-        count3=0;
-        count4=0;
-    }
+    private void intializeComponents() {
 
-    private void calculatePecent() {
-        // calculate total
-        double total=count1+count2+count3+count4;
-        // Calculate percentage for all options
-        double percent1=(count1/total)*100;
-        double percent2=(count2/total)*100;
-        double percent3=(count3/total)*100;
-        double percent4=(count4/total)*100;
-        // set percent on text view
-        tvPercent1.setText(String.format("%.0f%%",percent1));
-        seekBar1.setProgress((int)percent1);
-        tvPercent2.setText(String.format("%.0f%%",percent2));
-        seekBar2.setProgress((int)percent2);
-        tvPercent3.setText(String.format("%.0f%%",percent3));
-        seekBar3.setProgress((int)percent3);
-        tvPercent4.setText(String.format("%.0f%%",percent4));
-        seekBar4.setProgress((int)percent4);
+        TextView poll_error = findViewById(R.id.poll_info);
+        prg =findViewById(R.id.progressBar_poll);
+        prg.setVisibility(View.INVISIBLE);
+        checkBox1=findViewById(R.id.checkBox1);
+        checkBox2=findViewById(R.id.checkBox2);
+        checkBox3=findViewById(R.id.checkBox3);
+        checkBox4=findViewById(R.id.checkBox4);
+        checkBox5=findViewById(R.id.checkBox5);
 
+        caption = findViewById(R.id.Poll_Caption);
+        option1 = findViewById(R.id.Poll_Option1_tf);
+        option2 = findViewById(R.id.Poll_Option2_tf);
+        option3 = findViewById(R.id.Poll_Option3_tf);
+        option4 = findViewById(R.id.Poll_Option4_tf);
+        option5 = findViewById(R.id.Poll_Option5_tf);
+
+        uploadBtn = findViewById(R.id.Submit_poll_btn);
+
+        checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                if(!checkBox1.isChecked())
+                {
+                    option1.setVisibility(View.INVISIBLE);
+                    O1=false;
+                    set_count_down();
+                }else{
+                    option1.setVisibility(View.VISIBLE);
+                    O1=true;
+                    set_count_up();
+                }
+            }
+        });
+
+
+        checkBox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                if(!checkBox2.isChecked())
+                {   option2.setVisibility(View.INVISIBLE);
+                    O2=false;
+                    set_count_down();
+                }else{
+                    option2.setVisibility(View.VISIBLE);
+                    O2=true;
+                    set_count_up();
+                }
+            }
+        });
+
+        checkBox3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                if(!checkBox3.isChecked())
+                {   option3.setVisibility(View.INVISIBLE);
+                    O3=false;
+                    set_count_down();
+                }else{
+                    option3.setVisibility(View.VISIBLE);
+                    O3=true;
+                    set_count_up();
+                }
+            }
+        });
+
+
+        checkBox4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                if(!checkBox4.isChecked())
+                {   option4.setVisibility(View.INVISIBLE);
+                    O4=false;
+                    set_count_down();
+                }else{
+                    option4.setVisibility(View.VISIBLE);
+                    O4=true;
+                    set_count_up();
+                }
+            }
+        });
+
+
+        checkBox5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                if(!checkBox5.isChecked())
+                {   option5.setVisibility(View.INVISIBLE);
+                    O5=false;
+                    set_count_down();
+                }else{
+                    option5.setVisibility(View.VISIBLE);
+                    O5=true;
+                    set_count_up();
+                }
+            }
+        });
+
+
+        uploadBtn.setOnClickListener(view->{
+            prg.setVisibility(View.VISIBLE);
+            String cap = String.valueOf(caption.getText());
+            String opt1 = String.valueOf(option1.getText());
+            String opt2 = String.valueOf(option2.getText());
+            String opt3 = String.valueOf(option3.getText());
+            String opt4 = String.valueOf(option4.getText());
+            String opt5 = String.valueOf(option5.getText());
+
+
+
+            if(count<2)
+            {
+                poll_error.setText("Select Atleast two options");
+            }
+            else
+            {
+                Poll poll = new Poll();
+                poll.setCreatedBy("20l-2171");
+                poll.setPollStatement(cap);
+                poll.setSocietyRelated("Softec");
+                poll.setNoOfResponses(0);
+                poll.setTotalOptions(count);
+                poll.setPollOption1(opt1);
+                poll.setOption1Responses(0);
+                poll.setPollOption2(opt2);
+                poll.setOption2Responses(0);
+                poll.setPollOption3(opt3);
+                poll.setOption3Responses(0);
+                poll.setPollOption4(opt4);
+                poll.setOption4Responses(0);
+                poll.setPollOption5(opt5);
+                poll.setOption5Responses(0);
+                RetrofitService retrofitService = new RetrofitService();
+                PollAPI pollAPI = retrofitService.getRetrofit().create(PollAPI.class);
+                pollAPI.save(poll).enqueue(new Callback<Poll>() {
+                    @Override
+                    public void onResponse(Call<Poll> call, Response<Poll> response) {
+                        poll_error.setText("Poll is Uploaded");
+                        prg.setVisibility(View.INVISIBLE);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Poll> call, Throwable t) {
+                        poll_error.setText("Server is Down");
+                    }
+                });
+            }
+
+
+        });
     }
 }

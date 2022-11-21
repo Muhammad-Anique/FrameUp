@@ -1,14 +1,6 @@
-package com.example.FrameUpServer.Model.poll;
+package com.example.frameupclient.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-@Entity
 public class Poll {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int pollId;
     private String societyRelated;
