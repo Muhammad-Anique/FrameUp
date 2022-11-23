@@ -47,7 +47,14 @@ public class ReportDao {
     {
         return societyRepository.retrieveAverageRatingOfSociety(societyName);
     }
-
+    public long getMembersByBatch(int batchNo,String societyName)
+    {
+        return repository.retrieveMembersByBatch(batchNo, societyName);
+    }
+    public long getMaleMembersBtBatch(int batchNo,String societyName,int gender)
+    {
+        return repository.retrieveGenderByBatch(batchNo, societyName, gender);
+    }
 
 
 

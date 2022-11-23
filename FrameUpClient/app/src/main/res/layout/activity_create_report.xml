@@ -48,7 +48,8 @@
             android:layout_height="match_parent">
 
 
-        <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Report_body"
             android:layout_width="287dp"
             android:layout_height="150dp"
@@ -57,11 +58,9 @@
             android:hint="Report Body"
             android:textAlignment="center"
             android:minLines="5"
-            android:lines="20"
+            android:lines="20"/>
 
-           >
 
-        </EditText>
         </ScrollView>
 
         <Button

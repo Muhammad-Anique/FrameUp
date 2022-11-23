@@ -1,7 +1,5 @@
 package com.example.frameupclient.Model;
 
-import retrofit2.Call;
-
 public class Report {
 
 
@@ -133,4 +131,6 @@ public class Report {
                 ", popularity=" + popularity +
                 '}';
     }
+
+
 }

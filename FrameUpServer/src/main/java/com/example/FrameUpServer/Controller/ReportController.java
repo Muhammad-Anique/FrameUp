@@ -26,31 +26,46 @@ public class ReportController {
         return reportDao.save(report);
     }
 
-//    @GetMapping("/report/{societyName}")
-//    public long countSocietyMembers(@PathVariable String societyName )
-//    {
-//        return countSocietyMembers(societyName);
-//    }
-    public long countMaleSocietyMembers(@PathVariable String societyName)
+    @GetMapping("/report/{batchNo}/{societyName}")
+    public long getMembersByBatch(@PathVariable int batchNo,@PathVariable String societyName)
     {
-        return countMaleSocietyMembers(societyName);
-    }
-    public long countFemaleSociety(@PathVariable String societyName)
-    {
-        return countFemaleSociety(societyName);
+        return reportDao.getMembersByBatch(batchNo, societyName);
     }
 
-    @GetMapping("/report/{societyName}")
-    public String getMemberInfo(@PathVariable String societyName)
+    @GetMapping("/report/members/{societyName}")
+    public long countSocietyMembers(@PathVariable String societyName )
     {
-        long societyMemberCount= reportDao.countMaleSocietyMembers(societyName);
-        System.out.println(societyMemberCount);
-        long maleMemberCount=reportDao.countMaleSocietyMembers(societyName);
-        System.out.println(maleMemberCount);
-        long femaleMemberCount= reportDao.countFemaleSocietyMembers(societyName);
-        System.out.println(femaleMemberCount);
-        return "success";
+        return reportDao.countSocietyMembers(societyName);
     }
+    @GetMapping("/report/male/{societyName}")
+    public long countMaleSocietyMembers(@PathVariable String societyName)
+    {
+        return reportDao.countMaleSocietyMembers(societyName);
+    }
+    @GetMapping("/report/female/{societyName}")
+    public long countFemaleSocietyMembers(@PathVariable String societyName)
+    {
+        return reportDao.countFemaleSocietyMembers(societyName);
+    }
+
+    @GetMapping("/report/Male/Batch/{batchNo}/{societyName}/{gender}")
+    public long getMaleByBatch(@PathVariable int batchNo,@PathVariable String societyName, @PathVariable int gender)
+    {
+        return reportDao.getMaleMembersBtBatch(batchNo,societyName,gender);
+    }
+
+
+//    @GetMapping("/report/{societyName}")
+//    public String getMemberInfo(@PathVariable String societyName)
+//    {
+//        long societyMemberCount= reportDao.countMaleSocietyMembers(societyName);
+//        System.out.println(societyMemberCount);
+//        long maleMemberCount=reportDao.countMaleSocietyMembers(societyName);
+//        System.out.println(maleMemberCount);
+//        long femaleMemberCount= reportDao.countFemaleSocietyMembers(societyName);
+//        System.out.println(femaleMemberCount);
+//        return "success";
+//    }
 
 
 

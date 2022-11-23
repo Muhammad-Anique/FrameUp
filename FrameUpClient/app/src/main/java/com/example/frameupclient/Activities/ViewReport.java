@@ -2,19 +2,23 @@ package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.frameupclient.Model.ReportAPI;
-import com.example.frameupclient.Retrofit.RetrofitService;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.widget.TextView;
 
+import com.example.frameupclient.R;
 
 public class ViewReport extends AppCompatActivity {
-    public void getCount()
-    {
-        RetrofitService retrofitService=new RetrofitService();
-        ReportAPI reportAPI=retrofitService.getRetrofit().create(ReportAPI.class);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_report);
+
+        TextView textView1 =findViewById(R.id.TextView1);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView reportDate=findViewById(R.id.report_Date);
+       // textView1
+
 
     }
-
-
-
 }
-
