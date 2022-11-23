@@ -29,11 +29,10 @@ public class PollStructure extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-           qq= extras.getString("statement");//The key argument here must match that used in the other activity;
+           qq = extras.getString("statement");//The key argument here must match that used in the other activity;
         }
         TextView tt =findViewById(R.id.tv_question);
         tt.setText(qq);
-
 
         // Assign variable
         seekBar1=findViewById(R.id.seek_bar1);

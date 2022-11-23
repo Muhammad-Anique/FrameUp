@@ -1,13 +1,6 @@
-package com.example.FrameUpServer.Model.Society;
+package com.example.frameupclient.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
 public class Society {
-    @Id
-    @GeneratedValue
     private int societyId;
     private String societyBackground;
     private String societyName;
@@ -31,7 +24,7 @@ public class Society {
     }
 
     public void setSocietyBackground(String societyBackground) {
-        this.societyBackground = societyBackground;
+       this.societyBackground = societyBackground;
     }
 
     public String getSocietyName() {

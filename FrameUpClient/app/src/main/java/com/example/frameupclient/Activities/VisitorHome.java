@@ -28,12 +28,17 @@ public class VisitorHome extends AppCompatActivity {
 
     public String rollNo;
     RecyclerView rvMain;
+    Button homeBTN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_home);
 
-        Window window =this.getWindow();
+       homeBTN=findViewById(R.id.visitor_home_page_home_button);
+       homeBTN.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
+
+
+
 
         Button profile_btn= findViewById(R.id.visitor_home_profile_button);
 
@@ -48,7 +53,7 @@ public class VisitorHome extends AppCompatActivity {
           startActivity(intent);
       });
 
-
+        Window window =this.getWindow();
 // clear FLAG_TRANSLUCENT_STATUS flag:
        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);

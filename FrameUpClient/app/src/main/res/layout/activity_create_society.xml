@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.CreateSociety">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.624">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Society_Name"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Society Name"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Society_Description"
+            android:layout_width="300dp"
+            android:layout_height="121dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="start"
+            android:hint="Society Description"
+            android:inputType="textEmailAddress|textMultiLine"
+            android:lines="20"
+            android:minLines="5"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Society_Motive"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Society Tagline"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Society_Head_Roll"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Society Head Roll"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create_society_btn"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Create Society"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.879" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="306dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="164dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/Society_Back_Img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_grey"
+            app:srcCompat="@drawable/gradient_grey" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progressbar_society_create"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Primary_Color_2"
+        android:progressBackgroundTint="@color/Primary_Color_2"
+        android:progressTint="@color/Primary_Color_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.813" />
+
+    <TextView
+        android:id="@+id/Society_error"
+        android:layout_width="282dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text=" "
+        android:textColor="@color/Primary_Color_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_society_btn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

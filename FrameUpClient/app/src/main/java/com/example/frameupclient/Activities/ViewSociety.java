@@ -1,0 +1,107 @@
+package com.example.frameupclient.Activities;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+
+import com.example.frameupclient.Model.Poll;
+import com.example.frameupclient.Model.PollAPI;
+import com.example.frameupclient.Model.PollAdapter;
+import com.example.frameupclient.Model.Society;
+import com.example.frameupclient.Model.SocietyAPI;
+import com.example.frameupclient.Model.SocietyAdapter;
+import com.example.frameupclient.R;
+import com.example.frameupclient.Retrofit.RetrofitService;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ViewSociety extends AppCompatActivity implements SocietyRecyclerViewInterface {
+
+    List<Society> s;
+    RecyclerView RS;
+    Button profile_btn,society_btn,home_btn;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_society);
+        RS =findViewById(R.id.RS_recycler_view);
+        RS.setLayoutManager(new LinearLayoutManager(this));
+
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+
+        profile_btn =findViewById(R.id.profile_button_vs);
+        society_btn =findViewById(R.id.society_button_vs);
+        home_btn =findViewById(R.id.home_button_vs);
+
+
+        society_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
+
+
+        profile_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this, UserProfile.class);
+            startActivity(intent);
+
+        });
+
+        home_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this, VisitorHome.class);
+            startActivity(intent);
+
+        });
+        
+        
+        
+        
+        loadSocieties();
+    }
+
+    private void loadSocieties() {
+        RetrofitService retrofitService = new RetrofitService();
+        SocietyAPI societyAPI = retrofitService.getRetrofit().create(SocietyAPI.class);
+
+        societyAPI.getAllSociety().enqueue(new Callback<List<Society>>() {
+            @Override
+            public void onResponse(Call<List<Society>> call, Response<List<Society>> response) {
+                populateSocietyList(response.body());
+                s=response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<Society>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void populateSocietyList(List<Society> body) {
+        SocietyAdapter societyAdapter =new SocietyAdapter(body, this);
+        RS.setAdapter(societyAdapter);
+    }
+
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(this, SocietyPage.class);
+        Society society = s.get(position);
+        intent.putExtra("societyid",society.getSocietyId());
+        startActivity(intent);
+    }
+}

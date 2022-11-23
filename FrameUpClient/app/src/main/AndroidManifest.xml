@@ -18,21 +18,29 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.ViewPoll"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:name=".AdminHome"
+            android:exported="false" />
         <activity
-            android:name=".Activities.PollStructure"
+            android:name=".Activities.SocietyPage"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ViewSociety"
             android:exported="true"></activity>
         <activity
+            android:name=".Activities.CreateSociety"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Activities.CreateEvent"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ViewPoll"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.PollStructure"
+            android:exported="true" />
+        <activity
             android:name=".Activities.CreatePoll"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.UserProfile"
             android:exported="false" />
@@ -41,7 +49,13 @@
             android:exported="false" />
         <activity
             android:name=".Activities.VisitorHome"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.ViewPost"
             android:exported="false" />

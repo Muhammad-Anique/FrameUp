@@ -16,13 +16,12 @@ public class SocietyTest {
     void addSocietyTest()
     {
         Society society=new Society();
-
-        society.setDateCreated("15-11-22");
-        society.setSocietyCategory("Intellectual");
-        society.setSocietyHead("Afzal");
-        society.setSocietyMotive("Skills Improvement");
-        society.setSocietyName("Career Counselling");
-
+        society.setSocietyBackground("url");
+        society.setSocietyDescription("This is Softec society and its description is this");
+        society.setSocietyLikes(0);
+        society.setSocietyTagline("Lets do art together");
+        society.setSocietyName("Arts Society");
+        society.setSocietyRating(0);
         societyDao.save(society);
 
     }

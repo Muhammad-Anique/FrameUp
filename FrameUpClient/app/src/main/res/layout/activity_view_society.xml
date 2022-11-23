@@ -4,59 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.VisitorHome">
+    tools:context=".Activities.ViewSociety">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="412dp"
-        android:layout_height="55dp"
-        android:background="@drawable/title_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView_logo"
-            android:layout_width="118dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.454"
-            app:srcCompat="@drawable/frameuplogo" />
-
-        <Button
-            android:id="@+id/messagener_icon_vh"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="196dp"
-            android:background="@drawable/messanger_icon_not_clicked"
-            app:backgroundTint="@color/Primary_Color_1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_logo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.473" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/visitor_home_page_recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="1.0">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginBottom="16dp"
@@ -68,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/visitor_home_page_request_box"
+            android:id="@+id/home_button_vs"
             android:layout_width="30dp"
             android:layout_height="27dp"
             android:layout_marginStart="20dp"
@@ -77,11 +28,11 @@
             android:text=""
             app:backgroundTint="@color/grey"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/visitor_home_page_poll_button"
+            app:layout_constraintStart_toEndOf="@+id/req_button_vs"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/visitor_home_profile_button"
+            android:id="@+id/profile_button_vs"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
@@ -92,11 +43,11 @@
             app:backgroundTint="@color/grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/visitor_home_page_request_box"
+            app:layout_constraintStart_toEndOf="@+id/home_button_vs"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/visitor_home_page_poll_button"
+            android:id="@+id/req_button_vs"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
@@ -105,11 +56,11 @@
             android:text=""
             app:backgroundTint="@color/grey"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/visitor_home_page_home_button"
+            app:layout_constraintStart_toEndOf="@+id/society_button_vs"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/visitor_home_page_home_button"
+            android:id="@+id/society_button_vs"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
@@ -118,9 +69,54 @@
             android:text=""
             app:backgroundTint="@color/grey"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/visitor_home_page_poll_button"
+            app:layout_constraintEnd_toStartOf="@+id/req_button_vs"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_vs"
+        android:layout_width="412dp"
+        android:layout_height="55dp"
+        android:background="@drawable/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView_logo_vs"
+            android:layout_width="118dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.454"
+            app:srcCompat="@drawable/frameuplogo" />
+
+        <Button
+            android:id="@+id/messagener_icon_vs"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="196dp"
+            android:background="@drawable/messanger_icon_not_clicked"
+            app:backgroundTint="@color/Primary_Color_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_logo_vs"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.473" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RS_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="743dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

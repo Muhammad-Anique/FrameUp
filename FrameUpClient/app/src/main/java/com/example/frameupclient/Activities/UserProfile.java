@@ -3,6 +3,7 @@ package com.example.frameupclient.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -10,6 +11,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -60,6 +63,12 @@ public class UserProfile extends AppCompatActivity {
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("Image");
     private StorageReference reference = FirebaseStorage.getInstance().getReference();
     public ImageView cover;
+
+
+    Button profile_btn;
+    Button home_btn;
+    Button society_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +76,34 @@ public class UserProfile extends AppCompatActivity {
 
         TextView name = findViewById(R.id.profile_name);
         TextView email =findViewById(R.id.profile_email);
-        Button profile_btn= findViewById(R.id.visitor_profile_page_profile_button);///
 
+
+
+
+        profile_btn =findViewById(R.id.profile_button_up);
+        profile_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
+
+        society_btn =findViewById(R.id.society_button_up);
+        society_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this, ViewSociety.class);
+            startActivity(intent);
+
+        });
+
+
+        home_btn =findViewById(R.id.home_button_up);
+        home_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this, VisitorHome.class);
+            startActivity(intent);
+
+        });
+
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
 
         uploadBtn = findViewById(R.id.upload_profile_pic);
         progressbar =findViewById(R.id.progressBar2);
