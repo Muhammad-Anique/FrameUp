@@ -82,7 +82,6 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Post post = postList.get(position);
         if(post.getPriority()==1) {
-
             System.out.println(post.getAuthorRoll());
             RetrofitService retrofitService = new RetrofitService();
             VisitorAPI visitorAPI =  retrofitService.getRetrofit().create(VisitorAPI.class);
@@ -99,19 +98,26 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     System.out.println(Email);
                     System.out.println(linkUrl);
                     System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^6");
+                    ((RowHolder) holder).authorName.setText(Name);
+                    ((RowHolder) holder).authorEmail.setText(Email);
+                    ((RowHolder) holder).hashtag.setText(post.getHashtag());
+                    ((RowHolder) holder).caption.setText(post.getPostText());
 
                 }
 
                 @Override
                 public void onFailure(Call<Visitor> call, Throwable t) {
 
+                    Name = "not Found";
+                    Email= "not Found";
+                    ((RowHolder) holder).authorName.setText(Name);
+                    ((RowHolder) holder).authorEmail.setText(Email);
+                    ((RowHolder) holder).hashtag.setText(post.getHashtag());
+                    ((RowHolder) holder).caption.setText(post.getPostText());
                 }
             });
 
-            ((RowHolder) holder).authorName.setText(Name);
-            ((RowHolder) holder).authorEmail.setText(Email);
-            ((RowHolder) holder).hashtag.setText(post.getHashtag());
-            ((RowHolder) holder).caption.setText(post.getPostText());
+
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             DatabaseReference databaseReference = firebaseDatabase.getReference();
             DatabaseReference getImage = databaseReference.child("image");

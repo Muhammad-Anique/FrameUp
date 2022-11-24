@@ -95,7 +95,6 @@ public class UserProfile extends AppCompatActivity {
         home_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, VisitorHome.class);
             startActivity(intent);
-
         });
 
         Window window =this.getWindow();

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -28,24 +29,31 @@ public class VisitorHome extends AppCompatActivity {
 
     public String rollNo;
     RecyclerView rvMain;
-    Button homeBTN;
+    Button homeBTN, society_BTN, infoDeck;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_home);
 
-       homeBTN=findViewById(R.id.visitor_home_page_home_button);
+       homeBTN=findViewById(R.id.visitor_home_page_home_btn);
        homeBTN.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
 
+       infoDeck=findViewById(R.id.visitor_home_page_req_button);
+       society_BTN=findViewById(R.id.visitor_home_page_society_button);
 
 
+       Button profile_btn= findViewById(R.id.visitor_home_profile_button);
 
-        Button profile_btn= findViewById(R.id.visitor_home_profile_button);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
+       Bundle extras = getIntent().getExtras();
+       if (extras != null) {
             rollNo = extras.getString("userRoll");
-        }
+       }
+
+       society_BTN.setOnClickListener(view->{
+           Intent intent = new Intent(this, ViewSociety.class);
+           intent.putExtra("userRoll", rollNo);
+           startActivity(intent);
+       });
 
       profile_btn.setOnClickListener(view->{
           Intent intent = new Intent(this, UserProfile.class);
@@ -54,14 +62,9 @@ public class VisitorHome extends AppCompatActivity {
       });
 
         Window window =this.getWindow();
-// clear FLAG_TRANSLUCENT_STATUS flag:
-       window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         rvMain = findViewById(R.id.visitor_home_page_recycler_view);

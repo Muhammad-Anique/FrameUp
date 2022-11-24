@@ -17,6 +17,7 @@ public class SocietyParticipation {
     private float rating;
     private String rollNo;
     private int societyId;
+    private int participatedAs;
 
     public int getParticipationId() {
         return participationId;
@@ -50,13 +51,22 @@ public class SocietyParticipation {
         this.societyId = societyId;
     }
 
+    public int getParticipatedAs() {
+        return participatedAs;
+    }
+
+    public void setParticipatedAs(int participatedAs) {
+        this.participatedAs = participatedAs;
+    }
+
     @Override
     public String toString() {
         return "SocietyParticipation{" +
                 "participationId=" + participationId +
                 ", rating=" + rating +
                 ", rollNo='" + rollNo + '\'' +
-                ", societyId='" + societyId + '\'' +
+                ", societyId=" + societyId +
+                ", participatedAs=" + participatedAs +
                 '}';
     }
 }

@@ -31,5 +31,9 @@ public class SocietyParticipationDao {
         return repository.getsocietymembercount(sid);
     }
 
+    public List<String> getSocietyMembersByRoll(int sid){
+        return repository.getSocietyMemberRoll(sid);
+    }
+
 
 }

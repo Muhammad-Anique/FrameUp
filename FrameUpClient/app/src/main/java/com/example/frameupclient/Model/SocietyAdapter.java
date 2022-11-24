@@ -70,19 +70,24 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyHolder>{
     public void onBindViewHolder(@NonNull SocietyHolder holder, int position) {
 
         Society society = s.get(position);
+        System.out.println("::::::::" + s.get(position).getSocietyId() + "::::::;");
         holder.society_tagline.setText(society.getSocietyTagline());
         System.out.println(society.getSocietyId());
         RetrofitService retrofitService = new RetrofitService();
         SocietyParticipationAPI societyParticipationAPI =  retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
         societyParticipationAPI.getMemberCountById(society.getSocietyId()).enqueue(new Callback<Integer>() {
+
+
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 count = response.body();
                 System.out.println("((((((((");
                 System.out.println(response.body());
                 System.out.println(")))))))))))");
-
                 System.out.println(count);
+                holder.noofmembers.setText(String.valueOf(count));
+                holder.society_rating.setText(String.valueOf(society.getSocietyRating()));
+                holder.society_name.setText(society.getSocietyName());
             }
 
             @Override
@@ -91,9 +96,7 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyHolder>{
             }
         });
 
-        holder.noofmembers.setText(String.valueOf(count));
-        holder.society_rating.setText(String.valueOf(society.getSocietyRating()));
-        holder.society_name.setText(society.getSocietyName());
+
 
     }
 

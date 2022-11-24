@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="3dp"
+    android:padding="4dp"
+    app:cardCornerRadius="36dp"
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="63dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/user_image_ru"
+            android:layout_width="58dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="4dp"
+            android:adjustViewBounds="true"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            app:srcCompat="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/email_ru_lay"
+            android:layout_width="162dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="l202171@lhr.nu.edu.pk"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.338"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/name_ru_lay"
+            android:layout_width="167dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Muhammad Anique"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.346"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/userType_ru_lay"
+            android:layout_width="52dp"
+            android:layout_height="21dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_style_gradient"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:text="Head"
+            android:textColor="@color/white"
+            android:textSize="6sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

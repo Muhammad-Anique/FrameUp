@@ -28,6 +28,7 @@ import retrofit2.Response;
 
 public class ViewSociety extends AppCompatActivity implements SocietyRecyclerViewInterface {
 
+    String rollNo;
     List<Society> s;
     RecyclerView RS;
     Button profile_btn,society_btn,home_btn;
@@ -50,25 +51,29 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
         society_btn =findViewById(R.id.society_button_vs);
         home_btn =findViewById(R.id.home_button_vs);
 
-
         society_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo = extras.getString("userRoll");
+        }
 
 
         profile_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, UserProfile.class);
+            intent.putExtra("userRoll", rollNo);
             startActivity(intent);
 
         });
 
         home_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, VisitorHome.class);
+            intent.putExtra("userRoll", rollNo);
             startActivity(intent);
 
         });
         
-        
-        
-        
+
         loadSocieties();
     }
 
@@ -101,7 +106,8 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
     public void onItemClick(int position) {
         Intent intent = new Intent(this, SocietyPage.class);
         Society society = s.get(position);
-        intent.putExtra("societyid",society.getSocietyId());
+        intent.putExtra("societyId",society.getSocietyId());
+        intent.putExtra("userRoll", rollNo);
         startActivity(intent);
     }
 }

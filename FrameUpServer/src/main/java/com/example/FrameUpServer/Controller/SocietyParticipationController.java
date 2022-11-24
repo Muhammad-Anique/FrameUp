@@ -31,6 +31,12 @@ public class SocietyParticipationController {
         return societyParticipationDao.getMemberCountBySocietyId(sid);
     }
 
+    @GetMapping("/society-participation/get-all/rolls/{sid}")
+    public List<String> getMemberListBySID(@PathVariable int sid)
+    {
+        return societyParticipationDao.getSocietyMembersByRoll(sid);
+    }
+
 
 
 }

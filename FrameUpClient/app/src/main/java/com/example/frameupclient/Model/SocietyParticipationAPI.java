@@ -18,4 +18,7 @@ public interface SocietyParticipationAPI {
     @GET("/society-participation/get-all/count/{sid}")
     Call<Integer> getMemberCountById(@Path("sid") int sid);
 
+    @GET("/society-participation/get-all/rolls/{sid}")
+    Call<List<String>> getMemberBySId(@Path("sid") int sid);
+
 }
