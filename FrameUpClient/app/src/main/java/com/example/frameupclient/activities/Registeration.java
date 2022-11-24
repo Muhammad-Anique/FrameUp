@@ -1,4 +1,4 @@
-package com.example.frameupclient;
+package com.example.frameupclient.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.frameupclient.Model.Gender;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
+import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 import com.google.android.material.textfield.TextInputEditText;
 

@@ -7,5 +7,7 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+
     </style>
 </resources>
