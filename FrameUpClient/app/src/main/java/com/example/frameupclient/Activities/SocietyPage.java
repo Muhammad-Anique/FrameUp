@@ -80,17 +80,20 @@ public class SocietyPage extends AppCompatActivity {
 
         viewMember.setOnClickListener(view->{
             Intent intent = new Intent(this,UserList.class);
-            System.out.println(";;;;;;;");
-            System.out.println("passed sid");
-            System.out.println(";;;;;;;");
+            demand = 1;
+            intent.putExtra("demand",demand);
             intent.putExtra("societyId",sid);
+            intent.putExtra("userRoll",rollNo);
             startActivity(intent);
 
         });
 
         societyOperative.setOnClickListener(view->{
             Intent intent = new Intent(this, OperativeSociety.class);
-
+            demand = 2;
+            intent.putExtra("demand",demand);
+            intent.putExtra("societyId",sid);
+            intent.putExtra("userRoll",rollNo);
             startActivity(intent);
 
         });
@@ -102,6 +105,8 @@ public class SocietyPage extends AppCompatActivity {
 
         society_post.setOnClickListener(view->{
             Intent intent = new Intent(this, CreateSocietyNewsfeed.class);
+            intent.putExtra("societyId",sid);
+            intent.putExtra("userRoll",rollNo);
             startActivity(intent);
         });
 

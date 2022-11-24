@@ -13,13 +13,11 @@ public class RequestDao {
     @Autowired
     RequestRepository requestRepository;
 
-
     public Request save(Request r){
         return requestRepository.save(r);
     }
 
     public List<Request> getAllRequestByRoll(){
-
         List<Request> req = new ArrayList<>();
         Streamable.of(requestRepository.findAll())
                 .forEach(req::add);

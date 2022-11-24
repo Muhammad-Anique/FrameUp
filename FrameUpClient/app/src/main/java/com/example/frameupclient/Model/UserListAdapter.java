@@ -73,7 +73,24 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
             public void onResponse(Call<Visitor> call, Response<Visitor> response) {
                 System.out.println(response.body());
                 holder.userEmail.setText(response.body().getEmail());
-                holder.userType.setText("head");
+                RetrofitService retrofitService = new RetrofitService();
+                SocietyOperativeAPI societyOperativeAPI =  retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+                societyOperativeAPI.getSocietyOperativeByRoll(response.body().getRollNo()).enqueue(new Callback<SocietyOperative>() {
+                    @Override
+                    public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
+                        if(response.body().getOperativeType()==1)
+                            holder.userType.setText("Head");
+                        else
+                            holder.userType.setText("Advisor");
+                    }
+
+                    @Override
+                    public void onFailure(Call<SocietyOperative> call, Throwable t) {
+                        holder.userType.setText("Member");
+                    }
+                });
+
+
                 holder.userName.setText(response.body().getName());
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -83,8 +100,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String link = response.body().getProfileUrl();
-                                System.out.println(link);
-                                Picasso.get().load(link).into(holder.userImage);
+                                String myString = link.substring(1, link.length()-1);
+                                Picasso.get().load(myString).into(holder.userImage);
                             }
 
                             @Override

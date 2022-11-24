@@ -86,6 +86,7 @@ public class UserProfile extends AppCompatActivity {
         society_btn =findViewById(R.id.society_button_up);
         society_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, ViewSociety.class);
+            intent.putExtra("userRoll",rollNo);
             startActivity(intent);
 
         });
@@ -94,6 +95,7 @@ public class UserProfile extends AppCompatActivity {
         home_btn =findViewById(R.id.home_button_up);
         home_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, VisitorHome.class);
+            intent.putExtra("userRoll",rollNo);
             startActivity(intent);
         });
 
@@ -114,6 +116,7 @@ public class UserProfile extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             rollNo =extras.getString("userRoll");
+        }
 
             visitorAPI.getVisitorByRollNo(rollNo).enqueue(new Callback<Visitor>() {
                 @Override
@@ -152,7 +155,7 @@ public class UserProfile extends AppCompatActivity {
                 }
             });
 
-        }
+
 
         cover.setOnClickListener(new View.OnClickListener() {
             @Override
