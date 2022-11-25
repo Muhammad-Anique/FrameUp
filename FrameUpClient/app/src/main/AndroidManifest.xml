@@ -18,6 +18,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.CreateRequest"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.RemoveMember"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.CreateNotice"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.CreateReport"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.RequestList"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Notification"
+            android:exported="false" />
+        <activity
             android:name=".Activities.UserList"
             android:exported="false" />
         <activity
@@ -61,8 +79,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.VisitorHome"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Activities.ViewPost"
             android:exported="false" />
@@ -71,7 +88,13 @@
             android:exported="true" />
         <activity
             android:name=".Activities.Login"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.OTP_verification"
             android:exported="false" />
@@ -83,12 +106,7 @@
             android:exported="true" />
         <activity
             android:name=".Activities.Main"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

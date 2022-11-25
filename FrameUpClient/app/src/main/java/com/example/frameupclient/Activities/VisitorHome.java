@@ -16,6 +16,11 @@ import android.widget.LinearLayout;
 import com.example.frameupclient.Model.Post;
 import com.example.frameupclient.Model.PostAPI;
 import com.example.frameupclient.Model.RvAdapter;
+import com.example.frameupclient.Model.SocietyOperative;
+import com.example.frameupclient.Model.SocietyOperativeAPI;
+import com.example.frameupclient.Model.SocietyParticipation;
+import com.example.frameupclient.Model.SocietyParticipationAPI;
+import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 
@@ -29,7 +34,8 @@ public class VisitorHome extends AppCompatActivity {
 
     public String rollNo;
     RecyclerView rvMain;
-    Button homeBTN, society_BTN, infoDeck;
+    int MemberType;
+    Button homeBTN, society_BTN, notification, poll_btn, profile_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +44,42 @@ public class VisitorHome extends AppCompatActivity {
        homeBTN=findViewById(R.id.visitor_home_page_home_btn);
        homeBTN.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
 
-       infoDeck=findViewById(R.id.visitor_home_page_req_button);
+       notification=findViewById(R.id.visitor_home_page_req_button);
        society_BTN=findViewById(R.id.visitor_home_page_society_button);
 
 
-       Button profile_btn= findViewById(R.id.visitor_home_profile_button);
+       notification.setOnClickListener(view->{
+           Intent intent1 = new Intent(this, RequestList.class);
+           Intent intent2 = new Intent(this, Notification.class);
+           intent1.putExtra("userRoll", rollNo);
+           intent2.putExtra("userRoll", rollNo);
+           RetrofitService retrofitService = new RetrofitService();
+           SocietyOperativeAPI societyOperativeAPI =  retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+           societyOperativeAPI.getSocietyOperativeByRoll(rollNo).enqueue(new Callback<SocietyOperative>() {
+               @Override
+               public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
+                   if(response.body().getOperativeType()==1){
+                       startActivity(intent1);
+                   }else if(response.body()==null)
+                   {
+                       startActivity(intent2);
+                   }
+               }
+               @Override
+               public void onFailure(Call<SocietyOperative> call, Throwable t) {
+                   startActivity(intent2);
+
+               }
+           });
+
+       });
+
+       profile_btn= findViewById(R.id.visitor_home_profile_button);
 
        Bundle extras = getIntent().getExtras();
        if (extras != null) {
             rollNo = extras.getString("userRoll");
+            MemberType=extras.getInt("memberType");
        }
 
        society_BTN.setOnClickListener(view->{

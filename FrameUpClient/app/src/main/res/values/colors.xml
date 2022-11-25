@@ -11,8 +11,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="grey">#979895</color>
-
-
+    <color name="warning_yellow">#E6CB1C</color>
+    <color name="warning_red">#E42323</color>
+    <color name="success_green">#9AD39B</color>
     <color name="Primary_Color_1">#020d71</color>
     <color name="Primary_Color_2">#104bc5</color>
     <color name="Secondary_Color_1">#B7104BC5</color>

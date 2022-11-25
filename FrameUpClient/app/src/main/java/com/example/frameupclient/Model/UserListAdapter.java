@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.frameupclient.Activities.SocietyRecyclerViewInterface;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 import com.google.firebase.database.DataSnapshot;
@@ -35,10 +34,10 @@ class UserListHolder extends RecyclerView.ViewHolder {
     public UserListHolder(@NonNull View itemView) {
         super(itemView);
 
-        userName=itemView.findViewById(R.id.name_ru_lay);
-        userEmail=itemView.findViewById(R.id.email_ru_lay);
+        userName=itemView.findViewById(R.id.name_notice_lay);
+        userEmail=itemView.findViewById(R.id.email_ru_notice);
         userType=itemView.findViewById(R.id.userType_ru_lay);
-        userImage=itemView.findViewById(R.id.user_image_ru);
+        userImage=itemView.findViewById(R.id.user_image_notice);
     }
 }
 
@@ -78,10 +77,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
                 societyOperativeAPI.getSocietyOperativeByRoll(response.body().getRollNo()).enqueue(new Callback<SocietyOperative>() {
                     @Override
                     public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
-                        if(response.body().getOperativeType()==1)
+                        if(response.body().getOperativeType()==1){
                             holder.userType.setText("Head");
-                        else
-                            holder.userType.setText("Advisor");
+                            holder.userType.setBackgroundResource(R.drawable.orange_box);
+                        }
+                        else{
+                            holder.userType.setText("Advisor");}
                     }
 
                     @Override

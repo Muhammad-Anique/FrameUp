@@ -180,6 +180,7 @@ public class UserProfile extends AppCompatActivity {
                 }
 
             }
+
         });
     }
 
@@ -220,7 +221,6 @@ public class UserProfile extends AppCompatActivity {
                         progressbar.setVisibility(View.INVISIBLE);
                         uploadToDataBase();
                         Toast.makeText(UserProfile.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                        cover.setImageResource(R.drawable.image_icon);
                     }
                 });
             }
@@ -236,6 +236,8 @@ public class UserProfile extends AppCompatActivity {
                 Toast.makeText(UserProfile.this, "Uploading Failed !!", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     private String getFileExtension(Uri mUri){

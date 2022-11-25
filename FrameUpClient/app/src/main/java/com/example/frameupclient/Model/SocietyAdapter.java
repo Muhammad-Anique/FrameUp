@@ -1,5 +1,6 @@
 package com.example.frameupclient.Model;
 
+import android.icu.number.Precision;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.example.frameupclient.Activities.SocietyRecyclerViewInterface;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import retrofit2.Call;
@@ -75,24 +77,42 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyHolder>{
         System.out.println(society.getSocietyId());
         RetrofitService retrofitService = new RetrofitService();
         SocietyParticipationAPI societyParticipationAPI =  retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+
+        societyParticipationAPI.getRatingBySID(society.getSocietyId()).enqueue(new Callback<Float>() {
+            @Override
+            public void onResponse(Call<Float> call, Response<Float> response) {
+
+
+                String rate =String.valueOf(response.body());
+                String value = "0.0";
+                if(rate.length()>3)
+                    value=rate.substring(0,4);
+                holder.society_rating.setText(String.valueOf(value));
+                holder.society_name.setText(society.getSocietyName());
+            }
+
+            @Override
+            public void onFailure(Call<Float> call, Throwable t) {
+
+                holder.society_rating.setText(String.valueOf(0.0));
+                holder.society_name.setText(society.getSocietyName());
+            }
+        });
+
         societyParticipationAPI.getMemberCountById(society.getSocietyId()).enqueue(new Callback<Integer>() {
 
 
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 count = response.body();
-                System.out.println("((((((((");
-                System.out.println(response.body());
-                System.out.println(")))))))))))");
-                System.out.println(count);
                 holder.noofmembers.setText(String.valueOf(count));
-                holder.society_rating.setText(String.valueOf(society.getSocietyRating()));
-                holder.society_name.setText(society.getSocietyName());
+
             }
 
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
                 count = 0;
+                holder.noofmembers.setText(String.valueOf(count));
             }
         });
 

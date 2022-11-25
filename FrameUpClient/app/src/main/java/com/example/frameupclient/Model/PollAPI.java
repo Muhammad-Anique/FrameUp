@@ -6,6 +6,9 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+
 
 public interface PollAPI {
 
@@ -14,4 +17,10 @@ public interface PollAPI {
 
     @POST("/poll/save")
     Call<Poll> save(@Body Poll poll);
+
+    @GET("/poll/{poll}")
+    Call<Poll> getPollById(@Path("poll") int poll);
+
+    @PUT("/poll/update/{pollId}")
+    Call<Poll> addPollResponse(@Path("pollId") int pollId, @Body Poll poll);
 }

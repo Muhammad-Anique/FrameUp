@@ -5,7 +5,7 @@ public class SocietyOperative {
 
     private int id;
     String operativeRoll;
-    String societyId;
+    int societyId;
     int operativeType;
 
     public int getId() {
@@ -24,11 +24,11 @@ public class SocietyOperative {
         this.operativeRoll = operativeRoll;
     }
 
-    public String getSocietyId() {
+    public int getSocietyId() {
         return societyId;
     }
 
-    public void setSocietyId(String societyId) {
+    public void setSocietyId(int societyId) {
         this.societyId = societyId;
     }
 

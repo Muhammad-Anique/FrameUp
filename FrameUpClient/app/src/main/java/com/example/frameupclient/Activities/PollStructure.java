@@ -1,25 +1,48 @@
 package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.frameupclient.Model.Poll;
+import com.example.frameupclient.Model.PollAPI;
+import com.example.frameupclient.Model.PollResponded;
+import com.example.frameupclient.Model.PollRespondedAPI;
 import com.example.frameupclient.R;
+import com.example.frameupclient.Retrofit.RetrofitService;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PollStructure extends AppCompatActivity {
 
     // Initialize variable
     SeekBar seekBar1,seekBar2,seekBar3,seekBar4;
-    TextView tvOption1,tvOption2,tvOption3,tvOption4;
-    TextView tvPercent1,tvPercent2,tvPercent3,tvPercent4;
-    double count1=0,count2=0,count3=0,count4=0;
+    TextView tvOption1,tvOption2,tvOption3,tvOption4,pollHeading;
+    TextView tvPercent1,tvPercent2,tvPercent3,tvPercent4,dialogMsg;
+    ProgressBar progress;
+    int count1=0,count2=0,count3=0,count4=0;
+    Button submit;
     boolean flag1=true,flag2=true,flag3=true,flag4=true;
     String qq;
+    Poll poll;
     int PollId;
+    String rollNo;
+    Dialog d;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -29,10 +52,36 @@ public class PollStructure extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-           qq = extras.getString("statement");//The key argument here must match that used in the other activity;
+          PollId=extras.getInt("pollId");
+          rollNo=extras.getString("rollNo");
+          System.out.println(PollId);;
         }
-        TextView tt =findViewById(R.id.tv_question);
-        tt.setText(qq);
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        RetrofitService retrofitService3 = new RetrofitService();
+        PollRespondedAPI pollRespondedAPI =  retrofitService3.getRetrofit().create(PollRespondedAPI.class);
+        pollRespondedAPI.getResponseExistence(rollNo).enqueue(new Callback<PollResponded>() {
+            @Override
+            public void onResponse(Call<PollResponded> call, Response<PollResponded> response) {
+                submit.setEnabled(false);
+            }
+            @Override
+            public void onFailure(Call<PollResponded> call, Throwable t) {
+                submit.setEnabled(true);
+            }
+        });
+
+
+        d=new Dialog(this);
+        d.setContentView(R.layout.custom_congratulate_dialogue);
+        d.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogMsg =findViewById(R.id.custom_dialogue_description);
+         pollHeading =findViewById(R.id.tv_question);
+                 progress=findViewById(R.id.progressBar_poll);
 
         // Assign variable
         seekBar1=findViewById(R.id.seek_bar1);
@@ -55,8 +104,27 @@ public class PollStructure extends AppCompatActivity {
         seekBar3.setProgress(0);
         seekBar4.setProgress(0);
 
-        resetSelection();
-        calculatePecent();
+        progress.setVisibility(View.INVISIBLE);
+
+
+        RetrofitService retrofitService = new RetrofitService();
+        PollAPI pollAPI = retrofitService.getRetrofit().create(PollAPI.class);
+        System.out.println(PollId + "]]]]]]");
+        pollAPI.getPollById(PollId).enqueue(new Callback<Poll>() {
+            @Override
+            public void onResponse(Call<Poll> call, Response<Poll> response) {
+                poll=response.body();
+                IntializePoll();
+            }
+
+            @Override
+            public void onFailure(Call<Poll> call, Throwable t) {
+
+            }
+        });
+
+
+
 
         tvOption1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +136,6 @@ public class PollStructure extends AppCompatActivity {
                     // when flag two is true
                     calculatePecent();
                     count1++;
-//                    count2=0;
-//                    count3=0;
-//                    count4=0;
                     flag1=false;
                     flag2=true;
                     flag3=true;
@@ -89,11 +154,7 @@ public class PollStructure extends AppCompatActivity {
                 {
                     resetSelection();
                     calculatePecent();
-                    // when flag two is true
-//                    count1=1;
                     count2++;
-//                    count3=1;
-//                    count4=1;
                     flag1=true;
                     flag2=false;
                     flag3=true;
@@ -149,13 +210,85 @@ public class PollStructure extends AppCompatActivity {
                 }
             }
         });
+
+        submit=findViewById(R.id.submit_response);
+        submit.setOnClickListener(view->{
+
+            progress.setVisibility(View.VISIBLE);
+            RetrofitService retrofitService2 = new RetrofitService();
+            PollAPI pollAPI2 = retrofitService2.getRetrofit().create(PollAPI.class);
+            System.out.println(PollId + "]]]]]]");
+            poll.setOption1Responses(count1);
+            poll.setOption2Responses(count2);
+            poll.setOption3Responses(count3);
+            poll.setOption4Responses(count4);
+            poll.setNoOfResponses(count1+count2+count3+count4);
+            pollAPI2.addPollResponse(poll.getPollId(),poll).enqueue(new Callback<Poll>() {
+                @Override
+                public void onResponse(Call<Poll> call, Response<Poll> response) {
+                    PollResponded pollResponded = new PollResponded();
+                    pollResponded.setPollId(PollId);
+                    pollResponded.setRollNo(rollNo);
+                    PollRespondedAPI pollRespondedAPI =  retrofitService2.getRetrofit().create(PollRespondedAPI.class);
+                    pollRespondedAPI.save(pollResponded);
+                    progress.setVisibility(View.INVISIBLE);
+                    submit.setEnabled(false);
+                    dialogMsg.setText("Your Response Has Been Submitted, Thank You!!!");
+                    d.show();
+
+                }
+
+                @Override
+                public void onFailure(Call<Poll> call, Throwable t) {
+
+                }
+            });
+
+        });
+
+
+    }
+
+    private void IntializePoll() {
+        pollHeading.setText(poll.getPollStatement());
+
+        if(poll.getPollOption1()!=null){
+            tvOption1.setText(poll.getPollOption1());
+        }else{
+            tvOption1.setVisibility(View.INVISIBLE);
+        }
+
+        if(poll.getPollOption2()!=null){
+            tvOption2.setText(poll.getPollOption2());
+        }else{
+            tvOption2.setVisibility(View.INVISIBLE);
+        }
+
+        if(poll.getPollOption3()!=null){
+            tvOption3.setText(poll.getPollOption3());
+        }else{
+            tvOption3.setVisibility(View.INVISIBLE);
+        }
+
+        if(poll.getPollOption4()!=null){
+            tvOption4.setText(poll.getPollOption4());
+        }else{
+            tvOption4.setVisibility(View.INVISIBLE);
+        }
+
+        count1 =poll.getOption1Responses();
+        count2 =poll.getOption2Responses();
+        count3 =poll.getOption3Responses();
+        count4 =poll.getOption4Responses();
+
+        calculatePecent();
     }
 
     private void resetSelection(){
-        count1=0;
-        count2=0;
-        count3=0;
-        count4=0;
+        count1 =poll.getOption1Responses();
+        count2 =poll.getOption2Responses();
+        count3 =poll.getOption3Responses();
+        count4 =poll.getOption4Responses();
     }
 
     private void calculatePecent() {

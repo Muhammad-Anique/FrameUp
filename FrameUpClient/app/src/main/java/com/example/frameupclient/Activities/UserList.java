@@ -29,6 +29,12 @@ public class UserList extends AppCompatActivity {
     int societyID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            societyID = extras.getInt("societyId");//The key argument here must match that used in the other activity
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
         Window window =this.getWindow();
@@ -40,12 +46,6 @@ public class UserList extends AppCompatActivity {
 
         Rul = findViewById(R.id.Recyc_user_list);
         Rul.setLayoutManager(new LinearLayoutManager(this));
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            societyID = extras.getInt("societyId");//The key argument here must match that used in the other activity
-
-        }
 
         System.out.println(";;;;44;;;");
         System.out.println(societyID);

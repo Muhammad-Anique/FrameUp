@@ -17,6 +17,6 @@ public interface SocietyOperativeAPI {
     Call<SocietyOperative> save(@Body SocietyOperative societyOperative);
 
     @GET("/society-operative/{sid}/{type}")
-    Call<List<SocietyOperative>> getSocietyOperativeByRoll(@Path("sid") int sid, @Path("type") int type);
+    Call<List<SocietyOperative>> getSocietyOperativeByRollAndType(@Path("sid") int sid, @Path("type") int type);
 
 }

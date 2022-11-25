@@ -8,14 +8,13 @@
 
     <ImageView
         android:id="@+id/SocietyBackgroundImage"
-        android:layout_width="415dp"
-        android:layout_height="218dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/gradient_bg_2" />
 
     <androidx.cardview.widget.CardView
@@ -35,7 +34,7 @@
             android:layout_height="648dp">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/Admin_Desc"
                 android:layout_width="357dp"
                 android:layout_height="81dp"
                 android:layout_marginTop="16dp"
@@ -50,308 +49,288 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/JoinCard"
+                android:layout_width="366dp"
+                android:layout_height="104dp"
+                android:background="@drawable/society_drawable_1"
+                app:cardBackgroundColor="@color/Primary_Color_1"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.511"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+                app:layout_constraintVertical_bias="0.191">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/manage_users_tv"
+                        android:layout_width="111dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="32dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Join Our Society"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.583" />
+
+                    <Button
+                        android:id="@+id/Manage_users"
+                        android:layout_width="138dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/society_drawable_1_1"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Join"
+                        android:textAllCaps="false"
+                        android:textColor="@color/Primary_Color_1"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.929"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/constraintLayout5"
+                android:layout_width="358dp"
+                android:layout_height="362dp"
                 android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
+                app:layout_constraintTop_toBottomOf="@+id/Admin_Desc"
+                app:layout_constraintVertical_bias="0.065">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView_890"
-                    android:layout_width="172dp"
-                    android:layout_height="106dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/society_drawable_1"
-                    app:cardBackgroundColor="@color/society_color_1"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="1dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.096"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/View_society_Clickable"
+                        android:layout_width="172dp"
+                        android:layout_height="106dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/society_drawable_1"
+                        app:cardBackgroundColor="@color/Primary_Color_2"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Create_s_card">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/view_society_admin_tv"
+                                android:layout_width="109dp"
+                                android:layout_height="31dp"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:gravity="center"
+                                android:text="Lets Create Something"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.507"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/Create_s_card"
+                        android:layout_width="175dp"
+                        android:layout_height="250dp"
+                        android:background="#EDEDEB"
+                        app:cardBackgroundColor="@color/society_color_1"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="1dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_2">
+
+                            <TextView
+                                android:id="@+id/admin_create_society_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="160dp"
+                                android:text="Rating"
+                                android:textColor="@color/white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.496"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/rating_value_society_in_page"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="5.5"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/admin_create_society_tv"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="1.0" />
+
+                            <Button
+                                android:id="@+id/admin_create_society_btn"
+                                android:layout_width="138dp"
+                                android:layout_height="42dp"
+                                android:layout_marginBottom="16dp"
+                                android:background="@drawable/society_drawable_1_1"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Rate"
+                                android:textAllCaps="false"
+                                android:textColor="@color/Primary_Color_1"
+                                android:textStyle="bold"
+                                app:backgroundTint="@null"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.486"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/NoticeCard"
+                        android:layout_width="175dp"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/society_drawable_1_1"
+                        app:cardBackgroundColor="@color/Primary_Color_1"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/create_report_clickable">
 
-                        <TextView
-                            android:id="@+id/noof_society_ops"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:gravity="center"
-                            android:text="1"
-                            android:textColor="@color/white"
-                            android:textSize="19sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.503"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_2">
 
-                        <TextView
-                            android:id="@+id/op_op_text"
-                            android:layout_width="113dp"
-                            android:layout_height="34dp"
-                            android:layout_marginBottom="16dp"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:gravity="center"
-                            android:text="Society Operatives"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.507"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/noof_society_ops"
-                            app:layout_constraintVertical_bias="0.0" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            <TextView
+                                android:id="@+id/issue_notice_admin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="152dp"
+                                android:text="Members"
+                                android:textColor="@color/white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.505"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:id="@+id/noof_mem_sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="256"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/issue_notice_admin"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="1.0" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/ratingcard"
-                    android:layout_width="175dp"
-                    android:layout_height="250dp"
-                    android:layout_marginBottom="13dp"
-                    android:background="#EDEDEB"
-                    app:cardBackgroundColor="@color/society_color_1"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="1dp"
-                    app:layout_constraintBottom_toTopOf="@+id/PostCard"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardView_890">
+                            <Button
+                                android:id="@+id/admin_issue_notice"
+                                android:layout_width="138dp"
+                                android:layout_height="42dp"
+                                android:layout_marginBottom="16dp"
+                                android:background="@drawable/society_drawable_1_1"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="View"
+                                android:textAllCaps="false"
+                                android:textColor="@color/Primary_Color_1"
+                                android:textStyle="bold"
+                                app:backgroundTint="@null"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.481"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/gradient_2">
+                    </androidx.cardview.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/textViewddd"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="160dp"
-                            android:text="Rating"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.496"
-                            app:layout_constraintStart_toStartOf="parent" />
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/create_report_clickable"
+                        android:layout_width="172dp"
+                        android:layout_height="106dp"
+                        android:background="@drawable/society_drawable_1_1"
+                        app:cardBackgroundColor="@color/Primary_Color_1"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="1dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/textView4ereee"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="5.5"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/textViewddd"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="1.0" />
-
-                        <Button
-                            android:id="@+id/rateButton_sp"
-                            android:layout_width="138dp"
-                            android:layout_height="42dp"
-                            android:layout_marginBottom="16dp"
-                            android:background="@drawable/society_drawable_1_1"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="Rate"
-                            android:textAllCaps="false"
-                            android:textColor="@color/society_color_1"
-                            android:textStyle="bold"
-                            app:backgroundTint="@null"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.486"
-                            app:layout_constraintStart_toStartOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/JoinCard"
-                    android:layout_width="366dp"
-                    android:layout_height="104dp"
-                    android:layout_marginTop="19dp"
-                    android:layout_marginBottom="48dp"
-                    android:background="@drawable/society_drawable_1"
-                    app:cardBackgroundColor="@color/society_color_1"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="1dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.489"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/MemberCard">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/admin_create_report"
+                                android:layout_width="113dp"
+                                android:layout_height="34dp"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:gravity="center"
+                                android:text="Society Analytics"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.508"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/textView_join_us"
-                            android:layout_width="111dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="32dp"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="Join Our Society"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.583" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <Button
-                            android:id="@+id/button_join_society"
-                            android:layout_width="138dp"
-                            android:layout_height="42dp"
-                            android:background="@drawable/society_drawable_1_1"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="Join"
-                            android:textAllCaps="false"
-                            android:textColor="@color/society_color_1"
-                            android:textStyle="bold"
-                            app:backgroundTint="@null"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.929"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/PostCard"
-                    android:layout_width="172dp"
-                    android:layout_height="106dp"
-                    android:layout_marginBottom="124dp"
-                    android:background="@drawable/society_drawable_1"
-                    app:cardBackgroundColor="@color/society_color_1_1"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="1dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/JoinCard"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.9"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/post_post_text"
-                            android:layout_width="109dp"
-                            android:layout_height="31dp"
-                            android:layout_marginBottom="16dp"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:gravity="center"
-                            android:text="Society Posts"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.507"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/noof_society_posts"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <TextView
-                            android:id="@+id/noof_society_posts"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:gravity="center"
-                            android:text="1"
-                            android:textColor="@color/white"
-                            android:textSize="19sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.503"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/MemberCard"
-                    android:layout_width="175dp"
-                    android:layout_height="250dp"
-                    android:layout_marginTop="13dp"
-                    android:background="@drawable/society_drawable_1"
-                    app:cardBackgroundColor="@color/society_color_1"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="1dp"
-                    app:layout_constraintEnd_toStartOf="@+id/PostCard"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView_890">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/gradient_2">
-
-                        <TextView
-                            android:id="@+id/mem_text_sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="152dp"
-                            android:text="Members"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.505"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/noof_mem_sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="256"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/mem_text_sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="1.0" />
-
-                        <Button
-                            android:id="@+id/mem_view_sp_btn"
-                            android:layout_width="138dp"
-                            android:layout_height="42dp"
-                            android:layout_marginBottom="16dp"
-                            android:background="@drawable/society_drawable_1_1"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="View"
-                            android:textAllCaps="false"
-                            android:textColor="@color/society_color_1"
-                            android:textStyle="bold"
-                            app:backgroundTint="@null"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.481"
-                            app:layout_constraintStart_toStartOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -362,15 +341,56 @@
         android:id="@+id/society_heading_in_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="Music Society"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/society_tagline_hh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Lets do Music Together"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/society_heading_in_page" />
+
+    <TextView
+        android:id="@+id/society_id_text"
+        android:layout_width="57dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:text="SocietyId"
+        android:textColor="@color/white"
+        android:textSize="7sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/society_id_val" />
+
+    <TextView
+        android:id="@+id/society_id_val"
+        android:layout_width="57dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:text="7"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

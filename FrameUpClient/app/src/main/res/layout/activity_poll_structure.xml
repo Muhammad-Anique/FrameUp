@@ -1,173 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     tools:context=".Activities.PollStructure">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_ul"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@drawable/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_poll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Vote Poll"
+            android:textColor="@color/Primary_Color_1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.478" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/tv_question"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="224dp"
+        android:fontFamily="@font/montserrat_regular"
         android:text="Which programming language is your favourite?"
+        android:textAlignment="center"
+        android:textColor="@color/Primary_Color_1"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
+        android:id="@+id/seek_bar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seek_bar1"
+        android:layout_marginTop="16dp"
         android:max="100"
         android:progress="0"
-        android:layout_marginTop="16dp"
-        android:thumb="@android:color/transparent"
         android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/tv_question"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:thumb="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_question" />
 
     <TextView
+        android:id="@+id/tv_option1"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:id="@+id/tv_option1"
-        android:text="Java"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
         android:paddingStart="32dp"
         android:paddingEnd="0dp"
+        android:text="Java"
         android:textColor="@color/white"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent1"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_question" />
 
     <TextView
+        android:id="@+id/tv_percent1"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/tv_percent1"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
         android:layout_marginTop="16dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/tv_question"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:text="0%"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_question" />
 
     <SeekBar
+        android:id="@+id/seek_bar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seek_bar2"
+        android:layout_marginTop="8dp"
         android:max="100"
         android:progress="0"
-        android:layout_marginTop="8dp"
-        android:thumb="@android:color/transparent"
         android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:thumb="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar1" />
 
     <TextView
+        android:id="@+id/tv_option2"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:id="@+id/tv_option2"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:paddingStart="32dp"
+        android:paddingEnd="0dp"
         android:text="Python"
         android:textColor="@color/white"
-        android:paddingStart="32dp"
-        android:paddingEnd="0dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent2"/>
+        app:layout_constraintTop_toBottomOf="@id/seek_bar1" />
 
     <TextView
+        android:id="@+id/tv_percent2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/tv_percent2"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar1"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:text="0%"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar1" />
 
     <SeekBar
+        android:id="@+id/seek_bar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seek_bar3"
+        android:layout_marginTop="8dp"
         android:max="100"
         android:progress="0"
-        android:layout_marginTop="8dp"
-        android:thumb="@android:color/transparent"
         android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:thumb="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar2" />
 
     <TextView
+        android:id="@+id/tv_option3"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:id="@+id/tv_option3"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:paddingStart="32dp"
+        android:paddingEnd="0dp"
         android:text="C++"
         android:textColor="@color/white"
-        android:paddingStart="32dp"
-        android:paddingEnd="0dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent3"/>
+        app:layout_constraintTop_toBottomOf="@id/seek_bar2" />
 
     <TextView
+        android:id="@+id/tv_percent3"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/tv_percent3"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar2"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:text="0%"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar2" />
 
     <SeekBar
+        android:id="@+id/seek_bar4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seek_bar4"
+        android:layout_marginTop="8dp"
         android:max="100"
         android:progress="0"
-        android:layout_marginTop="8dp"
-        android:thumb="@android:color/transparent"
         android:progressDrawable="@drawable/progress_track"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar3"/>
+        android:thumb="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar3" />
 
     <TextView
+        android:id="@+id/tv_option4"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:id="@+id/tv_option4"
-        android:text="Php"
-        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
         android:paddingStart="32dp"
         android:paddingEnd="0dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar3"
+        android:text="Php"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/tv_percent4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_percent4"/>
+        app:layout_constraintTop_toBottomOf="@id/seek_bar3" />
 
     <TextView
+        android:id="@+id/tv_percent4"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/tv_percent4"
-        android:text="25%"
-        android:paddingStart="0dp"
-        android:paddingEnd="32dp"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar3"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:paddingStart="0dp"
+        android:paddingEnd="32dp"
+        android:text="0%"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seek_bar3" />
+
+    <Button
+        android:id="@+id/submit_response"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Submit"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_poll"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_response"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

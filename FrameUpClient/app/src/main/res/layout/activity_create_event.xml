@@ -1,9 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.CreateEvent">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2_ee"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.394">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Event_Caption"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="start"
+            android:hint="Caption"
+            android:inputType="textEmailAddress|textMultiLine"
+            android:lines="20"
+            android:minLines="5"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Event_Type"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Event Type"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Event_Venue"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Venue"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Event_time_start"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Start Time"
+            android:inputType="time"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Event_time_end"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="End Time"
+            android:inputType="time"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Event_Date"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_stroke"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Event Date"
+            android:inputType="time"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/Secondary_Color_1"
+            android:textColorHint="@color/Secondary_Color_1"
+            android:textSize="11sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            app:cardCornerRadius="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <ImageView
+                    android:id="@+id/society_background_image_row_society"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_bg_2"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/create_event_btn"
+        android:layout_width="232dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Create Event"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.956" />
+
+    <TextView
+        android:id="@+id/Heading_ee"
+        android:layout_width="211dp"
+        android:layout_height="64dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="What's Coming?"
+        android:textColor="@color/Primary_Color_2"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2_ee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.911" />
+
+    <ProgressBar
+        android:id="@+id/progressbar_ee"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Primary_Color_2"
+        android:progressBackgroundTint="@color/Primary_Color_2"
+        android:progressTint="@color/Primary_Color_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884" />
+
+    <TextView
+        android:id="@+id/event_error"
+        android:layout_width="282dp"
+        android:layout_height="15dp"
+        android:layout_marginBottom="92dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text=" "
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

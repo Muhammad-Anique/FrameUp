@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.frameupclient.Model.SocietyOperative;
+import com.example.frameupclient.Model.SocietyOperativeAPI;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.R;
@@ -18,11 +20,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Login extends AppCompatActivity {
+public class  Login extends AppCompatActivity {
 
     public int PasswordValidity;
     public int IsVerifiedBit;
     public String RollNumber;
+    public int memberType;
 
     public int getIsVerifiedBit() { return IsVerifiedBit;}
 
@@ -43,10 +46,16 @@ public class Login extends AppCompatActivity {
         TextView error = findViewById(R.id.Error);
 
         if(getPasswordValidity()==1 && getIsVerifiedBit()==1){
-            Intent intent = new Intent(this, VisitorHome.class);
-            intent.putExtra("userRoll", RollNumber);
-            startActivity(intent);
-            System.out.println("yahoo");
+            if(RollNumber.compareTo("admin")==0)
+            {
+                Intent intent = new Intent(this, AdminHome.class);
+                startActivity(intent);
+            }
+            else{
+                Intent intent = new Intent(this, VisitorHome.class);
+                intent.putExtra("userRoll", RollNumber);
+                startActivity(intent);
+            }
         }
         else if(getPasswordValidity()==1 && getIsVerifiedBit()==0){
             System.out.println("notverified");
