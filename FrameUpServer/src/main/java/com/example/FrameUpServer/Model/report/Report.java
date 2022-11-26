@@ -12,18 +12,22 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String reportAuthor;
+    private String reportType;
     private String dateReportCreated;
-    private float overallRating;
     private String reportSubject;
     private String reportBody;
     private String reportConclusion;
-    private String societyName;
-    private int noOfMembers;
-    private int noOfFemales;
-    private int noOfMales;
-    private int noOfLikes;
-    private int popularity;
+    private int societyId;
+    private int noOfFemalesBatch18;
+    private int noOfMalesBatch18;
+    private int noOfFemalesBatch19;
+    private int noOfMalesBatch19;
+    private int noOfFemalesBatch20;
+    private int noOfMalesBatch20;
+    private int noOfFemalesBatch21;
+    private int noOfMalesBatch21;
+    private int noOfFemalesBatch22;
+    private int noOfMalesBatch22;
 
     public int getId() {
         return id;
@@ -33,12 +37,12 @@ public class Report {
         this.id = id;
     }
 
-    public String getReportAuthor() {
-        return reportAuthor;
+    public String getReportType() {
+        return reportType;
     }
 
-    public void setReportAuthor(String reportAuthor) {
-        this.reportAuthor = reportAuthor;
+    public void setReportType(String reportType) {
+        this.reportType = reportType;
     }
 
     public String getDateReportCreated() {
@@ -47,14 +51,6 @@ public class Report {
 
     public void setDateReportCreated(String dateReportCreated) {
         this.dateReportCreated = dateReportCreated;
-    }
-
-    public float getOverallRating() {
-        return overallRating;
-    }
-
-    public void setOverallRating(float overallRating) {
-        this.overallRating = overallRating;
     }
 
     public String getReportSubject() {
@@ -81,70 +77,114 @@ public class Report {
         this.reportConclusion = reportConclusion;
     }
 
-    public String getSocietyName() {
-        return societyName;
+    public int getSocietyId() {
+        return societyId;
     }
 
-    public void setSocietyName(String societyName) {
-        this.societyName = societyName;
+    public void setSocietyId(int societyId) {
+        this.societyId = societyId;
     }
 
-    public int getNoOfMembers() {
-        return noOfMembers;
+    public int getNoOfFemalesBatch18() {
+        return noOfFemalesBatch18;
     }
 
-    public void setNoOfMembers(int noOfMembers) {
-        this.noOfMembers = noOfMembers;
+    public void setNoOfFemalesBatch18(int noOfFemalesBatch18) {
+        this.noOfFemalesBatch18 = noOfFemalesBatch18;
     }
 
-    public int getNoOfFemales() {
-        return noOfFemales;
+    public int getNoOfMalesBatch18() {
+        return noOfMalesBatch18;
     }
 
-    public void setNoOfFemales(int noOfFemales) {
-        this.noOfFemales = noOfFemales;
+    public void setNoOfMalesBatch18(int noOfMalesBatch18) {
+        this.noOfMalesBatch18 = noOfMalesBatch18;
     }
 
-    public int getNoOfMales() {
-        return noOfMales;
+    public int getNoOfFemalesBatch19() {
+        return noOfFemalesBatch19;
     }
 
-    public void setNoOfMales(int noOfMales) {
-        this.noOfMales = noOfMales;
+    public void setNoOfFemalesBatch19(int noOfFemalesBatch19) {
+        this.noOfFemalesBatch19 = noOfFemalesBatch19;
     }
 
-    public int getNoOfLikes() {
-        return noOfLikes;
+    public int getNoOfMalesBatch19() {
+        return noOfMalesBatch19;
     }
 
-    public void setNoOfLikes(int noOfLikes) {
-        this.noOfLikes = noOfLikes;
+    public void setNoOfMalesBatch19(int noOfMalesBatch19) {
+        this.noOfMalesBatch19 = noOfMalesBatch19;
     }
 
-    public int getPopularity() {
-        return popularity;
+    public int getNoOfFemalesBatch20() {
+        return noOfFemalesBatch20;
     }
 
-    public void setPopularity(int popularity) {
-        this.popularity = popularity;
+    public void setNoOfFemalesBatch20(int noOfFemalesBatch20) {
+        this.noOfFemalesBatch20 = noOfFemalesBatch20;
+    }
+
+    public int getNoOfMalesBatch20() {
+        return noOfMalesBatch20;
+    }
+
+    public void setNoOfMalesBatch20(int noOfMalesBatch20) {
+        this.noOfMalesBatch20 = noOfMalesBatch20;
+    }
+
+    public int getNoOfFemalesBatch21() {
+        return noOfFemalesBatch21;
+    }
+
+    public void setNoOfFemalesBatch21(int noOfFemalesBatch21) {
+        this.noOfFemalesBatch21 = noOfFemalesBatch21;
+    }
+
+    public int getNoOfMalesBatch21() {
+        return noOfMalesBatch21;
+    }
+
+    public void setNoOfMalesBatch21(int noOfMalesBatch21) {
+        this.noOfMalesBatch21 = noOfMalesBatch21;
+    }
+
+    public int getNoOfFemalesBatch22() {
+        return noOfFemalesBatch22;
+    }
+
+    public void setNoOfFemalesBatch22(int noOfFemalesBatch22) {
+        this.noOfFemalesBatch22 = noOfFemalesBatch22;
+    }
+
+    public int getNoOfMalesBatch22() {
+        return noOfMalesBatch22;
+    }
+
+    public void setNoOfMalesBatch22(int noOfMalesBatch22) {
+        this.noOfMalesBatch22 = noOfMalesBatch22;
     }
 
     @Override
     public String toString() {
         return "Report{" +
                 "id=" + id +
-                ", reportAuthor='" + reportAuthor + '\'' +
+                ", reportType='" + reportType + '\'' +
                 ", dateReportCreated='" + dateReportCreated + '\'' +
-                ", overallRating=" + overallRating +
                 ", reportSubject='" + reportSubject + '\'' +
                 ", reportBody='" + reportBody + '\'' +
                 ", reportConclusion='" + reportConclusion + '\'' +
-                ", societyName='" + societyName + '\'' +
-                ", noOfMembers=" + noOfMembers +
-                ", noOfFemales=" + noOfFemales +
-                ", noOfMales=" + noOfMales +
-                ", noOfLikes=" + noOfLikes +
-                ", popularity=" + popularity +
+                ", societyId=" + societyId +
+                ", noOfFemalesBatch18=" + noOfFemalesBatch18 +
+                ", noOfMalesBatch18=" + noOfMalesBatch18 +
+                ", noOfFemalesBatch19=" + noOfFemalesBatch19 +
+                ", noOfMalesBatch19=" + noOfMalesBatch19 +
+                ", noOfFemalesBatch20=" + noOfFemalesBatch20 +
+                ", noOfMalesBatch20=" + noOfMalesBatch20 +
+                ", noOfFemalesBatch21=" + noOfFemalesBatch21 +
+                ", noOfMalesBatch21=" + noOfMalesBatch21 +
+                ", noOfFemalesBatch22=" + noOfFemalesBatch22 +
+                ", noOfMalesBatch22=" + noOfMalesBatch22 +
                 '}';
     }
 }

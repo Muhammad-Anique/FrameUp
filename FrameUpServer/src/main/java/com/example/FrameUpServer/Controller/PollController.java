@@ -24,8 +24,22 @@ public class PollController {
     }
 
     @GetMapping("/poll/{pollId}")
-    public Poll getPollByPollId(@PathVariable String pollId){
+    public Poll getPollByPollId(@PathVariable int pollId){
         return pollDao.getPollByPollId(pollId);
     }
+
+    @PutMapping("/poll/update/{pollId}")
+    public Poll addPollResponse(@PathVariable int pollId,@RequestBody Poll poll){
+        Poll p = pollDao.getPollByPollId(pollId);
+        p.setOption1Responses(poll.getOption1Responses());
+        p.setOption2Responses(poll.getOption2Responses());
+        p.setOption3Responses(poll.getOption3Responses());
+        p.setOption4Responses(poll.getOption4Responses());
+        p.setOption5Responses(poll.getOption5Responses());
+        p.setNoOfResponses(poll.getOption1Responses() + poll.getOption2Responses() +
+                poll.getOption3Responses() + poll.getOption4Responses()+ poll.getOption5Responses());
+        return pollDao.savePoll(p);
+    }
+
 
 }

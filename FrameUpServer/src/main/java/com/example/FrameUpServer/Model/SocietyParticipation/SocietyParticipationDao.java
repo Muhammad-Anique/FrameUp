@@ -35,5 +35,17 @@ public class SocietyParticipationDao {
         return repository.getSocietyMemberRoll(sid);
     }
 
+    public List<SocietyParticipation> getMemberExistence(String roll){
+        return repository.getSocietyMemberExistence(roll);
+    }
+
+    public float getSocietyRating(int sid){
+        return repository.getSocietyOverallRating(sid);
+    }
+
+    public SocietyParticipation getParticipationByRollAndSid(int sid, String roll){
+        return repository.getSocietyParticipation(sid,roll);
+    }
+
 
 }

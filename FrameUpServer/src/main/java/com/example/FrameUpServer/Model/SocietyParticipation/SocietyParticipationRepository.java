@@ -16,4 +16,14 @@ public interface SocietyParticipationRepository extends CrudRepository<SocietyPa
 
     @Query(value = "select sp.roll_no from society_participation sp where sp.society_id =:sid",nativeQuery = true)
     List<String> getSocietyMemberRoll(@Param("sid") int sid);
+
+    @Query(value = "select * from society_participation sp where sp.roll_no =:roll",nativeQuery = true)
+    List<SocietyParticipation> getSocietyMemberExistence(@Param("roll") String roll);
+
+    @Query(value = "Select Avg(sp.rating) from society_participation sp where society_id=:sid",nativeQuery = true)
+    float getSocietyOverallRating(@Param("sid") int sid);
+
+    @Query(value = "select * from society_participation sp where sp.society_id =:sid and sp.roll_no=:roll",nativeQuery = true)
+    SocietyParticipation getSocietyParticipation(@Param("sid") int sid,@Param("roll") String roll);
+
 }

@@ -23,10 +23,10 @@ import retrofit2.Response;
 
 public class CreatePoll extends AppCompatActivity {
 
-    CheckBox checkBox1,checkBox2,checkBox3,checkBox4,checkBox5;
+    CheckBox checkBox1,checkBox2,checkBox3,checkBox4;
     Button uploadBtn;
-    TextInputEditText caption, option1, option2, option3,option4,option5;
-    boolean O1,O2,O3,O4,O5;
+    TextInputEditText caption, option1, option2, option3,option4;
+    boolean O1,O2,O3,O4;
     ProgressBar prg;
     int count=5;
 
@@ -55,14 +55,12 @@ public class CreatePoll extends AppCompatActivity {
         checkBox2=findViewById(R.id.checkBox2);
         checkBox3=findViewById(R.id.checkBox3);
         checkBox4=findViewById(R.id.checkBox4);
-        checkBox5=findViewById(R.id.checkBox5);
 
         caption = findViewById(R.id.Poll_Caption);
         option1 = findViewById(R.id.Poll_Option1_tf);
         option2 = findViewById(R.id.Poll_Option2_tf);
         option3 = findViewById(R.id.Poll_Option3_tf);
         option4 = findViewById(R.id.Poll_Option4_tf);
-        option5 = findViewById(R.id.Poll_Option5_tf);
 
         uploadBtn = findViewById(R.id.Submit_poll_btn);
 
@@ -130,21 +128,6 @@ public class CreatePoll extends AppCompatActivity {
         });
 
 
-        checkBox5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
-                if(!checkBox5.isChecked())
-                {   option5.setVisibility(View.INVISIBLE);
-                    O5=false;
-                    set_count_down();
-                }else{
-                    option5.setVisibility(View.VISIBLE);
-                    O5=true;
-                    set_count_up();
-                }
-            }
-        });
-
 
         uploadBtn.setOnClickListener(view->{
             prg.setVisibility(View.VISIBLE);
@@ -153,7 +136,7 @@ public class CreatePoll extends AppCompatActivity {
             String opt2 = String.valueOf(option2.getText());
             String opt3 = String.valueOf(option3.getText());
             String opt4 = String.valueOf(option4.getText());
-            String opt5 = String.valueOf(option5.getText());
+
 
 
 
@@ -177,8 +160,6 @@ public class CreatePoll extends AppCompatActivity {
                 poll.setOption3Responses(0);
                 poll.setPollOption4(opt4);
                 poll.setOption4Responses(0);
-                poll.setPollOption5(opt5);
-                poll.setOption5Responses(0);
                 RetrofitService retrofitService = new RetrofitService();
                 PollAPI pollAPI = retrofitService.getRetrofit().create(PollAPI.class);
                 pollAPI.save(poll).enqueue(new Callback<Poll>() {

@@ -1,5 +1,6 @@
 package com.example.FrameUpServer.Model.report;
 
+import com.example.FrameUpServer.Model.SocietyParticipation.SocietyParticipationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
@@ -11,10 +12,13 @@ import java.util.List;
 public class ReportDao {
     @Autowired
     private ReportRepository repository;
+    @Autowired
+    private SocietyParticipationRepository societyRepository;
 
-    public Report save (Report report)
+    public String save(Report report)
     {
-        return repository.save(report);
+        return repository.makeReport(report.getSocietyId(),report.getReportSubject(),report.getReportConclusion(),report.getReportBody(),report.getReportType(),report.getDateReportCreated());
+//        return repository.save(report);
     }
     public void delete(Report report)
     {
@@ -27,11 +31,6 @@ public class ReportDao {
         return reports;
 
     }
-    public float calculateMembers(int NoOfFemales,int NoOfMales)
-    {
-        return NoOfFemales+NoOfMales;
-    }
-
 
 
 

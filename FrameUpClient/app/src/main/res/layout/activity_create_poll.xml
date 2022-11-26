@@ -211,40 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:gravity="center"
-            android:orientation="horizontal">
-
-
-            <CheckBox
-                android:id="@+id/checkBox5"
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Primary_Color_2"
-                android:buttonTint="@color/Primary_Color_2"
-                android:checked="true"
-                android:scaleX="1.1"
-                android:scaleY="1.1"
-                android:text=""
-                android:textColor="@color/Primary_Color_2" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Poll_Option5_tf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="0dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Secondary_Color_1"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="Option 5"
-                android:minHeight="40dp"
-                android:padding="0dp"
-                android:textColor="@color/Primary_Color_1"
-                android:textColorHint="@color/Secondary_Color_1"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
     </LinearLayout>
 

@@ -35,6 +35,8 @@ public class Registeration extends AppCompatActivity {
     private boolean password_valid=false;
     private boolean email_valid=false;
     private boolean phone_valid=false;
+    boolean maleState;
+    boolean femaleState;
      public boolean verifyOTP =false;
 
 
@@ -114,11 +116,10 @@ public class Registeration extends AppCompatActivity {
 
 
 
-        boolean maleState = male.isChecked();
-        boolean femaleState = female.isChecked();
 
-        male.setOnClickListener(view -> {female.setChecked(false);});
-        female.setOnClickListener(view -> {male.setChecked(false);});
+
+        male.setOnClickListener(view -> {female.setChecked(false); maleState=true; femaleState=false; });
+        female.setOnClickListener(view -> {male.setChecked(false); maleState=false; femaleState=true; });
 
 
         RetrofitService retrofitService = new RetrofitService();

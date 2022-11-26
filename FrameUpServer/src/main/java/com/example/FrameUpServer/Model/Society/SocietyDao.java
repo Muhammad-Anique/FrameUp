@@ -30,5 +30,9 @@ public class SocietyDao {
     }
 
 
+    public Society getSocietyById(int sid){
+        return repository.getSocietyByID(sid);
+    }
+
 
 }

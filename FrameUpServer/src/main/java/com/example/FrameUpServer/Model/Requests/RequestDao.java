@@ -17,10 +17,23 @@ public class RequestDao {
         return requestRepository.save(r);
     }
 
-    public List<Request> getAllRequestByRoll(){
+    public List<Request> getAllRequest(){
         List<Request> req = new ArrayList<>();
         Streamable.of(requestRepository.findAll())
                 .forEach(req::add);
         return req;
     }
+
+    public List<Request> getAllRequestByRollSendTo(String Roll){
+        List<Request> req = new ArrayList<>();
+        Streamable.of(requestRepository.retrieveRequestByRollSendTo(Roll))
+                .forEach(req::add);
+        return req;
+    }
+
+    public void deleteRequest(int ReqID){
+      requestRepository.deleteById(ReqID);
+    }
+
+
 }

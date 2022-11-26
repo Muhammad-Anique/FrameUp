@@ -1,24 +1,33 @@
-//package com.example.FrameUpServer.Controller;
-//
-//import com.example.FrameUpServer.Model.Requests.RequestDao;
-//import com.example.FrameUpServer.Model.SocietyOperative.SocietyOperative;
-//import com.example.FrameUpServer.Model.SocietyOperative.SocietyOperativeDao;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.*;
-//
-//@RestController
-//public class RequestController {
-//
-//    @Autowired
-//    RequestDao requestDao;
-//
-//    @GetMapping("/society-operative/{roll}")
-//    public SocietyOperative getSocietyOperativeByRoll(@PathVariable String roll){
-//        return societyOperativeDao.getSocietyOperativeByRoll(roll);
-//    }
-//    @PostMapping("/society-operative/save")
-//    public SocietyOperative save(@RequestBody SocietyOperative societyOperative){
-//        return societyOperativeDao.save(societyOperative);
-//    }
-//
-//}
+package com.example.FrameUpServer.Controller;
+
+import com.example.FrameUpServer.Model.Requests.Request;
+import com.example.FrameUpServer.Model.Requests.RequestDao;
+import com.example.FrameUpServer.Model.SocietyOperative.SocietyOperative;
+import com.example.FrameUpServer.Model.SocietyOperative.SocietyOperativeDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+public class RequestController {
+
+    @Autowired
+    RequestDao requestDao;
+
+    @GetMapping("/requests/{roll}")
+    public List<Request> getRequestsByRoll(@PathVariable String roll){
+        return requestDao.getAllRequestByRollSendTo(roll);
+    }
+    @PostMapping("/requests/save")
+    public Request save(@RequestBody Request request){
+        return requestDao.save(request);
+    }
+
+    @DeleteMapping("/requests/delete/{reqId}")
+    public void deleteRequest(@PathVariable int reqId){
+        requestDao.deleteRequest(reqId);
+
+    }
+
+}

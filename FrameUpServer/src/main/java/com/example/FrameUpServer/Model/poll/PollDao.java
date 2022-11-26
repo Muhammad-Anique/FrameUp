@@ -26,7 +26,7 @@ public class PollDao {
         return polls;
     }
 
-    public Poll getPollByPollId(String pollid)
+    public Poll getPollByPollId(int pollid)
     {
         return repository.retrievePollById(pollid);
     }

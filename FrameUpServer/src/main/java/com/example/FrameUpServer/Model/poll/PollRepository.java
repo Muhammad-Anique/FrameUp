@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PollRepository extends CrudRepository<Poll,Integer> {
     @Query(value = "select * from poll where poll.poll_id = :pollNumber",nativeQuery = true)
-    Poll retrievePollById(@Param("pollNumber") String pollNumber);
+    Poll retrievePollById(@Param("pollNumber") int pollNumber);
 
 }

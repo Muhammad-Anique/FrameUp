@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface RequestRepository extends CrudRepository<Request,Integer> {
-
+    @Query(value = "select * from request r where send_to = :roll",nativeQuery = true)
+   List<Request> retrieveRequestByRollSendTo(@Param("roll") String roll);
 
 }

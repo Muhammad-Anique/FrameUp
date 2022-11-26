@@ -37,6 +37,24 @@ public class SocietyParticipationController {
         return societyParticipationDao.getSocietyMembersByRoll(sid);
     }
 
+    @GetMapping("/society-participation/{roll}")
+    public List<SocietyParticipation> getMemberParticipationByRoll(@PathVariable String roll)
+    {
+        return societyParticipationDao.getMemberExistence(roll);
+    }
+
+    @GetMapping("/society-participation/rating/{sid}")
+    public float getRatingBySocietyId (@PathVariable int sid){
+        return societyParticipationDao.getSocietyRating(sid);
+    }
+
+    @PutMapping("/society-participation/update/rating/{sid}/{roll}")
+    public SocietyParticipation getRatingBySocietyId (@PathVariable int sid,@PathVariable String roll,@RequestBody SocietyParticipation sopi){
+        SocietyParticipation sp = societyParticipationDao.getParticipationByRollAndSid(sid,roll);
+        sp.setRating(sopi.getRating());
+        return societyParticipationDao.save(sp);
+    }
+
 
 
 }
