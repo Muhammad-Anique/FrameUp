@@ -32,6 +32,10 @@ public class ReportDao {
 
     }
 
+    public Report getReportBySid(int sid){
+        return repository.getReportById(sid);
+    }
+
 
 
 }

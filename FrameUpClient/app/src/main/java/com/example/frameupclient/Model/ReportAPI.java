@@ -16,4 +16,7 @@ public interface ReportAPI {
     @POST("/report/save")
     Call<Report> save(@Body Report report);
 
+    @GET("/report/{sid}")
+    Call<Report> getReportBySid(@Path("sid") int sid);
+
 }
