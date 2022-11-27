@@ -14,7 +14,11 @@ import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
+import com.example.frameupclient.utilities.Constants;
+import com.example.frameupclient.utilities.PreferenceManager;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +29,10 @@ public class  Login extends AppCompatActivity {
     public int PasswordValidity;
     public int IsVerifiedBit;
     public String RollNumber;
+    private PreferenceManager preferenceManager;
     public int memberType;
+    public String firebaseEmail;
+    public String firebasePassword;
 
     public int getIsVerifiedBit() { return IsVerifiedBit;}
 
@@ -48,12 +55,14 @@ public class  Login extends AppCompatActivity {
         if(getPasswordValidity()==1 && getIsVerifiedBit()==1){
             if(RollNumber.compareTo("admin")==0)
             {
-                Intent intent = new Intent(this, AdminHome.class);
+                Intent intent = new Intent(this, UserProfile.class);
+                signIn();
                 startActivity(intent);
             }
             else{
-                Intent intent = new Intent(this, VisitorHome.class);
+                Intent intent = new Intent(this, UserProfile.class);
                 intent.putExtra("userRoll", RollNumber);
+                signIn();
                 startActivity(intent);
             }
         }
@@ -80,7 +89,7 @@ public class  Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        preferenceManager = new PreferenceManager(getApplicationContext());
         //initalization
         TextInputEditText Roll = findViewById(R.id.rollno_lg_tf);
         TextInputEditText Pass = findViewById(R.id.password_lg_tf);
@@ -113,6 +122,8 @@ public class  Login extends AppCompatActivity {
                     //Printing
                     System.out.println(response.body());
 
+                    firebaseEmail =response.body().getEmail();
+                    firebasePassword=response.body().getPassword();
 
                     if(password.equals(response.body().getPassword().toString()))
                     {
@@ -162,5 +173,29 @@ public class  Login extends AppCompatActivity {
         });
     }
 
+
+    private void signIn(){
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .whereEqualTo(Constants.KEY_EMAIL, firebaseEmail)
+                .whereEqualTo(Constants.KEY_PASSWORD, firebasePassword)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size()>0){
+                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                        preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
+                        preferenceManager.putString(Constants.KEY_USERID, documentSnapshot.getId());
+                        preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
+                        preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
+
+                    } else{
+                        showToast("Enable to SignIn");
+                    }
+                });
+    }
+
+    private void showToast(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
 
 }

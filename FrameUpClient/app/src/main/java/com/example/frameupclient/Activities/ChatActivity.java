@@ -1,12 +1,12 @@
-package com.example.frameupclient.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.frameupclient.Activities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.frameupclient.Adapter.ChatAdapter;
 import com.example.frameupclient.Model.ChatMessage;

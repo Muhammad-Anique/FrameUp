@@ -64,11 +64,13 @@ public class Registeration extends AppCompatActivity {
         this.phone_valid = phone_valid;
     }
 
-    public void start_verify_activity(String email, String Roll)
+    public void start_verify_activity(String email, String Roll, String password, String name)
     {
         Intent intent =new Intent(this, OTP_verification.class);
         intent.putExtra("userEmail",email);
         intent.putExtra("userRoll", Roll);
+        intent.putExtra("userName",name);
+        intent.putExtra("userPassword",password);
         startActivity(intent);
     }
 
@@ -229,7 +231,7 @@ public class Registeration extends AppCompatActivity {
                     public void onResponse(Call<Visitor> call, Response<Visitor> response) {
                         Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
                         System.out.println("hi");
-                        start_verify_activity(email,rollno);
+                        start_verify_activity(email,rollno,name,password);
                     }
 
                     @Override

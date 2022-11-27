@@ -1,15 +1,14 @@
-package com.example.frameupclient.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.frameupclient.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.frameupclient.Adapter.UsersAdapter;
 import com.example.frameupclient.Model.Users;
-import com.example.frameupclient.R;
 import com.example.frameupclient.databinding.ActivityUsersBinding;
 import com.example.frameupclient.listeners.UserListener;
 import com.example.frameupclient.utilities.Constants;

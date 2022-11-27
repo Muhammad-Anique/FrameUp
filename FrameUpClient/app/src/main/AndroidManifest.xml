@@ -17,13 +17,40 @@
         android:theme="@style/Theme.FrameUpClient"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+
+        <activity
+            android:name=".Activities.ChatActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".Activities.SignInActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".Activities.SignUpActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Activities.StartActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Activities.UsersActivity"
+            android:exported="true" />
+
+        <service
+            android:name=".fireBase.MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".Activities.ViewReport"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Activities.CreateRequest"
@@ -97,7 +124,10 @@
         <activity
             android:name=".Activities.Login"
             android:exported="true">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Activities.OTP_verification"

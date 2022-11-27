@@ -12,7 +12,12 @@ import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
+import com.example.frameupclient.utilities.Constants;
+import com.example.frameupclient.utilities.PreferenceManager;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,10 +26,14 @@ import retrofit2.Response;
 public class OTP_verification extends AppCompatActivity {
     public String userEmail;
     public String rollNo;
+    public String password;
+    public String name;
+    private PreferenceManager preferenceManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_verification);
+        preferenceManager = new PreferenceManager(getApplicationContext());
         intializeComponents();
     }
 
@@ -68,6 +77,8 @@ public class OTP_verification extends AppCompatActivity {
         if (extras != null) {
             userEmail = extras.getString("userEmail");//The key argument here must match that used in the other activity
             rollNo =extras.getString("userRoll");
+            name = extras.getString("userName");
+            password =extras.getString("userPassword");
         }
 
         EditText n1 =  findViewById(R.id.num1);
@@ -113,11 +124,10 @@ public class OTP_verification extends AppCompatActivity {
 
 
 
-
-
-
-
     }
+
+
+
 
 
 }

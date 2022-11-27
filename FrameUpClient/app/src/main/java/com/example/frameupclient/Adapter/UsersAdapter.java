@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.frameupclient.Model.Users;
 import com.example.frameupclient.databinding.ItemLayoutUserBinding;
 import com.example.frameupclient.listeners.UserListener;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.Base64;
 import java.util.List;
@@ -38,7 +37,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UsersAdapter.UsersViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
         holder.setUserData(users.get(position));
     }
 

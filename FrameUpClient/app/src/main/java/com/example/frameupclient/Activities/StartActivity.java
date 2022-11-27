@@ -1,6 +1,4 @@
-package com.example.frameupclient.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.frameupclient.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,8 +6,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.frameupclient.Adapter.RecentConversationAdapter;
 import com.example.frameupclient.Model.ChatMessage;
@@ -26,10 +25,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import com.example.frameupclient.databinding.ActivitySignInBinding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -42,9 +39,14 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
     private List<ChatMessage> conversations;
     private RecentConversationAdapter conversationsAdapter;
     private FirebaseFirestore database;
+    private String rollNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo = extras.getString("userRoll");
+        }
         super.onCreate(savedInstanceState);
         binding = ActivityStartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,12 +56,6 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
         getToken();
         setListeners();
         listenConversations();
-        /*setContentView(R.layout.activity_main);
-        Button reg = findViewById(R.id.reg_btn);
-        reg.setOnClickListener(view->{
-            Intent intent =new Intent(this, Registeration.class);
-            startActivity(intent);
-        });*/
     }
 
     private void init(){
@@ -74,6 +70,12 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
         FloatingActionButton fab = findViewById(R.id.fabNewChat);
         fab.setOnClickListener(view-> {
             Intent intent = new Intent(this, UsersActivity.class);
+            startActivity(intent);
+        });
+
+        binding.homeInMessanger.setOnClickListener(view->{
+            Intent intent = new Intent(this, VisitorHome.class);
+            intent.putExtra("userRoll",rollNo);
             startActivity(intent);
         });
     }

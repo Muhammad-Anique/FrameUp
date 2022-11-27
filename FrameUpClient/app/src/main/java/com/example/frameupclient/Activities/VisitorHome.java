@@ -35,17 +35,35 @@ public class VisitorHome extends AppCompatActivity {
     public String rollNo;
     RecyclerView rvMain;
     int MemberType;
-    Button homeBTN, society_BTN, notification, poll_btn, profile_btn;
+    Button homeBTN, society_BTN, notification, poll_btn, profile_btn,messenger_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_home);
 
+
+        //intializations
        homeBTN=findViewById(R.id.visitor_home_page_home_btn);
        homeBTN.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
-
+       messenger_btn=findViewById(R.id.messagener_icon_vh);
        notification=findViewById(R.id.visitor_home_page_req_button);
        society_BTN=findViewById(R.id.visitor_home_page_society_button);
+       profile_btn= findViewById(R.id.visitor_home_profile_button);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo = extras.getString("userRoll");
+            MemberType=extras.getInt("memberType");
+        }
+
+
+       messenger_btn.setOnClickListener(view->{
+           Intent intent = new Intent(getApplicationContext(), com.example.frameupclient.Activities.StartActivity.class);
+           intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+           intent.putExtra("userRoll",rollNo);
+           startActivity(intent);
+       });
+
+
 
 
        notification.setOnClickListener(view->{
@@ -74,13 +92,13 @@ public class VisitorHome extends AppCompatActivity {
 
        });
 
-       profile_btn= findViewById(R.id.visitor_home_profile_button);
 
-       Bundle extras = getIntent().getExtras();
-       if (extras != null) {
-            rollNo = extras.getString("userRoll");
-            MemberType=extras.getInt("memberType");
-       }
+
+
+
+
+
+
 
        society_BTN.setOnClickListener(view->{
            Intent intent = new Intent(this, ViewSociety.class);
@@ -88,11 +106,16 @@ public class VisitorHome extends AppCompatActivity {
            startActivity(intent);
        });
 
+
+
+
       profile_btn.setOnClickListener(view->{
           Intent intent = new Intent(this, UserProfile.class);
           intent.putExtra("userRoll", rollNo);
           startActivity(intent);
       });
+
+
 
         Window window =this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -104,6 +127,10 @@ public class VisitorHome extends AppCompatActivity {
         rvMain.setLayoutManager(new LinearLayoutManager(this));
         loadPosts();
     }
+
+
+
+
 
     private void loadPosts() {
         RetrofitService retrofitService = new RetrofitService();

@@ -1,4 +1,4 @@
-package com.example.frameupclient.activities;
+package com.example.frameupclient.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -74,7 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
                     preferenceManager.putString(Constants.KEY_USERID, documentReference.getId());
                     preferenceManager.putString(Constants.KEY_NAME, binding.inputName.getText().toString());
                     preferenceManager.putString(Constants.KEY_IMAGE, encodedImage);
-                    Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), com.example.frameupclient.Activities.StartActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 })
@@ -99,6 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
                   if(result.getResultCode() == RESULT_OK) {
                       if(result.getData() != null){
                           Uri ImageUri = result.getData().getData();
+                          System.out.println(ImageUri);
                           try{
                               InputStream inputStream = getContentResolver().openInputStream(ImageUri);
                               Bitmap bitmap = BitmapFactory.decodeStream(inputStream);

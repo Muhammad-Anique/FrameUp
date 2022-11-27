@@ -1,4 +1,4 @@
-package com.example.frameupclient.activities;
+package com.example.frameupclient.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         preferenceManager = new PreferenceManager(getApplicationContext());
         if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_IN)){
-            Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+            Intent intent = new Intent(getApplicationContext(), com.example.frameupclient.Activities.StartActivity.class);
             startActivity(intent);
             finish();
         }
@@ -36,7 +36,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void setListeners(){
         binding.textCreateNewAccount.setOnClickListener(v->
-                startActivity(new Intent(getApplicationContext(), SignUpActivity.class)));
+                startActivity(new Intent(getApplicationContext(), com.example.frameupclient.Activities.SignUpActivity.class)));
         binding.buttonSignIn.setOnClickListener(v-> {
             if(isValidSignInDetails()){
                 signIn();
@@ -58,7 +58,7 @@ public class SignInActivity extends AppCompatActivity {
                        preferenceManager.putString(Constants.KEY_USERID, documentSnapshot.getId());
                        preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                        preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
-                       Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                       Intent intent = new Intent(getApplicationContext(), com.example.frameupclient.Activities.StartActivity.class);
                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                        startActivity(intent);
                    } else{
