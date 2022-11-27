@@ -1,9 +1,12 @@
 package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -25,10 +28,12 @@ public class CreatePoll extends AppCompatActivity {
 
     CheckBox checkBox1,checkBox2,checkBox3,checkBox4;
     Button uploadBtn;
+    String rollNo;
     TextInputEditText caption, option1, option2, option3,option4;
     boolean O1,O2,O3,O4;
     ProgressBar prg;
     int count=5;
+    int sid;
 
     void set_count_down(){
         if(count>0)
@@ -41,8 +46,20 @@ public class CreatePoll extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_poll);
+        Window window =this.getWindow();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo = extras.getString("rollNo");
+            sid = extras.getInt("sid");
+        }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         intializeComponents();
     }
 
@@ -147,9 +164,9 @@ public class CreatePoll extends AppCompatActivity {
             else
             {
                 Poll poll = new Poll();
-                poll.setCreatedBy("20l-2171");
+                poll.setCreatedBy(rollNo);
                 poll.setPollStatement(cap);
-                poll.setSocietyRelated("Softec");
+                poll.setSocietyRelated(String.valueOf(sid));
                 poll.setNoOfResponses(0);
                 poll.setTotalOptions(count);
                 poll.setPollOption1(opt1);

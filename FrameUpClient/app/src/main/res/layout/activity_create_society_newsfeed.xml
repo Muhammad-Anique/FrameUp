@@ -6,4 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".Activities.CreateSocietyNewsfeed">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_up"
+        android:layout_width="412dp"
+        android:layout_height="55dp"
+        android:background="@drawable/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/user_profile_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Create Something"
+            android:textColor="@color/Primary_Color_1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.478" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/create_post_news_btn"
+        android:layout_width="311dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Create Post"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_poll_news_btn2" />
+
+    <Button
+        android:id="@+id/create_event_news_btn3"
+        android:layout_width="311dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Create Event"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_news_btn" />
+
+    <Button
+        android:id="@+id/create_poll_news_btn2"
+        android:layout_width="311dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="155dp"
+        android:background="@drawable/button_style_gradient"
+        android:text="Create Poll"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_up" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -82,11 +82,12 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyHolder>{
             @Override
             public void onResponse(Call<Float> call, Response<Float> response) {
 
-
                 String rate =String.valueOf(response.body());
                 String value = "0.0";
                 if(rate.length()>3)
                     value=rate.substring(0,4);
+                else
+                    value=rate;
                 holder.society_rating.setText(String.valueOf(value));
                 holder.society_name.setText(society.getSocietyName());
             }

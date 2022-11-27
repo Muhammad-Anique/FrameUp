@@ -214,7 +214,7 @@
             android:layout_height="43dp"
             android:layout_marginBottom="72dp"
             android:background="@drawable/button_stroke"
-            android:text="Make complain"
+            android:text="Make Request / complain"
             android:textColor="@color/Primary_Color_1"
             android:textSize="9sp"
             app:backgroundTint="@null"

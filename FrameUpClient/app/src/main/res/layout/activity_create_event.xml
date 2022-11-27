@@ -12,17 +12,16 @@
         android:id="@+id/linearLayout2_ee"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="start"
         android:orientation="vertical"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
         android:paddingRight="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394">
+        app:layout_constraintTop_toBottomOf="@+id/Heading_ee">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -85,7 +84,7 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_medium"
             android:hint="Start Time"
-            android:inputType="time"
+            android:inputType="textPersonName"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textColor="@color/Secondary_Color_1"
@@ -102,7 +101,7 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_medium"
             android:hint="End Time"
-            android:inputType="time"
+            android:inputType="textPersonName"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textColor="@color/Secondary_Color_1"
@@ -118,7 +117,7 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_medium"
             android:hint="Event Date"
-            android:inputType="time"
+            android:inputType="textPersonName"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textColor="@color/Secondary_Color_1"
@@ -128,10 +127,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="2dp"
+            android:layout_marginBottom="0dp"
             app:cardCornerRadius="16dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -139,7 +138,7 @@
                 android:layout_height="150dp">
 
                 <ImageView
-                    android:id="@+id/society_background_image_row_event"
+                    android:id="@+id/event_bg_img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/gradient_grey"
@@ -154,36 +153,33 @@
 
     </LinearLayout>
 
-
     <Button
         android:id="@+id/create_event_btn"
         android:layout_width="232dp"
         android:layout_height="44dp"
+        android:layout_marginTop="108dp"
         android:background="@drawable/button_style_gradient"
         android:text="Create Event"
         android:textColor="@color/white"
         app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2_ee" />
 
     <TextView
         android:id="@+id/Heading_ee"
         android:layout_width="211dp"
         android:layout_height="64dp"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="What's Coming?"
         android:textColor="@color/Primary_Color_2"
         android:textSize="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2_ee"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.911" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressbar_ee"
@@ -198,13 +194,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.814" />
 
     <TextView
         android:id="@+id/event_error"
         android:layout_width="282dp"
         android:layout_height="15dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="112dp"
         android:gravity="center_horizontal|center_vertical"
         android:text=" "
         android:textColor="@color/red"

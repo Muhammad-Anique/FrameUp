@@ -62,7 +62,7 @@ public class RequestList extends AppCompatActivity implements RequestRvInterface
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            rollNo = extras.getString("userRoll");
+            rollNo = extras.getString("rollNo");
             System.out.println("Roll passes by home" + rollNo);
         }
 

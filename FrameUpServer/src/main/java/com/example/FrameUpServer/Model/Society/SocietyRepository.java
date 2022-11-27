@@ -11,4 +11,7 @@ public interface SocietyRepository extends CrudRepository<Society,Integer>
 {
     @Query(value = "select * from society s where society_id = :sid",nativeQuery = true)
     Society getSocietyByID(@Param("sid") int sid);
+
+    @Query(value = "select * from society s where society_head = :sName",nativeQuery = true)
+    Society getSocietyByName(@Param("sName") String sName);
 }

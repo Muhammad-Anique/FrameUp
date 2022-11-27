@@ -3,6 +3,7 @@ package com.example.frameupclient.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -11,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -62,6 +65,7 @@ public class CreatePost extends AppCompatActivity   {
     //data for post
     String PostType;
     String PostSubject;
+    String rollNo;
     String AuthorRoll;
     String Caption;
     String MediaUrl;
@@ -70,7 +74,7 @@ public class CreatePost extends AppCompatActivity   {
     String SocietyAssociated = "General";
     String Date;
     boolean imageUploaded = false;
-
+    int sid;
 
 
 
@@ -82,10 +86,19 @@ public class CreatePost extends AppCompatActivity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo = extras.getString("rollNo");
+            sid = extras.getInt("sid");
+        }
         TextView postError = findViewById(R.id.post_error);
 
-
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         cover = findViewById(R.id.img);
         progressbar =findViewById(R.id.progressbar);
         uploadBtn= findViewById(R.id.create_post_btn);
@@ -180,7 +193,15 @@ public class CreatePost extends AppCompatActivity   {
         AuthorRoll= String.valueOf(roll);
         Post p = new Post();
 
-        p.setPostAll(PostSubject,Date, PostType,SocietyAssociated,AuthorRoll,Caption, MediaUrl,Hashtag,Priority);
+        p.setPostSubject(PostSubject);
+        p.setPostText(Caption);
+        p.setPriority(1);
+        p.setPostCreationDate(Date);
+        p.setLink(MediaUrl);
+        p.setHashtag(Hashtag);
+        p.setSocietyAssociated(SocietyAssociated);
+        p.setPostType(PostType);
+        p.setAuthorRoll(rollNo);
 
         System.out.println(p);
 

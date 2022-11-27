@@ -66,11 +66,16 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestHolder> {
         System.out.println("IN adapter" + r.get(position) + "About to bind");
         Request req = r.get(position);
         holder.Name.setText(req.getSendBy());
-        holder.Mail.setText("Experiment Mail");
-        if(req.getRequestType().compareTo("ba")==0)
-            holder.Add.setText("Add Advisor");
-        else
-            holder.Add.setText("Add Member");
+        holder.Mail.setText(req.getRequestSubject());
+        if(req.getRequestType().compareTo("BecomeAdvisor")==0){
+            holder.Add.setText("Add Advisor");}
+        else if(req.getRequestType().compareTo("BecomeMember")==0){
+            holder.Add.setText("Add Member");}
+        else{
+            holder.Add.setVisibility(View.INVISIBLE);
+        }
+
+
 
 
     }

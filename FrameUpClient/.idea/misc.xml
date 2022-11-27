@@ -43,8 +43,9 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_notice.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_poll.xml" value="0.176" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_post.xml" value="0.2" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_report.xml" value="0.176" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_report.xml" value="0.536" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_society.xml" value="0.176" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_society_newsfeed.xml" value="0.2" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_home_visitor.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_login.xml" value="0.209375" />
@@ -89,7 +90,7 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_newsfeed.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_notification.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_poll.xml" value="0.6" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_post.xml" value="0.2453125" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_post.xml" value="0.536" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_request.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_society.xml" value="0.4" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_user.xml" value="0.264" />

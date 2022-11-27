@@ -1,11 +1,15 @@
 package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.frameupclient.Model.Report;
@@ -32,7 +36,7 @@ public class ViewReport extends AppCompatActivity {
     BarDataSet barDataSet1, barDataSet2;
     ArrayList barEntries;
 
-
+    int sid;
     TextView ts,tb,tc;
 
     int mCount18,mCount19,mCount20,mCount21,mCount22;
@@ -46,6 +50,21 @@ public class ViewReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_report);
 
+
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            sid = extras.getInt("societyId");
+        }
+
+
         barChart = findViewById(R.id.bb);
         ts=findViewById(R.id.report_subject_field);
         tb=findViewById(R.id.report_body_field);
@@ -53,7 +72,7 @@ public class ViewReport extends AppCompatActivity {
 
         RetrofitService retrofitService =new RetrofitService();
         ReportAPI reportAPI = retrofitService.getRetrofit().create(ReportAPI.class);
-        reportAPI.getReportBySid(9).enqueue(new Callback<Report>() {
+        reportAPI.getReportBySid(sid).enqueue(new Callback<Report>() {
             @Override
             public void onResponse(Call<Report> call, Response<Report> response) {
 

@@ -121,21 +121,21 @@ public class UserProfile extends AppCompatActivity {
         society_btn =findViewById(R.id.society_button_up);
         society_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, ViewSociety.class);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
 
         });
 
         report_user.setOnClickListener(view->{
             Intent intent = new Intent(this, CreateNotice.class);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
         });
 
         home_btn =findViewById(R.id.home_button_up);
         home_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, VisitorHome.class);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
         });
 

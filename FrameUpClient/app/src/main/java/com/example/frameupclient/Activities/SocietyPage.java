@@ -39,7 +39,7 @@ public class SocietyPage extends AppCompatActivity {
     //Textviews
     TextView society_id,society_heading,society_tag, society_description, society_rating_val_card, society_member_count;
     Button  rate, joinUs, viewMember;
-    CardView societyOperative, society_post;
+    CardView societyAnalytics, society_post;
     String rollNo;
     int demand;
     int sid;
@@ -69,7 +69,7 @@ public class SocietyPage extends AppCompatActivity {
 
 
         //Buttons
-        societyOperative=findViewById(R.id.create_report_clickable);
+        societyAnalytics=findViewById(R.id.create_report_clickable);
         society_post=findViewById(R.id.View_society_Clickable);
         viewMember=findViewById(R.id.admin_issue_notice);
         joinUs=findViewById(R.id.Manage_users);
@@ -86,7 +86,7 @@ public class SocietyPage extends AppCompatActivity {
         //Passed Args
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            rollNo = extras.getString("userRoll");
+            rollNo = extras.getString("rollNo");
             sid = extras.getInt("societyId");
         }
 
@@ -142,7 +142,7 @@ public class SocietyPage extends AppCompatActivity {
         rate.setOnClickListener(view->{
             Intent intent = new Intent(this,RateSociety.class);
             intent.putExtra("societyId",sid);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
         });
 
@@ -192,15 +192,15 @@ public class SocietyPage extends AppCompatActivity {
             demand = 1;
             intent.putExtra("demand",demand);
             intent.putExtra("societyId",sid);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
 
         });
 
-        societyOperative.setOnClickListener(view->{
-            Intent intent = new Intent(this, OperativeSociety.class);
+        societyAnalytics.setOnClickListener(view->{
+            Intent intent = new Intent(this, ViewReport.class);
             intent.putExtra("societyId",sid);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
 
         });
@@ -209,7 +209,7 @@ public class SocietyPage extends AppCompatActivity {
         society_post.setOnClickListener(view->{
             Intent intent = new Intent(this, CreateSocietyNewsfeed.class);
             intent.putExtra("societyId",sid);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
         });
 

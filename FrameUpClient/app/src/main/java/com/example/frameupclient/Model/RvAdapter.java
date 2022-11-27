@@ -3,15 +3,12 @@ package com.example.frameupclient.Model;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.frameupclient.Activities.ViewPost;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -45,9 +44,16 @@ class RowHolder extends RecyclerView.ViewHolder {
 
 class AdHolder extends RecyclerView.ViewHolder {
     ImageView img;
+    TextView sdate,stime,etime,caption_e,e_type;
     public AdHolder(@NonNull View itemView) {
         super(itemView);
-        img=itemView.findViewById(R.id.ivAd);
+        img=itemView.findViewById(R.id.img_event);
+        sdate=itemView.findViewById(R.id.Date_tv_event);
+        stime=itemView.findViewById(R.id.s_time_tv);
+        etime=itemView.findViewById(R.id.end_time_tv);
+        caption_e=itemView.findViewById(R.id.Caption_event_tv);
+        e_type=itemView.findViewById(R.id.e_type_tv);
+
     }
 }
 
@@ -130,7 +136,6 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                            System.out.println(link);
                             String postImageLink = post.getLink();
                             String myString = linkUrl.substring(1, linkUrl.length()-1);
-
                             Picasso.get().load(myString).into(((RowHolder) holder).authorImg);
                             Picasso.get().load(postImageLink).into(((RowHolder) holder).postImg);
                         }
@@ -140,6 +145,12 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         }
                     });
         }else{
+
+            ((AdHolder) holder).e_type.setText(post.getEventType());
+            ((AdHolder) holder).caption_e.setText(post.getPostText());
+            ((AdHolder) holder).sdate.setText(post.getEventDate());
+            ((AdHolder) holder).stime.setText(post.getEventStartTime());
+            ((AdHolder) holder).etime.setText(post.getEventEndTime());
 
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -157,6 +168,10 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
+
+
+
+
         }
     }
     @Override

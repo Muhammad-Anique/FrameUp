@@ -1,8 +1,11 @@
 package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.frameupclient.Model.Report;
@@ -22,7 +25,7 @@ import retrofit2.Response;
 
 public class CreateReport extends AppCompatActivity {
 
-    TextInputEditText report_subject, report_body,report_conclusion;
+    TextInputEditText report_subject, report_body,report_conclusion,society_id;
     Button CreateReport;
     int sid;
 
@@ -30,9 +33,15 @@ public class CreateReport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_report);
-
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         report_subject=findViewById(R.id.Report_Subject);
         report_body=findViewById(R.id.Report_Subject);
+        society_id=findViewById(R.id.society_id_tv);
         report_conclusion=findViewById(R.id.Report_Conculsion);
         CreateReport=findViewById(R.id.create_report_btn_rr);
         CreateReport.setOnClickListener(view -> {
@@ -49,7 +58,7 @@ public class CreateReport extends AppCompatActivity {
             report.setReportType("SocietyReport");
             report.setReportSubject(rs);
             report.setReportBody(rb);
-            report.setSocietyId(sid);
+            report.setSocietyId(Integer.getInteger(society_id.getText().toString()));
             report.setReportConclusion(rc);
             report.setDateReportCreated(formattedDate);
             reportAPI.save(report).enqueue(new Callback<Report>() {

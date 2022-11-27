@@ -53,9 +53,9 @@ public class  Login extends AppCompatActivity {
         TextView error = findViewById(R.id.Error);
 
         if(getPasswordValidity()==1 && getIsVerifiedBit()==1){
-            if(RollNumber.compareTo("admin")==0)
+            if(RollNumber.compareTo("admin")==0 || RollNumber.compareTo("Admin")==0 )
             {
-                Intent intent = new Intent(this, UserProfile.class);
+                Intent intent = new Intent(this, AdminHome.class);
                 signIn();
                 startActivity(intent);
             }

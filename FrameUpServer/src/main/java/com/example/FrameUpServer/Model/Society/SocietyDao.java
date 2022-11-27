@@ -34,5 +34,8 @@ public class SocietyDao {
         return repository.getSocietyByID(sid);
     }
 
+    public Society getSocietyByName(String sName){
+        return repository.getSocietyByName(sName);
+    }
 
 }

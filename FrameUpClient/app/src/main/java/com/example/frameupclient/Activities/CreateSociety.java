@@ -3,6 +3,7 @@ package com.example.frameupclient.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -10,6 +11,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,6 +25,8 @@ import com.example.frameupclient.Model.Post;
 import com.example.frameupclient.Model.PostAPI;
 import com.example.frameupclient.Model.Society;
 import com.example.frameupclient.Model.SocietyAPI;
+import com.example.frameupclient.Model.SocietyOperative;
+import com.example.frameupclient.Model.SocietyOperativeAPI;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 import com.github.dhaval2404.imagepicker.ImagePicker;
@@ -63,6 +68,12 @@ public class CreateSociety extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_society);
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         intializeComponents();
     }
 
@@ -137,10 +148,13 @@ public class CreateSociety extends AppCompatActivity {
 
         Society society =new Society();
         society.setSocietyHead(head_s);
+
+
         society.setSocietyLikes(0);
         society.setSocietyDescription(descrip_s);
         society.setSocietyName(society_name_s);
         society.setSocietyTagline(tagline_s);
+        society.setSocietyHead(head_s);
         society.setSocietyRating(0);
         society.setSocietyBackground(MediaUrl);
         society.setDateCreated(Date2);
@@ -162,6 +176,34 @@ public class CreateSociety extends AppCompatActivity {
         else{
             Toast.makeText(CreateSociety.this, "Head and Name connot be Null", Toast.LENGTH_SHORT).show();
         }
+
+
+        societyAPI.getSocietyByName(head_s).enqueue(new Callback<Society>() {
+            @Override
+            public void onResponse(Call<Society> call, Response<Society> response) {
+                SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+                SocietyOperative societyOperative = new SocietyOperative();
+                societyOperative.setOperativeType(1);
+                societyOperative.setOperativeRoll(head_s);
+                societyOperative.setSocietyId(response.body().getSocietyId());
+                societyOperativeAPI.save(societyOperative).enqueue(new Callback<SocietyOperative>() {
+                    @Override
+                    public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<SocietyOperative> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call<Society> call, Throwable t) {
+
+            }
+        });
 
     }
 

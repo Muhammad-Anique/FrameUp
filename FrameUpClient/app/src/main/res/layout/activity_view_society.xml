@@ -96,18 +96,6 @@
             app:layout_constraintVertical_bias="0.454"
             app:srcCompat="@drawable/frameuplogo" />
 
-        <Button
-            android:id="@+id/messagener_icon_vs"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="196dp"
-            android:background="@drawable/messanger_icon_not_clicked"
-            app:backgroundTint="@color/Primary_Color_1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_logo_vs"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.473" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

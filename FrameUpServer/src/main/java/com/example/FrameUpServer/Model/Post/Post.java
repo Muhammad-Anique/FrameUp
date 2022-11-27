@@ -17,25 +17,11 @@ public class Post {
     private String authorRoll;
     private String postText;
     private String link;
-
-
-    public String getHashtag() {
-        return hashtag;
-    }
-
-    public void setHashtag(String hashtag) {
-        this.hashtag = hashtag;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-
+    private String eventDate;
+    private String eventStartTime;
+    private String eventVenue;
+    private String eventEndTime;
+    private String eventType;
 
     public int getPostId() {
         return postId;
@@ -53,18 +39,16 @@ public class Post {
         this.postSubject = postSubject;
     }
 
-
-
-    public String getPostType() {
-        return postType;
-    }
-
     public String getPostCreationDate() {
         return postCreationDate;
     }
 
     public void setPostCreationDate(String postCreationDate) {
         this.postCreationDate = postCreationDate;
+    }
+
+    public String getPostType() {
+        return postType;
     }
 
     public void setPostType(String postType) {
@@ -79,16 +63,36 @@ public class Post {
         this.societyAssociated = societyAssociated;
     }
 
+    public String getHashtag() {
+        return hashtag;
+    }
+
+    public void setHashtag(String hashtag) {
+        this.hashtag = hashtag;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
     public String getAuthorRoll() {
         return authorRoll;
     }
 
-    public void setAuthorRoll(String authorName) {
-        this.authorRoll = authorName;
+    public void setAuthorRoll(String authorRoll) {
+        this.authorRoll = authorRoll;
     }
 
     public String getPostText() {
         return postText;
+    }
+
+    public void setPostText(String postText) {
+        this.postText = postText;
     }
 
     public String getLink() {
@@ -98,22 +102,45 @@ public class Post {
     public void setLink(String link) {
         this.link = link;
     }
-    public void setPostText(String postText) {
-        this.postText = postText;
-    }
-    public void setPostAll(String postSubject,String postCreationDate, String postType, String societyAssociated, String authorRoll, String postText, String link,String hashtag, int priority
-    )
-    {
-        setPostSubject(postSubject);
-        setPostCreationDate(postCreationDate);
-        setPostType(postType);
-        setSocietyAssociated(societyAssociated);
-        setAuthorRoll(authorRoll);
-        setPostText(postText);
-        setLink(link);
-        setPriority(priority);
-        setHashtag(hashtag);
 
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public String getEventStartTime() {
+        return eventStartTime;
+    }
+
+    public void setEventStartTime(String eventStartTime) {
+        this.eventStartTime = eventStartTime;
+    }
+
+    public String getEventVenue() {
+        return eventVenue;
+    }
+
+    public void setEventVenue(String eventVenue) {
+        this.eventVenue = eventVenue;
+    }
+
+    public String getEventEndTime() {
+        return eventEndTime;
+    }
+
+    public void setEventEndTime(String eventEndTime) {
+        this.eventEndTime = eventEndTime;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 
     @Override
@@ -129,6 +156,11 @@ public class Post {
                 ", authorRoll='" + authorRoll + '\'' +
                 ", postText='" + postText + '\'' +
                 ", link='" + link + '\'' +
+                ", eventDate='" + eventDate + '\'' +
+                ", eventStartTime='" + eventStartTime + '\'' +
+                ", eventVenue='" + eventVenue + '\'' +
+                ", eventEndTime='" + eventEndTime + '\'' +
+                ", eventType='" + eventType + '\'' +
                 '}';
     }
 }
