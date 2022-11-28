@@ -27,7 +27,7 @@ public class SocietyController {
         return societyDao.getSocietyById(sid);
     }
 
-    @GetMapping("/society/{sName}")
+    @GetMapping("/society/head/{sName}")
     public Society getSocietyByName(@PathVariable String sName)
     {
         return societyDao.getSocietyByName(sName);

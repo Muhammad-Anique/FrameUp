@@ -18,6 +18,6 @@ public interface SocietyAPI {
     @GET("/society/{sid}")
     Call<Society> getSocietyById(@Path("sid") int sid);
 
-    @GET("/society/{sName}")
+    @GET("/society/head/{sName}")
     Call<Society> getSocietyByName(@Path("sName") String sName);
 }

@@ -27,6 +27,10 @@ import com.example.frameupclient.Model.Society;
 import com.example.frameupclient.Model.SocietyAPI;
 import com.example.frameupclient.Model.SocietyOperative;
 import com.example.frameupclient.Model.SocietyOperativeAPI;
+import com.example.frameupclient.Model.SocietyParticipation;
+import com.example.frameupclient.Model.SocietyParticipationAPI;
+import com.example.frameupclient.Model.Visitor;
+import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 import com.github.dhaval2404.imagepicker.ImagePicker;
@@ -59,9 +63,9 @@ public class CreateSociety extends AppCompatActivity {
     String MediaUrl;
     TextView societyError;
     Uri uri;
+    int SocietyIdToBeCreated;
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("Image");
     private StorageReference reference = FirebaseStorage.getInstance().getReference();
-
 
 
     @Override
@@ -159,51 +163,92 @@ public class CreateSociety extends AppCompatActivity {
         society.setSocietyBackground(MediaUrl);
         society.setDateCreated(Date2);
 
-        if(head_s!=null && society_name_s!=null) {
-            societyAPI.save(society).enqueue(new Callback<Society>() {
-                @Override
-                public void onResponse(Call<Society> call, Response<Society> response) {
-                    Toast.makeText(CreateSociety.this, "Society created", Toast.LENGTH_SHORT).show();
-                    societyError.setText("Uploaded");
-                }
 
-                @Override
-                public void onFailure(Call<Society> call, Throwable t) {
-                    Toast.makeText(CreateSociety.this, "Server down", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        else{
-            Toast.makeText(CreateSociety.this, "Head and Name connot be Null", Toast.LENGTH_SHORT).show();
-        }
-
-
-        societyAPI.getSocietyByName(head_s).enqueue(new Callback<Society>() {
+        VisitorAPI visitorAPI = retrofitService.getRetrofit().create(VisitorAPI.class);
+        visitorAPI.getVisitorByRollNo(head_s).enqueue(new Callback<Visitor>() {
             @Override
-            public void onResponse(Call<Society> call, Response<Society> response) {
-                SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
-                SocietyOperative societyOperative = new SocietyOperative();
-                societyOperative.setOperativeType(1);
-                societyOperative.setOperativeRoll(head_s);
-                societyOperative.setSocietyId(response.body().getSocietyId());
-                societyOperativeAPI.save(societyOperative).enqueue(new Callback<SocietyOperative>() {
-                    @Override
-                    public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
+            public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                Toast.makeText(CreateSociety.this, "Head Exists", Toast.LENGTH_SHORT).show();
+                if(head_s!=null && society_name_s!=null) {
+                    societyAPI.save(society).enqueue(new Callback<Society>() {
+                        @Override
+                        public void onResponse(Call<Society> call, Response<Society> response) {
+                            Toast.makeText(CreateSociety.this, "Society Created", Toast.LENGTH_SHORT).show();
+                            societyAPI.getSocietyByName(head_s).enqueue(new Callback<Society>() {
+                                @Override
+                                public void onResponse(Call<Society> call, Response<Society> response) {
+                                    SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+                                    SocietyOperative societyOperative = new SocietyOperative();
+                                    System.out.println(societyOperative);
+                                    societyOperative.setOperativeType(1);
+                                    societyOperative.setOperativeRoll(head_s);
+                                    societyOperative.setSocietyId(response.body().getSocietyId());
+                                    SocietyIdToBeCreated = response.body().getSocietyId();
 
-                    }
+                                    societyOperativeAPI.save(societyOperative).enqueue(new Callback<SocietyOperative>() {
+                                        @Override
+                                        public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
+                                            societyError.setText(" Society is Uploaded");
+                                            SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+                                            SocietyParticipation societyParticipation =new SocietyParticipation();
+                                            societyParticipation.setRollNo(head_s);
+                                            societyParticipation.setSocietyId(SocietyIdToBeCreated);
+                                            societyParticipation.setParticipatedAs(1);
+                                            societyParticipation.setRating(5);
+                                            societyParticipationAPI.save(societyParticipation).enqueue(new Callback<SocietyParticipation>() {
+                                                @Override
+                                                public void onResponse(Call<SocietyParticipation> call, Response<SocietyParticipation> response) {
 
-                    @Override
-                    public void onFailure(Call<SocietyOperative> call, Throwable t) {
+                                                }
 
-                    }
-                });
+                                                @Override
+                                                public void onFailure(Call<SocietyParticipation> call, Throwable t) {
+
+                                                }
+                                            });
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<SocietyOperative> call, Throwable t) {
+                                            Toast.makeText(CreateSociety.this, "Head is not Assigned...... Failure", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<Society> call, Throwable t) {
+
+                                }
+                            });
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Society> call, Throwable t) {
+                            Toast.makeText(CreateSociety.this, "Server down", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(CreateSociety.this, "Head and Name connot be Null", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
 
             @Override
-            public void onFailure(Call<Society> call, Throwable t) {
-
+            public void onFailure(Call<Visitor> call, Throwable t) {
+                Toast.makeText(CreateSociety.this, "Society created", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
 
     }
 
