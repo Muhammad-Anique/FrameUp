@@ -21,6 +21,13 @@ public class SocietyController {
         return societyDao.save(society);
     }
 
+    @DeleteMapping("/society/delete/{sid}")
+    public String deleteSocietyById(@PathVariable int sid){
+        societyDao.delete(sid);
+        return "Deleted";
+    }
+
+
     @GetMapping("/society/{sid}")
     public Society getSociety(@PathVariable int sid)
     {
@@ -32,4 +39,15 @@ public class SocietyController {
     {
         return societyDao.getSocietyByName(sName);
     }
+
+    @DeleteMapping("/society/whole/delete/{sid}")
+    public String deleteMembersAndOperatives(@PathVariable int sid){
+        return societyDao.deleteMembersAndOperatives(sid);
+    }
+
+    @GetMapping("/society/who-is-this/{sid}/{roll}")
+    public int whoIsThis(@PathVariable int sid, @PathVariable String roll){
+        return societyDao.whoIsThis(sid, roll);
+    }
+
 }

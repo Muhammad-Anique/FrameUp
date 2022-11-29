@@ -1,12 +1,15 @@
 package com.example.frameupclient.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,14 +38,16 @@ public class SocietyPage extends AppCompatActivity {
     //RatingSystemDialog
 
     Dialog d;
-
+    AlertDialog dialog;
     //Textviews
-    TextView society_id,society_heading,society_tag, society_description, society_rating_val_card, society_member_count;
+    TextView society_id,society_heading,society_tag, society_description, society_rating_val_card, society_member_count,manage_user_card_text;
     Button  rate, joinUs, viewMember;
     CardView societyAnalytics, society_post;
     String rollNo;
     int demand;
     int sid;
+    int memType; //1 for head, 2 for advisor, 3 for member, 4 for visitor, 5 for request sent member, 6 request sent advisor
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +69,9 @@ public class SocietyPage extends AppCompatActivity {
         society_tag=findViewById(R.id.society_tagline_hh);
         society_member_count=findViewById(R.id.noof_mem_sp);
         society_rating_val_card=findViewById(R.id.rating_value_society_in_page);
+        manage_user_card_text=findViewById(R.id.manage_users_tv);
+
+
 
 
 
@@ -83,6 +91,8 @@ public class SocietyPage extends AppCompatActivity {
         d.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
 
 
+
+
         //Passed Args
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -91,11 +101,31 @@ public class SocietyPage extends AppCompatActivity {
         }
 
 
+        if(rollNo.compareTo("admin")==0){
+            manage_user_card_text.setText("Delete Society");
+            joinUs.setText("Delete");
+        }
 
         //getRating
         RetrofitService retrofitService1 = new RetrofitService();
 
-        SocietyAPI societyAPI=retrofitService1.getRetrofit().create(SocietyAPI.class);
+        //check who is he
+        SocietyAPI societyAPI = retrofitService1.getRetrofit().create(SocietyAPI.class);
+        societyAPI.whoIsThis(sid, rollNo).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                memType=Integer.valueOf(response.body());
+
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+
+
+
         societyAPI.getSocietyById(sid).enqueue(new Callback<Society>() {
             @Override
             public void onResponse(Call<Society> call, Response<Society> response) {
@@ -147,43 +177,166 @@ public class SocietyPage extends AppCompatActivity {
         });
 
 
+        switch(memType){
+            case 1:
+                manage_user_card_text.setText("Hi Head, Manage Members");
+                joinUs.setVisibility(View.INVISIBLE);
+                joinUs.setText("Manage");
+                break;
+            case 2:
+                manage_user_card_text.setText("Hi Advisor !! send advertisement message");
+                joinUs.setVisibility(View.INVISIBLE);
+                break;
+            case 3:
+                manage_user_card_text.setText("Become Advisor");
+                joinUs.setVisibility(View.INVISIBLE);
+                joinUs.setText("Become");
+                break;
+            case 4:
+                manage_user_card_text.setText("Join our Society");
+                joinUs.setVisibility(View.INVISIBLE);
+                joinUs.setText("Join");
+                break;
+            case 5:
+                manage_user_card_text.setText("Your Membership Request has been Sent");
+                joinUs.setVisibility(View.INVISIBLE);
+                break;
+            case 6:
+                manage_user_card_text.setText("Your Advisor Request has been Sent");
+                joinUs.setVisibility(View.INVISIBLE);
+                break;
+        }
+
+
+
+
 
         joinUs.setOnClickListener(view->{
-            RetrofitService retrofitService = new RetrofitService();
-            RequestAPI requestAPI =retrofitService.getRetrofit().create(RequestAPI.class);
-            Request request = new Request();
-            request.setRequestColor("blue");
-            request.setRequestSubject("Become Member");
-            request.setRequestType("bm");
-            request.setSendBy(rollNo);
-
-            SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
-            societyOperativeAPI.getSocietyOperativeByRollAndType(sid,1).enqueue(new Callback<List<SocietyOperative>>() {
-                @Override
-                public void onResponse(Call<List<SocietyOperative>> call, Response<List<SocietyOperative>> response) {
-                    request.setSendTo(response.body().get(0).getOperativeRoll());
-                    request.setRequestText("Make me Member of the Society");
-                    request.setSocietyId(sid);
-                    requestAPI.save(request).enqueue(new Callback<Request>() {
-                        @Override
-                        public void onResponse(Call<Request> call, Response<Request> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Request> call, Throwable t) {
-
-                        }
-                    });
-
+            if(rollNo.compareTo("admin")!=0) {
+                RetrofitService retrofitService = new RetrofitService();
+                RequestAPI requestAPI = retrofitService.getRetrofit().create(RequestAPI.class);
+                SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+                Request request = new Request();
+                switch(memType){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        request.setRequestColor("Orange");
+                        request.setRequestSubject("Become Advisor");
+                        request.setRequestType("becomeAdvisor");
+                        request.setSendBy(rollNo);
+                        societyOperativeAPI.getSocietyOperativeByRollAndType(sid, 1).enqueue(new Callback<List<SocietyOperative>>() {
+                            @Override
+                            public void onResponse(Call<List<SocietyOperative>> call, Response<List<SocietyOperative>> response) {
+                                request.setSendTo(response.body().get(0).getOperativeRoll());
+                                request.setRequestText("Make me Advisor of the Society");
+                                request.setSocietyId(sid);
+                                requestAPI.save(request).enqueue(new Callback<Request>() {
+                                    @Override
+                                    public void onResponse(Call<Request> call, Response<Request> response) {
+                                        joinUs.setVisibility(View.INVISIBLE);
+                                        manage_user_card_text.setText("Your Advisor request has been sent");
+                                    }
+                                    @Override
+                                    public void onFailure(Call<Request> call, Throwable t) {
+                                    }
+                                });
+                            }
+                            @Override
+                            public void onFailure(Call<List<SocietyOperative>> call, Throwable t) {
+                            }
+                        });
+                        break;
+                    case 4:
+                        request.setRequestColor("blue");
+                        request.setRequestSubject("Become Member");
+                        request.setRequestType("becomeMember");
+                        request.setSendBy(rollNo);
+                        societyOperativeAPI.getSocietyOperativeByRollAndType(sid, 1).enqueue(new Callback<List<SocietyOperative>>() {
+                            @Override
+                            public void onResponse(Call<List<SocietyOperative>> call, Response<List<SocietyOperative>> response) {
+                                request.setSendTo(response.body().get(0).getOperativeRoll());
+                                request.setRequestText("Make me Member of the Society");
+                                request.setSocietyId(sid);
+                                requestAPI.save(request).enqueue(new Callback<Request>() {
+                                    @Override
+                                    public void onResponse(Call<Request> call, Response<Request> response) {
+                                        joinUs.setVisibility(View.INVISIBLE);
+                                        manage_user_card_text.setText("Your request has been sent");
+                                    }
+                                    @Override
+                                    public void onFailure(Call<Request> call, Throwable t) {
+                                    }
+                                });
+                            }
+                            @Override
+                            public void onFailure(Call<List<SocietyOperative>> call, Throwable t) {
+                            }
+                        });
+                        break;
                 }
 
-                @Override
-                public void onFailure(Call<List<SocietyOperative>> call, Throwable t) {
+            }
+            else if(rollNo.compareTo("admin")==0){
 
-                }
-            });
+                Intent intent = new Intent(this, ViewSociety.class);
+                intent.putExtra("rollNo",rollNo);
 
+
+                // setup the alert builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("AlertDialog");
+                builder.setMessage("Do you really want to delete the society?");
+                // add the buttons
+
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        SocietyAPI societyAPI = retrofitService1.getRetrofit().create(SocietyAPI.class);
+                        societyAPI.deleteSocietyById(sid).enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                societyAPI.deleteMembersAndOperatives(sid).enqueue(new Callback<String>() {
+                                    @Override
+                                    public void onResponse(Call<String> call, Response<String> response) {
+                                        builder.setTitle("Society is Delete");
+                                        builder.setMessage("Your Move Cannot Be Undo!!");
+                                        dialog.cancel();
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<String> call, Throwable t) {
+
+                                    }
+                                });
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+
+                            }
+                        });
+
+
+                    }
+                });
+                builder.setNegativeButton("Cance", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                // create and show the alert dialog
+                dialog = builder.create();
+                dialog.show();
+
+            }
 
         });
 
@@ -209,11 +362,13 @@ public class SocietyPage extends AppCompatActivity {
         society_post.setOnClickListener(view->{
             Intent intent = new Intent(this, CreateSocietyNewsfeed.class);
             intent.putExtra("societyId",sid);
+            intent.putExtra("memType",memType);
             intent.putExtra("rollNo",rollNo);
             startActivity(intent);
         });
 
     }
+
 
 
 }

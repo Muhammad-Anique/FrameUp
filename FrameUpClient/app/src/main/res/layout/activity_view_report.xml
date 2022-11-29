@@ -24,7 +24,6 @@
         android:id="@+id/constraintLayout_cr"
         android:layout_width="412dp"
         android:layout_height="55dp"
-        android:layout_marginTop="4dp"
         android:background="@drawable/title_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

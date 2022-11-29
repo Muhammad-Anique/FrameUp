@@ -7,7 +7,7 @@
     tools:context=".Activities.ViewSociety">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/view_society_navbaar"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginBottom="16dp"

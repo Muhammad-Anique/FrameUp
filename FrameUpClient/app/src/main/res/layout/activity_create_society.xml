@@ -8,6 +8,33 @@
     tools:context=".Activities.CreateSociety">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_up"
+        android:layout_width="412dp"
+        android:layout_height="55dp"
+        android:background="@drawable/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/rate_society_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Create Society"
+            android:textColor="@color/Primary_Color_1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.478" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="312dp"
@@ -110,7 +137,7 @@
         android:id="@+id/cardView"
         android:layout_width="306dp"
         android:layout_height="164dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="108dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true"
@@ -126,8 +153,8 @@
             android:layout_marginStart="0dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/gradient_grey"
-            app:srcCompat="@drawable/gradient_grey" />
+            android:src="@drawable/create_society_bg_card"
+            app:srcCompat="@drawable/create_society_bg_card" />
 
 
     </androidx.cardview.widget.CardView>
@@ -151,8 +178,8 @@
 
     <TextView
         android:id="@+id/Society_error"
-        android:layout_width="282dp"
-        android:layout_height="15dp"
+        android:layout_width="283dp"
+        android:layout_height="26dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal|center_vertical"
         android:text=" "

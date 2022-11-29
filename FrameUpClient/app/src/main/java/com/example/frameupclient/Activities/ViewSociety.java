@@ -1,12 +1,14 @@
 package com.example.frameupclient.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -32,7 +34,8 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
     List<Society> s;
     RecyclerView RS;
     Button profile_btn,society_btn,home_btn;
-    
+    ConstraintLayout cs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,25 +53,30 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
         profile_btn =findViewById(R.id.profile_button_vs);
         society_btn =findViewById(R.id.society_button_vs);
         home_btn =findViewById(R.id.home_button_vs);
+        cs= findViewById(R.id.view_society_navbaar);
 
         society_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            rollNo = extras.getString("userRoll");
+            rollNo = extras.getString("rollNo");
         }
 
+        if(rollNo.compareTo("admin")==0){
+
+            cs.setVisibility(View.INVISIBLE);
+        }
 
         profile_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, UserProfile.class);
-            intent.putExtra("userRoll", rollNo);
+            intent.putExtra("rollNo", rollNo);
             startActivity(intent);
 
         });
 
         home_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, VisitorHome.class);
-            intent.putExtra("userRoll", rollNo);
+            intent.putExtra("rollNo", rollNo);
             startActivity(intent);
 
         });
@@ -107,7 +115,7 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
         Intent intent = new Intent(this, SocietyPage.class);
         Society society = s.get(position);
         intent.putExtra("societyId",society.getSocietyId());
-        intent.putExtra("userRoll", rollNo);
+        intent.putExtra("rollNo", rollNo);
         startActivity(intent);
     }
 }

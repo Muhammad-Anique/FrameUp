@@ -13,4 +13,6 @@ public interface ReportRepository extends CrudRepository<Report,Integer> {
 
     @Query(value = "Select * from report r where r.society_id = :sid", nativeQuery = true)
     Report getReportById(@Param("sid") int sid);
+
+
 }

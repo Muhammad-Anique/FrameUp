@@ -18,9 +18,9 @@ public class SocietyDao {
     {
         return repository.save(society);
     }
-    public void delete (Society society)
+    public void delete (int sid)
     {
-       repository.delete(society);
+        repository.deleteById(sid);
     }
     public List<Society> getAllSociety()
     {
@@ -38,4 +38,11 @@ public class SocietyDao {
         return repository.getSocietyByName(sName);
     }
 
+    public String deleteMembersAndOperatives(int sid){
+        return repository.deleteMembersAndOperatives(sid);
+    }
+
+    public int whoIsThis(int sid, String rollNo){
+        return repository.whoIsThis(sid,rollNo);
+    }
 }

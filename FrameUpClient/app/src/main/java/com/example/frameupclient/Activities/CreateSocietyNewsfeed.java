@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,6 +17,7 @@ public class CreateSocietyNewsfeed extends AppCompatActivity {
     Button postit,eventit,pollit;
     String rollNo;
     int sid;
+    int memType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,14 @@ public class CreateSocietyNewsfeed extends AppCompatActivity {
         if (extras != null) {
             rollNo = extras.getString("rollNo");
             sid = extras.getInt("societyId");
+            memType = extras.getInt("memType");
+        }
+
+        switch (memType){
+            case 2:
+            case 3:
+                eventit.setVisibility(View.INVISIBLE);
+                break;
         }
 
         postit.setOnClickListener(view->{

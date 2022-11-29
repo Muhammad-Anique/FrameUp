@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/admin_bg_cover"
     android:layout_height="match_parent"
     tools:context=".Activities.AdminHome">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,27 +44,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="648dp"
+        android:layout_width="0dp"
+        android:layout_height="659dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_up"
-        tools:layout_editor_absoluteX="0dp">
-
-        <TextView
-            android:id="@+id/Admin_Desc"
-            android:layout_width="357dp"
-            android:layout_height="104dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/button_style_gradient"
-            android:fontFamily="@font/montserrat_regular"
-            android:gravity="start"
-            android:padding="20dp"
-            android:text="Description"
-            android:textColor="@color/white"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.466">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/JoinCard"
@@ -127,8 +115,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Admin_Desc"
-            app:layout_constraintVertical_bias="0.065">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"

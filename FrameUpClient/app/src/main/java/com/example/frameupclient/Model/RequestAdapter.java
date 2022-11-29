@@ -67,9 +67,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestHolder> {
         Request req = r.get(position);
         holder.Name.setText(req.getSendBy());
         holder.Mail.setText(req.getRequestSubject());
-        if(req.getRequestType().compareTo("BecomeAdvisor")==0){
+        if(req.getRequestType().compareTo("becomeAdvisor")==0){
             holder.Add.setText("Add Advisor");}
-        else if(req.getRequestType().compareTo("BecomeMember")==0){
+        else if(req.getRequestType().compareTo("becomeMember")==0){
             holder.Add.setText("Add Member");}
         else{
             holder.Add.setVisibility(View.INVISIBLE);

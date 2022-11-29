@@ -109,7 +109,7 @@ public class RequestList extends AppCompatActivity implements RequestRvInterface
         SocietyParticipation societyParticipation = new SocietyParticipation();
         SocietyOperative societyOperative= new SocietyOperative();
 
-       if(Req.get(position).getRequestType().compareTo("bm")==0){
+       if(Req.get(position).getRequestType().compareTo("becomeMember")==0){
            societyParticipation.setSocietyId(Req.get(position).getSocietyId());
            societyParticipation.setRating(0);
            societyParticipation.setRollNo(Req.get(position).getSendBy());
@@ -139,7 +139,7 @@ public class RequestList extends AppCompatActivity implements RequestRvInterface
                }
            });
        }
-       else if(Req.get(position).getRequestType().compareTo("ba")==0)
+       else if(Req.get(position).getRequestType().compareTo("becomeAdvisor")==0)
        {
            societyOperative.setSocietyId(Req.get(position).getSocietyId());
            societyOperative.setOperativeRoll(Req.get(position).getSendBy());

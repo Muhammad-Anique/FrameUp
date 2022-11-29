@@ -51,7 +51,7 @@ public class VisitorHome extends AppCompatActivity {
        profile_btn= findViewById(R.id.visitor_home_profile_button);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            rollNo = extras.getString("userRoll");
+            rollNo = extras.getString("rollNo");
             MemberType=extras.getInt("memberType");
         }
 
@@ -59,7 +59,7 @@ public class VisitorHome extends AppCompatActivity {
        messenger_btn.setOnClickListener(view->{
            Intent intent = new Intent(getApplicationContext(), com.example.frameupclient.Activities.StartActivity.class);
            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-           intent.putExtra("userRoll",rollNo);
+           intent.putExtra("rollNo",rollNo);
            startActivity(intent);
        });
 
@@ -69,8 +69,8 @@ public class VisitorHome extends AppCompatActivity {
        notification.setOnClickListener(view->{
            Intent intent1 = new Intent(this, RequestList.class);
            Intent intent2 = new Intent(this, Notification.class);
-           intent1.putExtra("userRoll", rollNo);
-           intent2.putExtra("userRoll", rollNo);
+           intent1.putExtra("rollNo", rollNo);
+           intent2.putExtra("rollNo", rollNo);
            RetrofitService retrofitService = new RetrofitService();
            SocietyOperativeAPI societyOperativeAPI =  retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
            societyOperativeAPI.getSocietyOperativeByRoll(rollNo).enqueue(new Callback<SocietyOperative>() {
@@ -102,7 +102,7 @@ public class VisitorHome extends AppCompatActivity {
 
        society_BTN.setOnClickListener(view->{
            Intent intent = new Intent(this, ViewSociety.class);
-           intent.putExtra("userRoll", rollNo);
+           intent.putExtra("rollNo", rollNo);
            startActivity(intent);
        });
 
@@ -111,7 +111,7 @@ public class VisitorHome extends AppCompatActivity {
 
       profile_btn.setOnClickListener(view->{
           Intent intent = new Intent(this, UserProfile.class);
-          intent.putExtra("userRoll", rollNo);
+          intent.putExtra("rollNo", rollNo);
           startActivity(intent);
       });
 

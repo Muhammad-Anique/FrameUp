@@ -7,13 +7,14 @@
   >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="415dp"
-        android:layout_height="311dp"
+        android:layout_width="418dp"
+        android:layout_height="359dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -32,8 +33,8 @@
                 android:id="@+id/e_type_tv"
                 android:layout_width="54dp"
                 android:layout_height="19dp"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="316dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/orange_box"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
@@ -50,11 +51,12 @@
             <TextView
                 android:id="@+id/Caption_event_tv"
 
-                android:layout_width="240dp"
+                android:layout_width="360dp"
                 android:layout_height="43dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
 
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/white_bg_for_profile"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
@@ -64,7 +66,7 @@
                 android:textColor="#515150"
                 android:textSize="9sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.124"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_event" />
 
@@ -72,8 +74,8 @@
                 android:id="@+id/Date_tv_event"
                 android:layout_width="74dp"
                 android:layout_height="19dp"
-                android:layout_marginTop="104dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="128dp"
+                android:layout_marginEnd="12dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 android:text="23/12/2022"
@@ -88,11 +90,11 @@
                 android:id="@+id/s_time_tv"
                 android:layout_width="111dp"
                 android:layout_height="23dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="9dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/orange_box"
-                android:fontFamily="@font/montserrat_medium"
 
+                android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="Start Time : 11:00 AM"
@@ -100,7 +102,7 @@
                 android:textColor="@color/white"
                 android:textSize="9sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_event" />
+                app:layout_constraintTop_toBottomOf="@+id/Caption_event_tv" />
 
             <TextView
                 android:id="@+id/end_time_tv"
@@ -122,10 +124,11 @@
 
             <TextView
                 android:id="@+id/Venue_tv_event"
-                android:layout_width="133dp"
-                android:layout_height="23dp"
+                android:layout_width="235dp"
+                android:layout_height="43dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="240dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/orange_box"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
@@ -135,7 +138,8 @@
                 android:textColor="@color/white"
                 android:textSize="9sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Caption_event_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,6 +8,33 @@
     tools:context=".Activities.CreateEvent">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_up"
+        android:layout_width="412dp"
+        android:layout_height="55dp"
+        android:background="@drawable/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/rate_society_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Create Event"
+            android:textColor="@color/Primary_Color_2"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.478" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout2_ee"
         android:layout_width="316dp"
@@ -141,7 +168,7 @@
                     android:id="@+id/event_bg_img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/gradient_grey"
+                    android:background="@drawable/create_event_bg"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +184,7 @@
         android:id="@+id/create_event_btn"
         android:layout_width="232dp"
         android:layout_height="44dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/button_style_gradient"
         android:text="Create Event"
         android:textColor="@color/white"
@@ -169,17 +196,17 @@
 
     <TextView
         android:id="@+id/Heading_ee"
-        android:layout_width="211dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="220dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="What's Coming?"
         android:textColor="@color/Primary_Color_2"
-        android:textSize="26dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_up" />
 
     <ProgressBar
         android:id="@+id/progressbar_ee"
@@ -194,13 +221,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        app:layout_constraintVertical_bias="0.808" />
 
     <TextView
         android:id="@+id/event_error"
         android:layout_width="282dp"
         android:layout_height="15dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="52dp"
         android:gravity="center_horizontal|center_vertical"
         android:text=" "
         android:textColor="@color/red"

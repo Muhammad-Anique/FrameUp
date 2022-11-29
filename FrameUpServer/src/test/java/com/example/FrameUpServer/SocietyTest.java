@@ -12,7 +12,14 @@ public class SocietyTest {
     @Autowired
     private SocietyDao societyDao;
 
+
+
     @Test
+    void mem(){
+        System.out.println("the memtype = " + societyDao.whoIsThis(17,"20l-2171"));
+
+    }
+    //@Test
     void addSocietyTest()
     {
         Society society=new Society();

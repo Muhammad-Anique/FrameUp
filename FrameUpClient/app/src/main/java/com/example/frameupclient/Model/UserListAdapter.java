@@ -102,6 +102,9 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String link = response.body().getProfileUrl();
                                 String myString = link.substring(1, link.length()-1);
+                                myString=myString.replace("\\u003d","=");
+                                myString=myString.replace("\\u0026","&");
+                                System.out.println(myString + "hehehehehehe");
                                 Picasso.get().load(myString).into(holder.userImage);
                             }
 

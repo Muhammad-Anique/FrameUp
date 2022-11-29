@@ -242,7 +242,7 @@ public class CreateSociety extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Visitor> call, Throwable t) {
-                Toast.makeText(CreateSociety.this, "Society created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateSociety.this, "Head does not exist", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -273,7 +273,7 @@ public class CreateSociety extends AppCompatActivity {
                         root.child(modelId).setValue(model);
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(CreateSociety.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                        societyBackground.setImageResource(R.drawable.gradient_grey);
+                        societyBackground.setImageResource(R.drawable.create_society_bg_card);
                         Error.setText("image is uploaded wait for data to upload");
                         uploadSociety();
                     }
