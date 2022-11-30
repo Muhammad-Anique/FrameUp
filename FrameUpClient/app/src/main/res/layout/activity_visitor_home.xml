@@ -110,8 +110,8 @@
 
         <Button
             android:id="@+id/visitor_home_page_req_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
             android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:background="@drawable/requestbox_icon"

@@ -39,14 +39,12 @@
         android:id="@+id/linearLayout7"
         android:layout_width="319dp"
         android:layout_height="214dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/Submit_poll_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Poll_Caption"
-        app:layout_constraintVertical_bias="0.097">
+        app:layout_constraintTop_toBottomOf="@+id/Poll_Caption">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -211,7 +209,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:gravity="center"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
 
     </LinearLayout>
 
@@ -244,15 +242,15 @@
         android:id="@+id/Submit_poll_btn"
         android:layout_width="232dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="159dp"
         android:background="@drawable/button_style_gradient"
         android:text="Upload Poll"
         android:textColor="@color/white"
         app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
     <TextView
         android:id="@+id/poll_info"

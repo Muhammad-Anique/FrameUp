@@ -76,7 +76,7 @@ public class OTP_verification extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userEmail = extras.getString("userEmail");//The key argument here must match that used in the other activity
-            rollNo =extras.getString("userRoll");
+            rollNo =extras.getString("rollNo");
             name = extras.getString("userName");
             password =extras.getString("userPassword");
         }

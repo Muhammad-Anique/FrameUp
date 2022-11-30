@@ -47,6 +47,7 @@ public class SocietyPage extends AppCompatActivity {
     int demand;
     int sid;
     int memType; //1 for head, 2 for advisor, 3 for member, 4 for visitor, 5 for request sent member, 6 request sent advisor
+    boolean intiate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,9 @@ public class SocietyPage extends AppCompatActivity {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 memType=Integer.valueOf(response.body());
+                System.out.println("response " + memType);
+                initialize();
+
 
             }
 
@@ -125,7 +129,13 @@ public class SocietyPage extends AppCompatActivity {
         });
 
 
+    }
 
+
+    public void initialize(){
+        RetrofitService retrofitService1 = new RetrofitService();
+        //check who is he
+        SocietyAPI societyAPI = retrofitService1.getRetrofit().create(SocietyAPI.class);
         societyAPI.getSocietyById(sid).enqueue(new Callback<Society>() {
             @Override
             public void onResponse(Call<Society> call, Response<Society> response) {
@@ -177,24 +187,26 @@ public class SocietyPage extends AppCompatActivity {
         });
 
 
-        switch(memType){
+        switch (memType) {
             case 1:
+                System.out.println("here");
                 manage_user_card_text.setText("Hi Head, Manage Members");
-                joinUs.setVisibility(View.INVISIBLE);
+                joinUs.setVisibility(View.VISIBLE);
                 joinUs.setText("Manage");
                 break;
             case 2:
-                manage_user_card_text.setText("Hi Advisor !! send advertisement message");
+                manage_user_card_text.setText("Hi Advisor !! ");
                 joinUs.setVisibility(View.INVISIBLE);
                 break;
             case 3:
-                manage_user_card_text.setText("Become Advisor");
-                joinUs.setVisibility(View.INVISIBLE);
+                manage_user_card_text.setText("Hi Dear Member ........");
                 joinUs.setText("Become");
+                joinUs.setVisibility(View.INVISIBLE);
+
                 break;
             case 4:
                 manage_user_card_text.setText("Join our Society");
-                joinUs.setVisibility(View.INVISIBLE);
+                joinUs.setVisibility(View.VISIBLE);
                 joinUs.setText("Join");
                 break;
             case 5:
@@ -202,11 +214,10 @@ public class SocietyPage extends AppCompatActivity {
                 joinUs.setVisibility(View.INVISIBLE);
                 break;
             case 6:
-                manage_user_card_text.setText("Your Advisor Request has been Sent");
+                manage_user_card_text.setText("Hi Member");
                 joinUs.setVisibility(View.INVISIBLE);
                 break;
         }
-
 
 
 
@@ -218,37 +229,6 @@ public class SocietyPage extends AppCompatActivity {
                 SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
                 Request request = new Request();
                 switch(memType){
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        request.setRequestColor("Orange");
-                        request.setRequestSubject("Become Advisor");
-                        request.setRequestType("becomeAdvisor");
-                        request.setSendBy(rollNo);
-                        societyOperativeAPI.getSocietyOperativeByRollAndType(sid, 1).enqueue(new Callback<List<SocietyOperative>>() {
-                            @Override
-                            public void onResponse(Call<List<SocietyOperative>> call, Response<List<SocietyOperative>> response) {
-                                request.setSendTo(response.body().get(0).getOperativeRoll());
-                                request.setRequestText("Make me Advisor of the Society");
-                                request.setSocietyId(sid);
-                                requestAPI.save(request).enqueue(new Callback<Request>() {
-                                    @Override
-                                    public void onResponse(Call<Request> call, Response<Request> response) {
-                                        joinUs.setVisibility(View.INVISIBLE);
-                                        manage_user_card_text.setText("Your Advisor request has been sent");
-                                    }
-                                    @Override
-                                    public void onFailure(Call<Request> call, Throwable t) {
-                                    }
-                                });
-                            }
-                            @Override
-                            public void onFailure(Call<List<SocietyOperative>> call, Throwable t) {
-                            }
-                        });
-                        break;
                     case 4:
                         request.setRequestColor("blue");
                         request.setRequestSubject("Become Member");
@@ -367,8 +347,8 @@ public class SocietyPage extends AppCompatActivity {
             startActivity(intent);
         });
 
-    }
 
+    }
 
 
 }

@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="75dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/user_image_rr"
@@ -33,15 +33,15 @@
 
         <TextView
             android:id="@+id/email_rr_lay"
-            android:layout_width="162dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="12dp"
+            android:layout_width="179dp"
+            android:layout_height="33dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="l202171@lhr.nu.edu.pk"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.338"
+            app:layout_constraintHorizontal_bias="0.372"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView

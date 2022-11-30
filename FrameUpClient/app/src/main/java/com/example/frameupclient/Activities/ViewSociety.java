@@ -33,7 +33,7 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
     String rollNo;
     List<Society> s;
     RecyclerView RS;
-    Button profile_btn,society_btn,home_btn;
+    Button profile_btn,society_btn,home_btn,req_button;
     ConstraintLayout cs;
 
     @Override
@@ -53,6 +53,7 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
         profile_btn =findViewById(R.id.profile_button_vs);
         society_btn =findViewById(R.id.society_button_vs);
         home_btn =findViewById(R.id.home_button_vs);
+
         cs= findViewById(R.id.view_society_navbaar);
 
         society_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));

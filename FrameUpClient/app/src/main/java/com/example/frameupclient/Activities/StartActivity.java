@@ -45,7 +45,7 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
     protected void onCreate(Bundle savedInstanceState) {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            rollNo = extras.getString("userRoll");
+            rollNo = extras.getString("rollNo");
         }
         super.onCreate(savedInstanceState);
         binding = ActivityStartBinding.inflate(getLayoutInflater());
@@ -75,7 +75,7 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
 
         binding.homeInMessanger.setOnClickListener(view->{
             Intent intent = new Intent(this, VisitorHome.class);
-            intent.putExtra("userRoll",rollNo);
+            intent.putExtra("rollNo",rollNo);
             startActivity(intent);
         });
     }

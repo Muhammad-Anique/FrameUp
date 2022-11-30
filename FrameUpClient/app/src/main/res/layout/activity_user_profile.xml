@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/rate_society_tittle"
+            android:id="@+id/Poll_t_b"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
@@ -91,8 +91,8 @@
 
         <Button
             android:id="@+id/society_button_up"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/society_icon"
@@ -226,9 +226,24 @@
         <TextView
             android:id="@+id/error_in_user_profile"
             android:layout_width="wrap_content"
-            android:textSize="8sp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="140dp"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/report_user_in_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/become_the_advisor"
+            android:layout_width="156dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/button_stroke"
+            android:text="Become Advisor"
+            android:textColor="@color/Primary_Color_1"
+            android:textSize="9sp"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toTopOf="@+id/report_user_in_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

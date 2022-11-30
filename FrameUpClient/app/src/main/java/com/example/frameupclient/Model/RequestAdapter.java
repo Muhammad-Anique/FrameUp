@@ -63,14 +63,18 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestHolder> {
     @Override
     public void onBindViewHolder(@NonNull RequestHolder holder, int position) {
 
-        System.out.println("IN adapter" + r.get(position) + "About to bind");
+        System.out.println("In adapter" + r.get(position) + "About to bind");
         Request req = r.get(position);
         holder.Name.setText(req.getSendBy());
-        holder.Mail.setText(req.getRequestSubject());
+        holder.Mail.setText(req.getRequestText());
         if(req.getRequestType().compareTo("becomeAdvisor")==0){
             holder.Add.setText("Add Advisor");}
         else if(req.getRequestType().compareTo("becomeMember")==0){
             holder.Add.setText("Add Member");}
+        else if(req.getRequestType().compareTo("societyCreation")==0)
+        {
+            holder.Add.setText("Create");
+        }
         else{
             holder.Add.setVisibility(View.INVISIBLE);
         }

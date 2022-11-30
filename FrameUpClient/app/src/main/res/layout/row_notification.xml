@@ -12,6 +12,7 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/noti_boti"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/warning_red">

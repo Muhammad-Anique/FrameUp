@@ -68,7 +68,7 @@ public class Registeration extends AppCompatActivity {
     {
         Intent intent =new Intent(this, OTP_verification.class);
         intent.putExtra("userEmail",email);
-        intent.putExtra("userRoll", Roll);
+        intent.putExtra("rollNo", Roll);
         intent.putExtra("userName",name);
         intent.putExtra("userPassword",password);
         startActivity(intent);

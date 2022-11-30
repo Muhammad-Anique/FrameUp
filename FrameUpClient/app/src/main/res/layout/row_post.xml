@@ -7,8 +7,9 @@
   >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="418dp"
-        android:layout_height="359dp"
+        android:layout_width="411dp"
+        android:layout_height="338dp"
+        android:padding="3dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true"
@@ -35,7 +36,7 @@
                 android:layout_height="19dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/orange_box"
+                android:background="@drawable/blue_it_box"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 android:text="Seminar"
@@ -66,7 +67,6 @@
                 android:textColor="#515150"
                 android:textSize="9sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_event" />
 
@@ -90,56 +90,63 @@
                 android:id="@+id/s_time_tv"
                 android:layout_width="111dp"
                 android:layout_height="23dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/orange_box"
+                android:layout_marginTop="10dp"
 
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/white_bg_for_profile"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="Start Time : 11:00 AM"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="#515150"
                 android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Caption_event_tv" />
+                app:layout_constraintHorizontal_bias="0.532"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Caption_event_tv"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/end_time_tv"
                 android:layout_width="111dp"
                 android:layout_height="23dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="4dp"
 
-                android:background="@drawable/orange_box"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/white_bg_for_profile"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="End Time : 12:00 PM"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="#515150"
                 android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/s_time_tv" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/s_time_tv" />
 
             <TextView
                 android:id="@+id/Venue_tv_event"
-                android:layout_width="235dp"
-                android:layout_height="43dp"
+                android:layout_width="123dp"
+                android:layout_height="23dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/orange_box"
+                android:background="@drawable/white_bg_for_profile"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="Venue : Auditorium"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="#515150"
                 android:textSize="9sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Caption_event_tv" />
+                app:layout_constraintEnd_toStartOf="@+id/s_time_tv"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

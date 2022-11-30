@@ -16,18 +16,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView_logo_noti"
-            android:layout_width="118dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="24dp"
+        <TextView
+            android:id="@+id/noti_t_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Notification"
+            android:textColor="@color/Primary_Color_1"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.454"
-            app:srcCompat="@drawable/frameuplogo" />
-
-
+            app:layout_constraintVertical_bias="0.478" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -99,9 +102,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notificationRecyc"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="789dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_noti" />

@@ -63,7 +63,7 @@ public class PollAdapter extends RecyclerView.Adapter<PollHolder> {
     public void onBindViewHolder(@NonNull PollHolder holder, int position) {
         Poll poll = p.get(position);
         holder.poll_society_related.setText(poll.getSocietyRelated());
-        holder.popular_option.setText("PopularAns : " + poll.getPollOption1());
+        holder.popular_option.setText("Options  : " + poll.getPollOption1() + "....");
         holder.poll_responses.setText(String.valueOf("Responses : " + poll.getNoOfResponses()));
         holder.poll_caption.setText(poll.getPollStatement());
     }

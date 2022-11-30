@@ -49,6 +49,17 @@ public class VisitorHome extends AppCompatActivity {
        notification=findViewById(R.id.visitor_home_page_req_button);
        society_BTN=findViewById(R.id.visitor_home_page_society_button);
        profile_btn= findViewById(R.id.visitor_home_profile_button);
+       poll_btn=findViewById(R.id.poll_btn_home);
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        rvMain = findViewById(R.id.visitor_home_page_recycler_view);
+        rvMain.setLayoutManager(new LinearLayoutManager(this));
+        loadPosts();
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             rollNo = extras.getString("rollNo");
@@ -65,6 +76,12 @@ public class VisitorHome extends AppCompatActivity {
 
 
 
+        poll_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this,ViewPoll.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+
+        });
 
        notification.setOnClickListener(view->{
            Intent intent1 = new Intent(this, RequestList.class);
@@ -94,16 +111,11 @@ public class VisitorHome extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
        society_BTN.setOnClickListener(view->{
            Intent intent = new Intent(this, ViewSociety.class);
            intent.putExtra("rollNo", rollNo);
            startActivity(intent);
+
        });
 
 
@@ -113,19 +125,12 @@ public class VisitorHome extends AppCompatActivity {
           Intent intent = new Intent(this, UserProfile.class);
           intent.putExtra("rollNo", rollNo);
           startActivity(intent);
+
       });
 
 
 
-        Window window =this.getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
-        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
-        rvMain = findViewById(R.id.visitor_home_page_recycler_view);
-        rvMain.setLayoutManager(new LinearLayoutManager(this));
-        loadPosts();
+
     }
 
 

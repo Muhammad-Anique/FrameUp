@@ -27,6 +27,10 @@ import android.widget.Toast;
 import com.example.frameupclient.Model.ImageModel;
 import com.example.frameupclient.Model.Post;
 import com.example.frameupclient.Model.PostAPI;
+import com.example.frameupclient.Model.Request;
+import com.example.frameupclient.Model.RequestAPI;
+import com.example.frameupclient.Model.SocietyOperative;
+import com.example.frameupclient.Model.SocietyOperativeAPI;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.R;
@@ -63,6 +67,7 @@ import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -89,11 +94,13 @@ public class UserProfile extends AppCompatActivity {
     Intent intent_home;
 
     Button profile_btn;
+    Button notification;
     Button home_btn;
     Button society_btn;
     Button report_user;
+    Button become_ad;
 
-    TextView eip;
+    TextView eip,proError;
 
     ConstraintLayout nv;
 
@@ -102,10 +109,17 @@ public class UserProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-      intent_home = new Intent(this, VisitorHome.class);
+        intent_home = new Intent(this, VisitorHome.class);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo =extras.getString("rollNo");
+        }
+
         preferenceManager = new PreferenceManager(getApplicationContext());
         TextView name = findViewById(R.id.profile_name);
         TextView email =findViewById(R.id.profile_email);
@@ -113,9 +127,11 @@ public class UserProfile extends AppCompatActivity {
         report_user=findViewById(R.id.report_user_in_profile);
         nv=findViewById(R.id.nv_in_user_profile);
         eip=findViewById(R.id.error_in_user_profile);
+        proError = findViewById(R.id.profile_extra_info);
 
-
+        become_ad=findViewById(R.id.become_the_advisor);
         profile_btn =findViewById(R.id.profile_button_up);
+        notification=findViewById(R.id.req_button_up);
         profile_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
 
         society_btn =findViewById(R.id.society_button_up);
@@ -126,10 +142,64 @@ public class UserProfile extends AppCompatActivity {
 
         });
 
+        notification.setOnClickListener(view->{
+            Intent intent1 = new Intent(this, RequestList.class);
+            Intent intent2 = new Intent(this, Notification.class);
+            intent1.putExtra("rollNo", rollNo);
+            intent2.putExtra("rollNo", rollNo);
+            RetrofitService retrofitService = new RetrofitService();
+            SocietyOperativeAPI societyOperativeAPI =  retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+            societyOperativeAPI.getSocietyOperativeByRoll(rollNo).enqueue(new Callback<SocietyOperative>() {
+                @Override
+                public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
+                    if(response.body().getOperativeType()==1){
+                        startActivity(intent1);
+                    }else if(response.body()==null)
+                    {
+                        startActivity(intent2);
+                    }
+                }
+                @Override
+                public void onFailure(Call<SocietyOperative> call, Throwable t) {
+                    startActivity(intent2);
+
+                }
+            });
+            finish();
+        });
+
+
+        become_ad.setOnClickListener(view->{
+            RetrofitService retrofitService = new RetrofitService();
+            RequestAPI requestAPI = retrofitService.getRetrofit().create(RequestAPI.class);
+            SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+            Request request = new Request();
+            request.setRequestColor("red");
+            request.setRequestSubject("Become Advisor");
+            request.setRequestType("becomeAdvisor");
+            request.setSendBy(rollNo);
+            request.setSendTo("Admin");
+            request.setRequestText("Make Me A Society Advisor");
+            request.setSocietyId(999);
+            requestAPI.save(request).enqueue(new Callback<Request>() {
+              @Override
+              public void onResponse(Call<Request> call, Response<Request> response) {
+               proError.setText("Your Request has been sent");
+              }
+
+              @Override
+              public void onFailure(Call<Request> call, Throwable t) {
+
+              }
+          });
+        });
+
+
         report_user.setOnClickListener(view->{
             Intent intent = new Intent(this, CreateNotice.class);
             intent.putExtra("rollNo",rollNo);
             startActivity(intent);
+            finish();
         });
 
         home_btn =findViewById(R.id.home_button_up);
@@ -137,6 +207,7 @@ public class UserProfile extends AppCompatActivity {
             Intent intent = new Intent(this, VisitorHome.class);
             intent.putExtra("rollNo",rollNo);
             startActivity(intent);
+            finish();
         });
 
         Window window =this.getWindow();
@@ -157,10 +228,6 @@ public class UserProfile extends AppCompatActivity {
 
 
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            rollNo =extras.getString("userRoll");
-        }
 
 
 
@@ -318,7 +385,7 @@ public class UserProfile extends AppCompatActivity {
                         if(!profilePicUploaded) {
                             signup();
                             finish();
-                            intent_home.putExtra("userRoll",rollNo);
+                            intent_home.putExtra("rollNo",rollNo);
                             startActivity(intent_home);
 
                         }
@@ -352,18 +419,18 @@ public class UserProfile extends AppCompatActivity {
 
     public boolean uploadToDataBase()
     {
-        TextView postError = findViewById(R.id.profile_extra_info);
+
         RetrofitService retrofitService = new RetrofitService();
         VisitorAPI visitorAPI =  retrofitService.getRetrofit().create(VisitorAPI.class);
         visitorAPI.updateProfilePic(rollNo, profilePicUrl).enqueue(new Callback<Visitor>() {
             @Override
             public void onResponse(Call<Visitor> call, Response<Visitor> response) {
-                postError.setText("Uploaded to Database");
+                proError.setText("Uploaded to Database");
             }
 
             @Override
             public void onFailure(Call<Visitor> call, Throwable t) {
-                postError.setText("Error in uploading to Database");
+                proError.setText("Error in uploading to Database");
             }
         });
 

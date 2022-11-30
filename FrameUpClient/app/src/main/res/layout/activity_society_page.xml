@@ -40,7 +40,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/society_drawable_1"
                 android:fontFamily="@font/montserrat_regular"
-                android:gravity="start"
+                android:gravity="center"
                 android:padding="20dp"
                 android:text="Description"
                 android:textColor="#434343"
@@ -71,10 +71,11 @@
 
                     <TextView
                         android:id="@+id/manage_users_tv"
-                        android:layout_width="111dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="32dp"
+                        android:layout_width="167dp"
+                        android:layout_height="59dp"
+                        android:layout_marginStart="28dp"
                         android:fontFamily="@font/montserrat_medium"
+                        android:gravity="center"
                         android:text="Join Our Society"
                         android:textColor="@color/white"
                         android:textSize="15sp"
@@ -82,7 +83,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.583" />
+                        app:layout_constraintVertical_bias="0.511" />
 
                     <Button
                         android:id="@+id/Manage_users"

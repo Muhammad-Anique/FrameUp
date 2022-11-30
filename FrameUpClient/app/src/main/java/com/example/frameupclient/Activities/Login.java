@@ -61,7 +61,7 @@ public class  Login extends AppCompatActivity {
             }
             else{
                 Intent intent = new Intent(this, UserProfile.class);
-                intent.putExtra("userRoll", RollNumber);
+                intent.putExtra("rollNo", RollNumber);
                 signIn();
                 startActivity(intent);
             }

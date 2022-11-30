@@ -26,6 +26,7 @@ public class ViewPoll extends AppCompatActivity implements PollRecyclerViewInter
 
     List<Poll> p;
     RecyclerView R1;
+    String rollNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,10 @@ public class ViewPoll extends AppCompatActivity implements PollRecyclerViewInter
         window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         R1 =findViewById(R.id.poll_list_view_recycler);
         R1.setLayoutManager(new LinearLayoutManager(this));
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo = extras.getString("rollNo");
+        }
         loadpolls();
 
     }
@@ -70,6 +75,7 @@ public class ViewPoll extends AppCompatActivity implements PollRecyclerViewInter
         Intent intent = new Intent(this, PollStructure.class);
         Poll polly = p.get(position);
         intent.putExtra("pollId",polly.getPollId());
+        intent.putExtra("rollNo",rollNo);
         startActivity(intent);
     }
 }

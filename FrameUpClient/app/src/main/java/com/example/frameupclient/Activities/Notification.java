@@ -29,6 +29,7 @@ public class Notification extends AppCompatActivity {
 
     RecyclerView Rn;
     String rollNo;
+    Button noti_profile,noti_home,noti_soci;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +45,21 @@ public class Notification extends AppCompatActivity {
 
         Button notification_btn;
         notification_btn=findViewById(R.id.noti_page_req_button);
+        noti_home=findViewById(R.id.noti_page_home_btn);
+        noti_profile=findViewById(R.id.noti_profile_button);
+        noti_soci=findViewById(R.id.noti_page_society_button);
+
+
+
         notification_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            rollNo = extras.getString("userRoll");
+            rollNo = extras.getString("rollNo");
             System.out.println("Roll passes by home" + rollNo);
         }
+
+
 
         loadRequests();
 

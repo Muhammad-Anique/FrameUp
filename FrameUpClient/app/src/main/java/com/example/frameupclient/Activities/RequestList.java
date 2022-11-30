@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +54,18 @@ public class RequestList extends AppCompatActivity implements RequestRvInterface
 
         Rv=findViewById(R.id.Recyc_req_list);
         Rv.setLayoutManager(new LinearLayoutManager(this));
+
+
         society_btn=findViewById(R.id.req_page_society_button);
         home_btn=findViewById(R.id.req_page_home_btn);
         nvb=findViewById(R.id.nvrl);
         notification_btn=findViewById(R.id.req_page_noti_button);
         profile_btn=findViewById(R.id.req_profile_button);
+
+
+
+
+
         notification_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
 
         Bundle extras = getIntent().getExtras();
@@ -71,6 +79,31 @@ public class RequestList extends AppCompatActivity implements RequestRvInterface
         }
 
         loadRequests();
+
+
+
+
+        home_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this, VisitorHome.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+            finish();
+
+        });
+
+        society_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this, ViewSociety.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+            finish();
+        });
+
+        profile_btn.setOnClickListener(view->{
+            Intent intent = new Intent(this, UserProfile.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+            finish();
+        });
 
     }
 

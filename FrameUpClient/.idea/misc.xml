@@ -10,6 +10,7 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/background_chat_input.xml" value="0.177" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/blue_box.xml" value="0.1055" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/blue_it_box.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/box_stroke.xml" value="0.1055" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/button_stroke.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/button_style_gradient.xml" value="0.1" />
@@ -26,6 +27,7 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/progress_bg.xml" value="0.1055" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/progress_track.xml" value="0.1055" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/radio_button.xml" value="0.2495" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/requestbox_icon.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/selector.xml" value="0.1055" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/society_drawable_1.xml" value="0.1" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/drawable/society_drawable_1_1.xml" value="0.1" />
@@ -41,7 +43,7 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_chat.xml" value="0.176" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_event.xml" value="0.2" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_notice.xml" value="0.264" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_poll.xml" value="0.176" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_poll.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_post.xml" value="0.2" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_report.xml" value="0.536" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_create_request.xml" value="0.1" />
@@ -67,13 +69,13 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_society_page.xml" value="0.35325506937033085" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_start.xml" value="0.2" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_user_list.xml" value="0.264" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_user_profile.xml" value="0.4" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_users.xml" value="0.259375" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_view_poll.xml" value="0.1890625" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_view_poll.xml" value="0.2" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_view_post.xml" value="0.176" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_view_report.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_view_society.xml" value="0.2" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_visitor_home.xml" value="0.4" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_visitor_home.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/activity_visitor_list.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/custom_congratulate_dialogue.xml" value="0.4" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/custom_failure_dialog.xml" value="0.2" />
@@ -91,8 +93,8 @@
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_newsfeed.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_notification.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_poll.xml" value="0.6" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_post.xml" value="0.4" />
-        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_request.xml" value="0.1" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_post.xml" value="0.536" />
+        <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_request.xml" value="0.536" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_society.xml" value="0.4" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/row_user.xml" value="0.264" />
         <entry key="..\:/Users/hp/Desktop/FrameUp/FrameUpClient/app/src/main/res/layout/success_member_dialogue.xml" value="0.4" />
