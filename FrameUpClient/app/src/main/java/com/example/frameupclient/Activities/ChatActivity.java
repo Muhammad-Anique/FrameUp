@@ -5,12 +5,16 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.frameupclient.Adapter.ChatAdapter;
 import com.example.frameupclient.Model.ChatMessage;
 import com.example.frameupclient.Model.Users;
+import com.example.frameupclient.R;
 import com.example.frameupclient.databinding.ActivityChatBinding;
 import com.example.frameupclient.utilities.Constants;
 import com.example.frameupclient.utilities.PreferenceManager;
@@ -44,6 +48,12 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityChatBinding.inflate(getLayoutInflater());
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         setContentView(binding.getRoot());
         setListeners();
         loadReceiverDetails();

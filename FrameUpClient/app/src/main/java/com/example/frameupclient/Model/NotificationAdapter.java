@@ -51,20 +51,20 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationHolder
         System.out.println(req);
         holder.Heading.setText(req.getRequestSubject());
         holder.Text.setText(req.getRequestText());
-        holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
-//        if(req.getRequestType().compareTo("suspension")==0){
-//            holder.Heading.setText(req.getRequestSubject());
-//            holder.Text.setText(req.getRequestText());
-//        }
-//        else if(req.getRequestType().compareTo("warning")==0) {
-//            holder.Heading.setText(req.getRequestSubject());
-//            holder.Text.setText(req.getRequestText());
-//        }
-//        else if(req.getRequestType().compareTo("youBecameMember")==0) {
-//            holder.Heading.setText(req.getRequestSubject());
-//            holder.Text.setText(req.getRequestText());
-//        }
-//        else if(req.getRequestType().compareTo("SocietyCreate")==0){
+
+        if(req.getRequestType().compareTo("suspension")==0){
+            holder.noti.setBackgroundColor((Color.parseColor("#A90303")));
+        }
+        else if(req.getRequestType().compareTo("warning")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
+        }
+        else if(req.getRequestType().compareTo("youBecameMember")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+        }
+        else{
+            holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
+        }
+//        else if(req.getRequestType().compareTo("SocietyCreated")==0){
 //            holder.Heading.setText(req.getRequestSubject());
 //            holder.Text.setText(req.getRequestText());
 //        }

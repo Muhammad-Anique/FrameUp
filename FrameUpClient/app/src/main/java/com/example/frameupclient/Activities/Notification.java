@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -49,15 +50,36 @@ public class Notification extends AppCompatActivity {
         noti_profile=findViewById(R.id.noti_profile_button);
         noti_soci=findViewById(R.id.noti_page_society_button);
 
-
-
-        notification_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             rollNo = extras.getString("rollNo");
             System.out.println("Roll passes by home" + rollNo);
         }
+
+        noti_soci.setOnClickListener(view->{
+            Intent intent = new Intent(this, ViewSociety.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+            finish();
+
+        });
+
+        noti_home.setOnClickListener(view->{
+            Intent intent = new Intent(this, VisitorHome.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+            finish();
+        });
+
+        noti_profile.setOnClickListener(view->{
+            Intent intent = new Intent(this, UserProfile.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+            finish();
+        });
+
+        notification_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
+
 
 
 

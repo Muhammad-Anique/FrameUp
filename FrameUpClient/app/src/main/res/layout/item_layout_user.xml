@@ -9,7 +9,7 @@
         android:id="@+id/imageProfile"
         android:layout_width="@dimen/_35sdp"
         android:layout_height="@dimen/_35sdp"
-        android:background="@color/secondary_text"
+        android:background="@color/white"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

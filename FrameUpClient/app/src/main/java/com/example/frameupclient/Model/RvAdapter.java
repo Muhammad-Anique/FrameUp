@@ -108,6 +108,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     ((RowHolder) holder).authorEmail.setText(Email);
                     ((RowHolder) holder).hashtag.setText(post.getHashtag());
                     ((RowHolder) holder).caption.setText(post.getPostText());
+                    ((RowHolder) holder).noOfLikes.setText(post.getPostCreationDate());
 
                 }
 

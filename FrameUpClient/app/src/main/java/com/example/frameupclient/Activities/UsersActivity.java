@@ -3,12 +3,16 @@ package com.example.frameupclient.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.frameupclient.Adapter.UsersAdapter;
 import com.example.frameupclient.Model.Users;
+import com.example.frameupclient.R;
 import com.example.frameupclient.databinding.ActivityUsersBinding;
 import com.example.frameupclient.listeners.UserListener;
 import com.example.frameupclient.utilities.Constants;
@@ -28,6 +32,12 @@ public class UsersActivity extends AppCompatActivity implements UserListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_users);
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         binding = ActivityUsersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager  = new PreferenceManager(getApplicationContext());

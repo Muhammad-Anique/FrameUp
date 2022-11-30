@@ -6,9 +6,12 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.frameupclient.Adapter.RecentConversationAdapter;
 import com.example.frameupclient.Model.ChatMessage;
@@ -48,6 +51,12 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
             rollNo = extras.getString("rollNo");
         }
         super.onCreate(savedInstanceState);
+        Window window =this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
+        window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         binding = ActivityStartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
