@@ -48,8 +48,13 @@ public class CreateSocietyNewsfeed extends AppCompatActivity {
 
         switch (memType){
             case 1:
+                eventit.setVisibility(View.VISIBLE);
+                postit.setVisibility(View.VISIBLE);
+                pollit.setVisibility(View.VISIBLE);
+                break;
             case 2:
                 eventit.setVisibility(View.INVISIBLE);
+                break;
             case 3:
                 eventit.setVisibility(View.INVISIBLE);
                 break;

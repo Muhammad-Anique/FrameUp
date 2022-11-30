@@ -26,7 +26,7 @@ public interface SocietyParticipationRepository extends CrudRepository<SocietyPa
     @Query(value = "select * from society_participation sp where sp.society_id =:sid and sp.roll_no=:roll",nativeQuery = true)
     SocietyParticipation getSocietyParticipation(@Param("sid") int sid,@Param("roll") String roll);
 
-    @Query(value = "select  count(*) from society_participation sp join society_operative so on sp.roll_no=so.operative_roll where sp.society_id =:sid and sp.roll_no = :roll and so.operative_roll is null \n", nativeQuery = true)
+    @Query(value = "select  count(*) from society_participation sp  left outer join society_operative so on sp.roll_no=so.operative_roll where sp.society_id =:sid and sp.roll_no = :roll and so.operative_roll is null \n", nativeQuery = true)
     int getSocietyParticipationBySIDAndRoll(@Param("sid") int sid, @Param("roll") String roll);
 
     @Query(value ="delete from society_participation where society_id=:sid and roll_no = :roll; select 'true';",nativeQuery = true)

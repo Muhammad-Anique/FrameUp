@@ -169,12 +169,16 @@ public class CreatePoll extends AppCompatActivity {
                 poll.setSocietyRelated(String.valueOf(sid));
                 poll.setNoOfResponses(0);
                 poll.setTotalOptions(count);
+                if(O1)
                 poll.setPollOption1(opt1);
                 poll.setOption1Responses(0);
+                if(O2)
                 poll.setPollOption2(opt2);
                 poll.setOption2Responses(0);
+                if(O3)
                 poll.setPollOption3(opt3);
                 poll.setOption3Responses(0);
+                if(O4)
                 poll.setPollOption4(opt4);
                 poll.setOption4Responses(0);
                 RetrofitService retrofitService = new RetrofitService();

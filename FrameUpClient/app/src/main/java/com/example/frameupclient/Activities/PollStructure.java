@@ -114,6 +114,7 @@ public class PollStructure extends AppCompatActivity {
             @Override
             public void onResponse(Call<Poll> call, Response<Poll> response) {
                 poll=response.body();
+                System.out.println(poll);
                 IntializePoll();
             }
 
@@ -256,24 +257,32 @@ public class PollStructure extends AppCompatActivity {
             tvOption1.setText(poll.getPollOption1());
         }else{
             tvOption1.setVisibility(View.INVISIBLE);
+            seekBar1.setVisibility(View.INVISIBLE);
+            tvPercent1.setVisibility(View.INVISIBLE);
         }
 
         if(poll.getPollOption2()!=null){
             tvOption2.setText(poll.getPollOption2());
         }else{
             tvOption2.setVisibility(View.INVISIBLE);
+            seekBar2.setVisibility(View.INVISIBLE);
+            tvPercent2.setVisibility(View.INVISIBLE);
         }
 
         if(poll.getPollOption3()!=null){
             tvOption3.setText(poll.getPollOption3());
         }else{
             tvOption3.setVisibility(View.INVISIBLE);
+            seekBar3.setVisibility(View.INVISIBLE);
+            tvPercent3.setVisibility(View.INVISIBLE);
         }
 
         if(poll.getPollOption4()!=null){
             tvOption4.setText(poll.getPollOption4());
-        }else{
+        }else if(poll.getPollOption4()==null){
             tvOption4.setVisibility(View.INVISIBLE);
+            seekBar4.setVisibility(View.INVISIBLE);
+            tvPercent4.setVisibility(View.INVISIBLE);
         }
 
         count1 =poll.getOption1Responses();

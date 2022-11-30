@@ -55,6 +55,8 @@ public class RemoveMember extends AppCompatActivity {
         Remove_Member=findViewById(R.id.rm_member);
         name= findViewById(R.id.name_notice_lay_rm);
         email=findViewById(R.id.email_ru_notice_rm);
+        p=findViewById(R.id.progressBar_remove);
+        p.setVisibility(View.INVISIBLE);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -76,27 +78,55 @@ public class RemoveMember extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                p.setVisibility(View.VISIBLE);
                 RetrofitService retrofitService = new RetrofitService();
                 VisitorAPI visitorAPI =retrofitService.getRetrofit().create(VisitorAPI.class);
-                SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+                if(removeRoll.getText().length()>5) {
+                    visitorAPI.getVisitorByRollNo(removeRoll.getText().toString()).enqueue(new Callback<Visitor>() {
+                        @Override
+                        public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                            name.setText(response.body().getEmail());
+                            email.setText(response.body().getName());
+                            p.setVisibility(View.INVISIBLE);
+                        }
 
-                societyParticipationAPI.getSocietyPByRollAndSid(sid,removeRoll.getText().toString() ).enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onFailure(Call<Visitor> call, Throwable t) {
+
+                            p.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                }
+
+            }
+        });
+
+        Remove_Member.setOnClickListener(view->{
+
+            if(rollNo.compareTo(removeRoll.getText().toString())!=0) {
+                p.setVisibility(View.VISIBLE);
+                RetrofitService retrofitService = new RetrofitService();
+                SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+                societyParticipationAPI.getSocietyPByRollAndSid(sid, removeRoll.getText().toString()).enqueue(new Callback<Integer>() {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        if(Integer.valueOf(response.body())>0){
-                        visitorAPI.getVisitorByRollNo(removeRoll.getText().toString()).enqueue(new Callback<Visitor>() {
-                            @Override
-                            public void onResponse(Call<Visitor> call, Response<Visitor> response) {
-                                name.setText(response.body().getEmail());
-                                email.setText(response.body().getName());
-                            }
-                            @Override
-                            public void onFailure(Call<Visitor> call, Throwable t) {
-                                name.setText("Member Does not Exists");
-                            }
-                        });
-                        }else{
-                            name.setText("Member Does not Exists");
+                        if (Integer.valueOf(response.body()) > 0) {
+                            SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+                            societyParticipationAPI.deleteParticipation(sid, removeRoll.getText().toString()).enqueue(new Callback<String>() {
+                                @Override
+                                public void onResponse(Call<String> call, Response<String> response) {
+                                    Toast.makeText(getApplicationContext(), "Member Deleted", Toast.LENGTH_SHORT).show();
+                                    p.setVisibility(View.INVISIBLE);
+                                }
+
+                                @Override
+                                public void onFailure(Call<String> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_SHORT).show();
+                                    p.setVisibility(View.INVISIBLE);
+                                }
+                            });
+                        } else {
+                            Toast.makeText(getApplicationContext(), "The selected member is not in this Society", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -107,24 +137,10 @@ public class RemoveMember extends AppCompatActivity {
                     }
                 });
 
-
+            }else{
+                Toast.makeText(getApplicationContext(), "You cannot select your roll", Toast.LENGTH_SHORT).show();
             }
-        });
 
-        Remove_Member.setOnClickListener(view->{
-            RetrofitService retrofitService = new RetrofitService();
-            SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
-            societyParticipationAPI.deleteParticipation(sid, removeRoll.getText().toString()).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    Toast.makeText(getApplicationContext(),"Member Deleted",Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-
-                }
-            });
 
         });
 

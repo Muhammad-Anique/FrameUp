@@ -367,6 +367,8 @@ public class SocietyPage extends AppCompatActivity {
         society_post.setOnClickListener(view->{
             Intent intent = new Intent(this, CreateSocietyNewsfeed.class);
             intent.putExtra("societyId",sid);
+            System.out.println("sid = " + sid);
+            System.out.println("memtype = "+ memType);
             intent.putExtra("memType",memType);
             intent.putExtra("rollNo",rollNo);
             startActivity(intent);
