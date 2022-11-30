@@ -3,7 +3,6 @@ package com.example.frameupclient.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -56,9 +55,9 @@ public class CreateNotice extends AppCompatActivity {
         sendNotice=findViewById(R.id.send_notice);
         progressBar=findViewById(R.id.progressBar_notice);
         progressBar.setVisibility(View.INVISIBLE);
-        userName=findViewById(R.id.name_notice_lay);
-        userEmail=findViewById(R.id.email_ru_notice);
-        preview=findViewById(R.id.user_preview);
+        userName=findViewById(R.id.name_notice_lay_rm);
+        userEmail=findViewById(R.id.email_ru_notice_rm);
+        preview=findViewById(R.id.user_preview_rm);
         preview.setVisibility(View.INVISIBLE);
 
 

@@ -19,6 +19,8 @@ import com.example.frameupclient.Model.PollAdapter;
 import com.example.frameupclient.Model.Society;
 import com.example.frameupclient.Model.SocietyAPI;
 import com.example.frameupclient.Model.SocietyAdapter;
+import com.example.frameupclient.Model.SocietyOperative;
+import com.example.frameupclient.Model.SocietyOperativeAPI;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 
@@ -53,10 +55,11 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
         profile_btn =findViewById(R.id.profile_button_vs);
         society_btn =findViewById(R.id.society_button_vs);
         home_btn =findViewById(R.id.home_button_vs);
-
+        req_button =findViewById(R.id.req_button_vs);
         cs= findViewById(R.id.view_society_navbaar);
 
-        society_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
+
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -67,6 +70,39 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
 
             cs.setVisibility(View.INVISIBLE);
         }
+
+
+
+        req_button.setOnClickListener(view->{
+            Intent intent1 = new Intent(this, RequestList.class);
+            Intent intent2 = new Intent(this, Notification.class);
+            intent1.putExtra("rollNo", rollNo);
+            intent2.putExtra("rollNo", rollNo);
+            RetrofitService retrofitService = new RetrofitService();
+            SocietyAPI societyAPI =  retrofitService.getRetrofit().create(SocietyAPI.class);
+            societyAPI.isHead(rollNo).enqueue(new Callback<Integer>() {
+                @Override
+                public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    if(Integer.valueOf(response.body())>0){
+                        startActivity(intent1);
+                    }else{
+                        startActivity(intent2);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Integer> call, Throwable t) {
+                    startActivity(intent2);
+                }
+            });
+
+        });
+
+
+
+        society_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
+
+
 
         profile_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, UserProfile.class);

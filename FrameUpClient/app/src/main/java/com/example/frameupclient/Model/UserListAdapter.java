@@ -34,10 +34,10 @@ class UserListHolder extends RecyclerView.ViewHolder {
     public UserListHolder(@NonNull View itemView) {
         super(itemView);
 
-        userName=itemView.findViewById(R.id.name_notice_lay);
-        userEmail=itemView.findViewById(R.id.email_ru_notice);
+        userName=itemView.findViewById(R.id.name_notice_lay_rm);
+        userEmail=itemView.findViewById(R.id.email_ru_notice_rm);
         userType=itemView.findViewById(R.id.userType_ru_lay);
-        userImage=itemView.findViewById(R.id.user_image_notice);
+        userImage=itemView.findViewById(R.id.user_image_notice_rm);
     }
 }
 
@@ -73,20 +73,21 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
                 System.out.println(response.body());
                 holder.userEmail.setText(response.body().getEmail());
                 RetrofitService retrofitService = new RetrofitService();
-                SocietyOperativeAPI societyOperativeAPI =  retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
-                societyOperativeAPI.getSocietyOperativeByRoll(response.body().getRollNo()).enqueue(new Callback<SocietyOperative>() {
+
+                SocietyAPI societyAPI = retrofitService.getRetrofit().create(SocietyAPI.class);
+                societyAPI.isHead(response.body().getRollNo()).enqueue(new Callback<Integer>() {
                     @Override
-                    public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
-                        if(response.body().getOperativeType()==1){
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        if(Integer.valueOf(response.body())>0){
                             holder.userType.setText("Head");
                             holder.userType.setBackgroundResource(R.drawable.orange_box);
+                        }else{
+                            holder.userType.setText("Member");
                         }
-                        else{
-                            holder.userType.setText("Advisor");}
                     }
 
                     @Override
-                    public void onFailure(Call<SocietyOperative> call, Throwable t) {
+                    public void onFailure(Call<Integer> call, Throwable t) {
                         holder.userType.setText("Member");
                     }
                 });

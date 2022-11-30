@@ -50,4 +50,8 @@ public class SocietyController {
         return societyDao.whoIsThis(sid, roll);
     }
 
+    @GetMapping("/society/is-head/{rollNo}")
+    public int isHead(@PathVariable String rollNo){
+        return societyDao.isHead(rollNo);
+    }
 }

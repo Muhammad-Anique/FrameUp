@@ -6,6 +6,112 @@
     android:layout_height="match_parent"
     tools:context=".Activities.RemoveMember">
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/rm_roll"
+        android:layout_width="289dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/white_bg_for_profile"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="start"
+        android:hint="Roll no"
+        android:inputType="textEmailAddress|textMultiLine"
+        android:lines="20"
+        android:minLines="5"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_up" />
+
+    <Button
+        android:id="@+id/rm_member"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="164dp"
+        android:background="@drawable/blue_it_box"
+        android:text="remove  member"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_preview_rm" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_remove"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_preview_rm" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_preview_rm"
+        android:layout_width="285dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/white_bg_for_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rm_roll">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/user_image_notice_rm"
+            android:layout_width="58dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="10dp"
+            android:adjustViewBounds="true"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.533"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            app:srcCompat="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/email_ru_notice_rm"
+            android:layout_width="162dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="suport@lhr.nu.edu.pk"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.626"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/name_notice_lay_rm"
+            android:layout_width="167dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Not Found"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.652"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_up"
         android:layout_width="412dp"

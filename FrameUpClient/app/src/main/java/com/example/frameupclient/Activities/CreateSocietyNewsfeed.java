@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.frameupclient.R;
 
@@ -16,6 +17,7 @@ public class CreateSocietyNewsfeed extends AppCompatActivity {
 
     Button postit,eventit,pollit;
     String rollNo;
+    TextView tc;
     int sid;
     int memType;
     @Override
@@ -33,6 +35,7 @@ public class CreateSocietyNewsfeed extends AppCompatActivity {
         postit=findViewById(R.id.create_post_news_btn);
         eventit=findViewById(R.id.create_event_news_btn3);
         pollit=findViewById(R.id.create_poll_news_btn2);
+        tc=findViewById(R.id.create_n_info);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -41,10 +44,21 @@ public class CreateSocietyNewsfeed extends AppCompatActivity {
             memType = extras.getInt("memType");
         }
 
+        tc.setVisibility(View.INVISIBLE);
+
         switch (memType){
+            case 1:
             case 2:
+                eventit.setVisibility(View.INVISIBLE);
             case 3:
                 eventit.setVisibility(View.INVISIBLE);
+                break;
+            case 4:
+                eventit.setVisibility(View.INVISIBLE);
+                postit.setVisibility(View.INVISIBLE);
+                pollit.setVisibility(View.INVISIBLE);
+                tc.setVisibility(View.VISIBLE);
+                tc.setText("Become Member of the Society to create Posts and Polls");
                 break;
         }
 

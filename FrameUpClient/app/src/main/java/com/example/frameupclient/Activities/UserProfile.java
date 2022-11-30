@@ -29,6 +29,7 @@ import com.example.frameupclient.Model.Post;
 import com.example.frameupclient.Model.PostAPI;
 import com.example.frameupclient.Model.Request;
 import com.example.frameupclient.Model.RequestAPI;
+import com.example.frameupclient.Model.SocietyAPI;
 import com.example.frameupclient.Model.SocietyOperative;
 import com.example.frameupclient.Model.SocietyOperativeAPI;
 import com.example.frameupclient.Model.Visitor;
@@ -148,21 +149,20 @@ public class UserProfile extends AppCompatActivity {
             intent1.putExtra("rollNo", rollNo);
             intent2.putExtra("rollNo", rollNo);
             RetrofitService retrofitService = new RetrofitService();
-            SocietyOperativeAPI societyOperativeAPI =  retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
-            societyOperativeAPI.getSocietyOperativeByRoll(rollNo).enqueue(new Callback<SocietyOperative>() {
+            SocietyAPI societyAPI =  retrofitService.getRetrofit().create(SocietyAPI.class);
+            societyAPI.isHead(rollNo).enqueue(new Callback<Integer>() {
                 @Override
-                public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
-                    if(response.body().getOperativeType()==1){
+                public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    if(Integer.valueOf(response.body())>0){
                         startActivity(intent1);
-                    }else if(response.body()==null)
-                    {
+                    }else{
                         startActivity(intent2);
                     }
                 }
-                @Override
-                public void onFailure(Call<SocietyOperative> call, Throwable t) {
-                    startActivity(intent2);
 
+                @Override
+                public void onFailure(Call<Integer> call, Throwable t) {
+                    startActivity(intent2);
                 }
             });
             finish();

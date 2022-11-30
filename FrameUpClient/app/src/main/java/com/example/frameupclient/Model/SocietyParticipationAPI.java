@@ -4,6 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -30,4 +31,11 @@ public interface SocietyParticipationAPI {
 
     @PUT("/society-participation/update/rating/{sid}/{roll}")
     Call<Society> updateRating(@Path("sid") int sid, @Path("roll") String roll,@Body SocietyParticipation societyParticipation);
+
+
+    @GET("/society-participation/get-exist/{sid}/{roll}")
+    Call<Integer> getSocietyPByRollAndSid(@Path("sid") int sid, @Path("roll") String roll) ;
+
+    @DELETE("/society-participation/delete/{sid}/{roll}")
+    Call<String> deleteParticipation(@Path("sid") int sid, @Path("roll") String roll) ;
 }

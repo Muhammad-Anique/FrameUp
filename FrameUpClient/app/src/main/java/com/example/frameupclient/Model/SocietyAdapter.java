@@ -4,6 +4,7 @@ import android.icu.number.Precision;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.frameupclient.Activities.SocietyRecyclerViewInterface;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -23,6 +30,7 @@ import retrofit2.Response;
 class SocietyHolder extends RecyclerView.ViewHolder {
 
     TextView noofmembers, society_rating, society_tagline, society_name, society_badge;
+    ImageView imageView;
 
     public SocietyHolder(@NonNull View itemView, SocietyRecyclerViewInterface societyRecyclerViewInterface) {
         super(itemView);
@@ -32,6 +40,8 @@ class SocietyHolder extends RecyclerView.ViewHolder {
         society_tagline=itemView.findViewById(R.id.row_society_tagline);
         society_name = itemView.findViewById(R.id.society_statement_in_view);
         society_badge = itemView.findViewById(R.id.society_badge);
+        imageView=itemView.findViewById(R.id.society_background_image_row_society);
+
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +127,23 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyHolder>{
             }
         });
 
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
+        DatabaseReference getImage = databaseReference.child("image");
+        getImage.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String societyImageLink = society.getSocietyBackground();
+                        if(societyImageLink!=null){
+                            Picasso.get().load(societyImageLink).into(holder.imageView);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
 
     }

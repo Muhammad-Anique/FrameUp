@@ -1,5 +1,6 @@
 package com.example.frameupclient.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.frameupclient.Model.Request;
@@ -25,6 +27,12 @@ import com.example.frameupclient.Model.SocietyOperativeAPI;
 import com.example.frameupclient.Model.SocietyParticipationAPI;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -42,6 +50,7 @@ public class SocietyPage extends AppCompatActivity {
     //Textviews
     TextView society_id,society_heading,society_tag, society_description, society_rating_val_card, society_member_count,manage_user_card_text;
     Button  rate, joinUs, viewMember;
+    ImageView society_bg;
     CardView societyAnalytics, society_post;
     String rollNo;
     int demand;
@@ -71,6 +80,7 @@ public class SocietyPage extends AppCompatActivity {
         society_member_count=findViewById(R.id.noof_mem_sp);
         society_rating_val_card=findViewById(R.id.rating_value_society_in_page);
         manage_user_card_text=findViewById(R.id.manage_users_tv);
+        society_bg=findViewById(R.id.SocietyBackgroundImage);
 
 
 
@@ -86,11 +96,11 @@ public class SocietyPage extends AppCompatActivity {
 
 
 
+
         //Dialogs
         d=new Dialog(this);
         d.setContentView(R.layout.custom_congratulate_dialogue);
         d.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-
 
 
 
@@ -144,6 +154,24 @@ public class SocietyPage extends AppCompatActivity {
                 society_tag.setText(response.body().getSocietyTagline());
                 society_description.setText(response.body().getSocietyDescription());
                 society_id.setText(String.valueOf(response.body().getSocietyId()));
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference();
+                DatabaseReference getImage = databaseReference.child("image");
+                getImage.addListenerForSingleValueEvent(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                String societyImageLink = response.body().getSocietyBackground();
+                                if(societyImageLink!=null){
+                                    Picasso.get().load(societyImageLink).into(society_bg);
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
             }
 
             @Override
@@ -202,21 +230,13 @@ public class SocietyPage extends AppCompatActivity {
                 manage_user_card_text.setText("Hi Dear Member ........");
                 joinUs.setText("Become");
                 joinUs.setVisibility(View.INVISIBLE);
-
                 break;
             case 4:
                 manage_user_card_text.setText("Join our Society");
                 joinUs.setVisibility(View.VISIBLE);
                 joinUs.setText("Join");
                 break;
-            case 5:
-                manage_user_card_text.setText("Your Membership Request has been Sent");
-                joinUs.setVisibility(View.INVISIBLE);
-                break;
-            case 6:
-                manage_user_card_text.setText("Hi Member");
-                joinUs.setVisibility(View.INVISIBLE);
-                break;
+
         }
 
 
@@ -229,6 +249,12 @@ public class SocietyPage extends AppCompatActivity {
                 SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
                 Request request = new Request();
                 switch(memType){
+                    case 1:
+                        Intent intent = new Intent(this,RemoveMember.class);
+                        intent.putExtra("societyId",sid);
+                        intent.putExtra("rollNo",rollNo);
+                        startActivity(intent);
+                        break;
                     case 4:
                         request.setRequestColor("blue");
                         request.setRequestSubject("Become Member");
@@ -263,7 +289,6 @@ public class SocietyPage extends AppCompatActivity {
 
                 Intent intent = new Intent(this, ViewSociety.class);
                 intent.putExtra("rollNo",rollNo);
-
 
                 // setup the alert builder
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -306,7 +331,7 @@ public class SocietyPage extends AppCompatActivity {
 
                     }
                 });
-                builder.setNegativeButton("Cance", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();

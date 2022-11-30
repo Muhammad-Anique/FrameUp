@@ -47,5 +47,14 @@ public class SocietyParticipationDao {
         return repository.getSocietyParticipation(sid,roll);
     }
 
+    public int getSocietyParticipationByRollAndSid(int sid, String roll){
+        return repository.getSocietyParticipationBySIDAndRoll(sid,roll);
+    }
+
+
+    public String deleteMember(int sid, String roll){
+       return repository.deleteMember(sid,roll);
+    }
+
 
 }

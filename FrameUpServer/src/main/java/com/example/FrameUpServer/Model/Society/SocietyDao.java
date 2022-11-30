@@ -45,4 +45,8 @@ public class SocietyDao {
     public int whoIsThis(int sid, String rollNo){
         return repository.whoIsThis(sid,rollNo);
     }
+
+    public int isHead(String rollNo){
+        return repository.isHead(rollNo);
+    }
 }
