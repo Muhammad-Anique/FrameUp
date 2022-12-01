@@ -30,4 +30,8 @@ public class SocietyOperativeController {
      return societyOperativeDao.isAdvisorByEmail(type,email);
     }
 
+    @GetMapping("/society-operative/advisors")
+    public List<String> getAdvisorfromop(){
+        return societyOperativeDao.getAdvisorsFromOperative();
+    }
 }

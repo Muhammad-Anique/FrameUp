@@ -19,4 +19,8 @@ public interface SocietyOperativeRepository extends CrudRepository<SocietyOperat
     @Query(value = "select count(*) from person p join society_operative so on p.roll_no =so.operative_roll where so.operative_type=:oType and p.email = :email",nativeQuery = true)
     int isAdvisorByEmail(@Param("oType") int oType, @Param("email") String email);
 
+
+    @Query(value = "select so.operative_roll from society_operative so where so.operative_type=2 ",nativeQuery = true)
+    List<String> getAdvisorFromOperative();
+
 }

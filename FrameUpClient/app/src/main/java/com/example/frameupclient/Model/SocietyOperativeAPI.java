@@ -21,4 +21,7 @@ public interface SocietyOperativeAPI {
 
     @GET("/society-operative/is-advisor/{type}")
     Call<Integer> isAdvisorByEmail(@Path("type") int type, @Body String email);
+
+    @GET("/society-operative/advisors")
+    Call<List<String>> getAdvisor();
 }

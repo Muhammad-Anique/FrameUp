@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/Poll_t_b"
+            android:id="@+id/advi_advi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
@@ -187,7 +187,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="124dp"
+            android:layout_marginBottom="236dp"
             app:layout_constraintBottom_toTopOf="@+id/upload_profile_pic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -238,14 +238,45 @@
             android:id="@+id/become_the_advisor"
             android:layout_width="156dp"
             android:layout_height="43dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/button_stroke"
             android:text="Become Advisor"
             android:textColor="@color/Primary_Color_1"
             android:textSize="9sp"
             app:backgroundTint="@null"
+            app:layout_constraintBottom_toTopOf="@+id/view_advisor_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/view_advisor_btn"
+            android:layout_width="156dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_stroke"
+            android:text="View  Advisors"
+            android:textColor="@color/Primary_Color_1"
+            android:textSize="9sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toTopOf="@+id/logout_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/logout_logout"
+            android:layout_width="156dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_stroke"
+            android:text="Logout"
+            android:textColor="@color/Primary_Color_1"
+            android:textSize="9sp"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toTopOf="@+id/report_user_in_profile"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
 

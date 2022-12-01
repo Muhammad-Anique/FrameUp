@@ -101,6 +101,8 @@ public class UserProfile extends AppCompatActivity {
     Button society_btn;
     Button report_user;
     Button become_ad;
+    Button logout;
+    Button advi_advi;
 
     TextView eip,proError;
 
@@ -176,8 +178,9 @@ public class UserProfile extends AppCompatActivity {
         nv=findViewById(R.id.nv_in_user_profile);
         eip=findViewById(R.id.error_in_user_profile);
         proError = findViewById(R.id.profile_extra_info);
-
+        logout = findViewById(R.id.logout_logout);
         become_ad=findViewById(R.id.become_the_advisor);
+        advi_advi=findViewById(R.id.view_advisor_btn);
         profile_btn =findViewById(R.id.profile_button_up);
         notification=findViewById(R.id.req_button_up);
         profile_btn.setBackgroundTintList(this.getColorStateList((R.color.Primary_Color_2)));
@@ -188,6 +191,17 @@ public class UserProfile extends AppCompatActivity {
             intent.putExtra("rollNo",rollNo);
             startActivity(intent);
 
+        });
+
+        advi_advi.setOnClickListener(view->{
+            Intent intent = new Intent(this, VisitorList.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+        });
+
+        logout.setOnClickListener(view->{
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
         });
 
         notification.setOnClickListener(view->{

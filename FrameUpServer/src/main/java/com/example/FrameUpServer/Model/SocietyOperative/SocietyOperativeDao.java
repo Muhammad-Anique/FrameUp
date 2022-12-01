@@ -29,5 +29,9 @@ public class SocietyOperativeDao {
         return societyOperativeRepository.isAdvisorByEmail(oType,email);
     }
 
+    public List<String> getAdvisorsFromOperative(){
+       return societyOperativeRepository.getAdvisorFromOperative();
+    }
+
 
 }
