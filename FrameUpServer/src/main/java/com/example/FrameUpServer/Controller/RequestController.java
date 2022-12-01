@@ -5,6 +5,7 @@ import com.example.FrameUpServer.Model.Requests.RequestDao;
 import com.example.FrameUpServer.Model.SocietyOperative.SocietyOperative;
 import com.example.FrameUpServer.Model.SocietyOperative.SocietyOperativeDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,5 +30,11 @@ public class RequestController {
         requestDao.deleteRequest(reqId);
 
     }
+
+    @GetMapping("/request/{roll}/{type}/{sid}")
+    public int getRequestTypeByRoll(@PathVariable String roll,@PathVariable String type,  @PathVariable int sid){
+        return requestDao.getRequestTypeByRoll(roll,type,sid);
+    }
+
 
 }

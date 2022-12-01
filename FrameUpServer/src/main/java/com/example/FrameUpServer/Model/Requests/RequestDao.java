@@ -35,5 +35,9 @@ public class RequestDao {
       requestRepository.deleteById(ReqID);
     }
 
+    public int getRequestTypeByRoll(String rollNo, String type, int sid){
+        return requestRepository.getReqTypeByRoll(rollNo, type,sid);
+    }
+
 
 }

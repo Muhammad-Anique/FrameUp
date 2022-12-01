@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/createsomethingbg"
     tools:context=".Activities.CreateSocietyNewsfeed">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
             android:text="Create Something"
-            android:textColor="@color/Primary_Color_1"
+            android:textColor="@color/Primary_Color_2"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +62,7 @@
         android:id="@+id/create_poll_news_btn2"
         android:layout_width="311dp"
         android:layout_height="118dp"
-        android:layout_marginTop="155dp"
+        android:layout_marginTop="224dp"
         android:background="@drawable/button_style_gradient"
         android:text="Create Poll"
         app:backgroundTint="@null"

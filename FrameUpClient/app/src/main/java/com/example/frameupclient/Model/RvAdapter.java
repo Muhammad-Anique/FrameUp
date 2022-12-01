@@ -137,7 +137,11 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                            System.out.println(link);
                             String postImageLink = post.getLink();
                             if(linkUrl!=null){
+                                System.out.println("linking phase");
                             String myString = linkUrl.substring(1, linkUrl.length()-1);
+                            myString=myString.replace("\\u003d","=");
+                            myString=myString.replace("\\u0026","&");
+                            System.out.println(myString + "hehehehehehe");
                             Picasso.get().load(myString).into(((RowHolder) holder).authorImg);}
                             if(postImageLink!=null){
                             Picasso.get().load(postImageLink).into(((RowHolder) holder).postImg);}

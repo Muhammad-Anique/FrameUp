@@ -25,4 +25,9 @@ public class SocietyOperativeController {
         return societyOperativeDao.getOperativeFromType(type,sid);
     }
 
+    @GetMapping("/society-operative/is-advisor/{type}")
+    public int isAdvisorByEmail(@PathVariable int type, @RequestBody String email){
+     return societyOperativeDao.isAdvisorByEmail(type,email);
+    }
+
 }

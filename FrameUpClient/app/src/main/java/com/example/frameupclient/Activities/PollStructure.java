@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.frameupclient.Model.Poll;
 import com.example.frameupclient.Model.PollAPI;
@@ -67,11 +68,15 @@ public class PollStructure extends AppCompatActivity {
         pollRespondedAPI.getResponseExistence(rollNo).enqueue(new Callback<PollResponded>() {
             @Override
             public void onResponse(Call<PollResponded> call, Response<PollResponded> response) {
-                submit.setEnabled(false);
+                if(response.body().getPollId()==PollId)
+                submit.setVisibility(View.INVISIBLE);
+                else{
+                    submit.setVisibility(View.VISIBLE);
+                }
             }
             @Override
             public void onFailure(Call<PollResponded> call, Throwable t) {
-                submit.setEnabled(true);
+                submit.setVisibility(View.VISIBLE);
             }
         });
 
@@ -231,11 +236,21 @@ public class PollStructure extends AppCompatActivity {
                     pollResponded.setPollId(PollId);
                     pollResponded.setRollNo(rollNo);
                     PollRespondedAPI pollRespondedAPI =  retrofitService2.getRetrofit().create(PollRespondedAPI.class);
-                    pollRespondedAPI.save(pollResponded);
-                    progress.setVisibility(View.INVISIBLE);
-                    submit.setEnabled(false);
-                    dialogMsg.setText("Your Response Has Been Submitted, Thank You!!!");
-                    d.show();
+                    pollRespondedAPI.save(pollResponded).enqueue(new Callback<PollResponded>() {
+                        @Override
+                        public void onResponse(Call<PollResponded> call, Response<PollResponded> response) {
+                            progress.setVisibility(View.INVISIBLE);
+                            submit.setVisibility(View.INVISIBLE);
+                            Toast.makeText(PollStructure.this, "Poll Response Submitted", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<PollResponded> call, Throwable t) {
+
+                        }
+                    });
+
+
 
                 }
 

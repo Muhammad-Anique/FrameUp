@@ -13,4 +13,7 @@ public interface RequestRepository extends CrudRepository<Request,Integer> {
     @Query(value = "select * from request r where send_to = :roll",nativeQuery = true)
    List<Request> retrieveRequestByRollSendTo(@Param("roll") String roll);
 
+    @Query(value = "select count(*) from request r where r.send_by = :roll and r.request_type= :type and r.society_id=:sid",nativeQuery = true)
+    int getReqTypeByRoll(@Param("roll") String roll,@Param("type") String type, @Param("sid") int sid);
+
 }

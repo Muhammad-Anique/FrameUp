@@ -19,4 +19,6 @@ public interface SocietyOperativeAPI {
     @GET("/society-operative/{sid}/{type}")
     Call<List<SocietyOperative>> getSocietyOperativeByRollAndType(@Path("sid") int sid, @Path("type") int type);
 
+    @GET("/society-operative/is-advisor/{type}")
+    Call<Integer> isAdvisorByEmail(@Path("type") int type, @Body String email);
 }

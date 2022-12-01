@@ -55,6 +55,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.checkerframework.checker.units.qual.C;
 import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
@@ -111,15 +112,61 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         intent_home = new Intent(this, VisitorHome.class);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             rollNo =extras.getString("rollNo");
         }
+        RetrofitService retrofitService = new RetrofitService();
+        RequestAPI requestAPI  = retrofitService.getRetrofit().create(RequestAPI.class);
+        SocietyOperativeAPI societyOperativeAPI5 = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+
+        societyOperativeAPI5.getSocietyOperativeByRoll(rollNo).enqueue(new Callback<SocietyOperative>() {
+            @Override
+            public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
+                if(response.body()!=null){
+                    if(Integer.valueOf(response.body().getOperativeType())==2){
+
+                        become_ad.setVisibility(View.INVISIBLE);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<SocietyOperative> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+
+
+
+        requestAPI.getRequestTypeByRoll(rollNo,"becomeAdvisor",999).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                System.out.println("hey i am in reqqy");
+                if(response.body()!=null)
+                {
+                    if(Integer.valueOf(response.body())>0){
+                        become_ad.setVisibility(View.INVISIBLE);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+
+
+
 
         preferenceManager = new PreferenceManager(getApplicationContext());
         TextView name = findViewById(R.id.profile_name);
@@ -148,8 +195,8 @@ public class UserProfile extends AppCompatActivity {
             Intent intent2 = new Intent(this, Notification.class);
             intent1.putExtra("rollNo", rollNo);
             intent2.putExtra("rollNo", rollNo);
-            RetrofitService retrofitService = new RetrofitService();
-            SocietyAPI societyAPI =  retrofitService.getRetrofit().create(SocietyAPI.class);
+            RetrofitService retrofitService1 = new RetrofitService();
+            SocietyAPI societyAPI =  retrofitService1.getRetrofit().create(SocietyAPI.class);
             societyAPI.isHead(rollNo).enqueue(new Callback<Integer>() {
                 @Override
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
@@ -170,9 +217,9 @@ public class UserProfile extends AppCompatActivity {
 
 
         become_ad.setOnClickListener(view->{
-            RetrofitService retrofitService = new RetrofitService();
-            RequestAPI requestAPI = retrofitService.getRetrofit().create(RequestAPI.class);
-            SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+            RetrofitService retrofitService2 = new RetrofitService();
+            RequestAPI requestAPI2 = retrofitService2.getRetrofit().create(RequestAPI.class);
+            SocietyOperativeAPI societyOperativeAPI = retrofitService2.getRetrofit().create(SocietyOperativeAPI.class);
             Request request = new Request();
             request.setRequestColor("red");
             request.setRequestSubject("Become Advisor");
@@ -181,7 +228,7 @@ public class UserProfile extends AppCompatActivity {
             request.setSendTo("Admin");
             request.setRequestText("Make Me A Society Advisor");
             request.setSocietyId(999);
-            requestAPI.save(request).enqueue(new Callback<Request>() {
+            requestAPI2.save(request).enqueue(new Callback<Request>() {
               @Override
               public void onResponse(Call<Request> call, Response<Request> response) {
                proError.setText("Your Request has been sent");
@@ -192,6 +239,8 @@ public class UserProfile extends AppCompatActivity {
 
               }
           });
+
+            become_ad.setVisibility(View.INVISIBLE);
         });
 
 
@@ -233,8 +282,8 @@ public class UserProfile extends AppCompatActivity {
 
 
 
-        RetrofitService retrofitService = new RetrofitService();
-        VisitorAPI visitorAPI =  retrofitService.getRetrofit().create(VisitorAPI.class);
+        RetrofitService retrofitService3 = new RetrofitService();
+        VisitorAPI visitorAPI =  retrofitService3.getRetrofit().create(VisitorAPI.class);
         visitorAPI.getVisitorByRollNo(rollNo).enqueue(new Callback<Visitor>() {
             @Override
             public void onResponse(Call<Visitor> call, Response<Visitor> response) {

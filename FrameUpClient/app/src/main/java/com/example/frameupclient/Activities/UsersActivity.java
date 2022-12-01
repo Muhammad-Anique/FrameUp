@@ -11,8 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.frameupclient.Adapter.UsersAdapter;
+import com.example.frameupclient.Model.SocietyOperativeAPI;
+import com.example.frameupclient.Model.SocietyParticipation;
+import com.example.frameupclient.Model.SocietyParticipationAPI;
 import com.example.frameupclient.Model.Users;
 import com.example.frameupclient.R;
+import com.example.frameupclient.Retrofit.RetrofitService;
 import com.example.frameupclient.databinding.ActivityUsersBinding;
 import com.example.frameupclient.listeners.UserListener;
 import com.example.frameupclient.utilities.Constants;
@@ -23,15 +27,25 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class UsersActivity extends AppCompatActivity implements UserListener {
 
     private ActivityUsersBinding binding;
     private PreferenceManager preferenceManager;
+    private String rollNo;
+    private int memType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_users);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            rollNo = extras.getString("rollNo");
+        }
+
         Window window =this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -41,8 +55,33 @@ public class UsersActivity extends AppCompatActivity implements UserListener {
         binding = ActivityUsersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager  = new PreferenceManager(getApplicationContext());
+
+//        RetrofitService retrofitService = new RetrofitService();
+//        SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+//        societyParticipationAPI.getMemberExistence(rollNo).enqueue(new Callback<List<SocietyParticipation>>() {
+//            @Override
+//            public void onResponse(Call<List<SocietyParticipation>> call, Response<List<SocietyParticipation>> response) {
+//                if(response.body()!=null){
+//                    memType=1;
+//                }else{
+//                    System.out.println(
+//                            "no list"
+//                    );
+//                    memType=2;
+//                }
+//                setListeners();
+//                getUsers();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<SocietyParticipation>> call, Throwable t) {
+//
+//            }
+//        });
+
         setListeners();
         getUsers();
+
     }
 
     private void setListeners() {
@@ -63,13 +102,42 @@ public class UsersActivity extends AppCompatActivity implements UserListener {
                             if(currentUSerId.equals(queryDocumentSnapshot.getId())){
                                 continue;
                             }
-                            Users users = new Users();
-                            users.name = queryDocumentSnapshot.getString(Constants.KEY_NAME);
-                            users.email = queryDocumentSnapshot.getString(Constants.KEY_EMAIL);
-                            users.image = queryDocumentSnapshot.getString(Constants.KEY_IMAGE);
-                            users.token = queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN);
-                            users.id = queryDocumentSnapshot.getId();
-                            usersList.add(users);
+
+//                            if(memType==2){
+//                            Users users = new Users();
+//                            users.name = queryDocumentSnapshot.getString(Constants.KEY_NAME);
+//                            users.email = queryDocumentSnapshot.getString(Constants.KEY_EMAIL);
+//                            users.image = queryDocumentSnapshot.getString(Constants.KEY_IMAGE);
+//                            users.token = queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN);
+//                            users.id = queryDocumentSnapshot.getId();
+//                            RetrofitService retrofitService = new RetrofitService();
+//                            SocietyOperativeAPI societyOperativeAPI = retrofitService.getRetrofit().create(SocietyOperativeAPI.class);
+//                            societyOperativeAPI.isAdvisorByEmail(2,users.email).enqueue(new Callback<Integer>() {
+//                                @Override
+//                                public void onResponse(Call<Integer> call, Response<Integer> response) {
+//                                    if(response.body()!=null){
+//                                        if(Integer.valueOf(response.body())>0){
+//                                            usersList.add(users);
+//                                        }
+//                                    }
+//                                }
+//
+//                                @Override
+//                                public void onFailure(Call<Integer> call, Throwable t) {
+//
+//                                }
+//                            });
+//
+//                            }
+//                            else{
+                                Users users = new Users();
+                                users.name = queryDocumentSnapshot.getString(Constants.KEY_NAME);
+                                users.email = queryDocumentSnapshot.getString(Constants.KEY_EMAIL);
+                                users.image = queryDocumentSnapshot.getString(Constants.KEY_IMAGE);
+                                users.token = queryDocumentSnapshot.getString(Constants.KEY_FCM_TOKEN);
+                                users.id = queryDocumentSnapshot.getId();
+                                usersList.add(users);
+//                            }
                         }
                         if(usersList.size() > 0){
                             UsersAdapter usersAdapter = new UsersAdapter(usersList, this);

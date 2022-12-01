@@ -58,9 +58,9 @@ public class CreatePost extends AppCompatActivity   {
     ProgressBar progressbar;
     Uri uri;
     String path;
-    String[] items =  {"General","IEEE","Softec","Career Counselling","Drama Society","Music society"};
-    AutoCompleteTextView autoCompleteTxt;
-    ArrayAdapter<String> adapterItems;
+//    String[] items =  {"General","IEEE","Softec","Career Counselling","Drama Society","Music society"};
+//    AutoCompleteTextView autoCompleteTxt;
+//    ArrayAdapter<String> adapterItems;
     
     //data for post
     String PostType;
@@ -71,7 +71,6 @@ public class CreatePost extends AppCompatActivity   {
     String MediaUrl;
     String Hashtag;
     int Priority;
-    String SocietyAssociated = "General";
     String Date;
     boolean imageUploaded = false;
     int sid;
@@ -103,20 +102,20 @@ public class CreatePost extends AppCompatActivity   {
         progressbar =findViewById(R.id.progressbar);
         uploadBtn= findViewById(R.id.create_post_btn);
 
-        autoCompleteTxt = findViewById(R.id.auto_complete_txt);
-
-        adapterItems = new ArrayAdapter<String>(this,R.layout.droplist_item,items);
-        autoCompleteTxt.setAdapter(adapterItems);
-
-
-        //listners
-        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SocietyAssociated = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(),"Item: "+SocietyAssociated,Toast.LENGTH_SHORT).show();
-            }
-        });
+//        autoCompleteTxt = findViewById(R.id.auto_complete_txt);
+//
+//        adapterItems = new ArrayAdapter<String>(this,R.layout.droplist_item,items);
+//        autoCompleteTxt.setAdapter(adapterItems);
+//
+//
+//        //listners
+//        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                SocietyAssociated = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(getApplicationContext(),"Item: "+SocietyAssociated,Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
         progressbar.setVisibility(View.INVISIBLE);
@@ -199,7 +198,7 @@ public class CreatePost extends AppCompatActivity   {
         p.setPostCreationDate(Date);
         p.setLink(MediaUrl);
         p.setHashtag(Hashtag);
-        p.setSocietyAssociated(SocietyAssociated);
+        p.setSocietyAssociated(String.valueOf(sid));
         p.setPostType(PostType);
         p.setAuthorRoll(rollNo);
 

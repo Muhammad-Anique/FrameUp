@@ -14,7 +14,7 @@ import com.example.frameupclient.R;
 
 public class AdminHome extends AppCompatActivity {
 
-    Button create_society,view_notices,create_notice,manage_users;
+    Button create_society,view_notices,create_notice;
     CardView create_report,view_society;
     String rollNo ="admin";
 
@@ -36,7 +36,6 @@ public class AdminHome extends AppCompatActivity {
         view_society=findViewById(R.id.View_society_Clickable);
         view_notices=findViewById(R.id.admin_view_notice);
         create_notice=findViewById(R.id.admin_issue_notice);
-        manage_users=findViewById(R.id.Manage_users);
         create_society=findViewById(R.id.admin_create_society_btn);
 
         create_report.setOnClickListener(view->{
@@ -57,11 +56,6 @@ public class AdminHome extends AppCompatActivity {
             startActivity(intent);
         });
 
-        manage_users.setOnClickListener(view->{
-            Intent intent = new Intent(this, RemoveMember.class);
-            intent.putExtra("rollNo","admin");
-            startActivity(intent);
-        });
 
         view_society.setOnClickListener(view->{
             Intent intent = new Intent(this, ViewSociety.class);

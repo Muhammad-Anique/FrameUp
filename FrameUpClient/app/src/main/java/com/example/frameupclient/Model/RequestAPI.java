@@ -20,4 +20,8 @@ public interface RequestAPI {
 
     @DELETE("/requests/delete/{reqId}")
     Call<Void> deleteReq(@Path("reqId") int reqId);
+
+    @GET("/request/{roll}/{type}/{sid}")
+    Call<Integer> getRequestTypeByRoll( @Path("roll") String roll,@Path("type") String type, @Path("sid") int sid);
+
 }

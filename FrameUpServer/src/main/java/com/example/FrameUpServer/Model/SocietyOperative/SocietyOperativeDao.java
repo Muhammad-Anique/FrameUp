@@ -25,5 +25,9 @@ public class SocietyOperativeDao {
        return societyOperatives;
     }
 
+    public int isAdvisorByEmail(int oType, String email){
+        return societyOperativeRepository.isAdvisorByEmail(oType,email);
+    }
+
 
 }

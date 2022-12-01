@@ -112,10 +112,16 @@ public class SocietyPage extends AppCompatActivity {
         }
 
 
+
+
+
         if(rollNo.compareTo("admin")==0){
             manage_user_card_text.setText("Delete Society");
             joinUs.setText("Delete");
         }
+
+
+
 
         //getRating
         RetrofitService retrofitService1 = new RetrofitService();
@@ -144,6 +150,9 @@ public class SocietyPage extends AppCompatActivity {
 
     public void initialize(){
         RetrofitService retrofitService1 = new RetrofitService();
+
+
+
         //check who is he
         SocietyAPI societyAPI = retrofitService1.getRetrofit().create(SocietyAPI.class);
         societyAPI.getSocietyById(sid).enqueue(new Callback<Society>() {
@@ -232,9 +241,40 @@ public class SocietyPage extends AppCompatActivity {
                 joinUs.setVisibility(View.INVISIBLE);
                 break;
             case 4:
-                manage_user_card_text.setText("Join our Society");
-                joinUs.setVisibility(View.VISIBLE);
-                joinUs.setText("Join");
+                RetrofitService retrofitService3 = new RetrofitService();
+                RequestAPI requestAPI2 = retrofitService3.getRetrofit().create(RequestAPI.class);
+                requestAPI2.getRequestTypeByRoll(rollNo,"becomeMember",sid).enqueue(new Callback<Integer>() {
+                    @Override
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        System.out.println("hey i am in reqqy");
+                        if(response.body()!=null)
+                        {
+                            if(Integer.valueOf(response.body())>0){
+                                joinUs.setVisibility(View.INVISIBLE);
+                                manage_user_card_text.setText("You Request has been Sent");
+
+                            }
+                            else{
+                                manage_user_card_text.setText("Join our Society");
+                                joinUs.setVisibility(View.VISIBLE);
+                                joinUs.setText("Join");
+                            }
+                        }else{
+                            manage_user_card_text.setText("Join our Society");
+                            joinUs.setVisibility(View.VISIBLE);
+                            joinUs.setText("Join");
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Integer> call, Throwable t) {
+                        manage_user_card_text.setText("Join our Society");
+                        joinUs.setVisibility(View.VISIBLE);
+                        joinUs.setText("Join");
+                    }
+                });
+
                 break;
 
         }

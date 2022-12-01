@@ -128,72 +128,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/Primary_Color_2"
-        android:progressTint="@color/Primary_Color_2"
         android:progressBackgroundTint="@color/Primary_Color_2"
+        android:progressTint="@color/Primary_Color_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.768" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:background="@drawable/box_stroke"
-        android:gravity="center"
-        android:hint="@string/select"
-        android:padding="2dp"
-        android:textColor="@color/Primary_Color_2"
-        android:textColorHint="@color/Primary_Color_2"
-        app:boxBackgroundColor="#FFFFFF"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusBottomEnd="14dp"
-        app:boxCornerRadiusBottomStart="14dp"
-        app:boxCornerRadiusTopEnd="14dp"
-        app:boxCornerRadiusTopStart="14dp"
-        app:boxStrokeColor="@color/Primary_Color_2"
-        app:boxStrokeErrorColor="@color/Primary_Color_2"
-        app:boxStrokeWidth="0dp"
-        app:counterOverflowTextColor="@color/Primary_Color_2"
-        app:endIconTint="@color/Primary_Color_2"
-        app:helperTextTextColor="@color/Primary_Color_2"
-        app:hintTextColor="@color/Primary_Color_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0"
-        app:placeholderTextColor="@color/Primary_Color_2"
-        app:prefixTextColor="@color/Secondary_Color_1"
-        app:suffixTextColor="@color/Primary_Color_2">
-
-        <AutoCompleteTextView
-            android:id="@+id/auto_complete_txt"
-            android:layout_width="300dp"
-            android:layout_height="44dp"
-            android:inputType="none"
-            android:padding="0dp"
-            android:textColor="@color/Secondary_Color_1"
-            android:textColorHint="@color/Secondary_Color_1"
-            android:textSize="11sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintVertical_bias="0.705" />
 
     <TextView
         android:id="@+id/post_error"
         android:layout_width="282dp"
         android:layout_height="15dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="168dp"
         android:gravity="center_horizontal|center_vertical"
         android:text=" "
         android:textColor="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

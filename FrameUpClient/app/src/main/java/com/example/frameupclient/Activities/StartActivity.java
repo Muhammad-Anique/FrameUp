@@ -67,6 +67,14 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
         listenConversations();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, VisitorHome.class);
+        intent.putExtra("rollNo",rollNo);
+        startActivity(intent);
+
+    }
+
     private void init(){
         conversations = new ArrayList<>();
         conversationsAdapter = new RecentConversationAdapter(conversations, this);
@@ -75,7 +83,10 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
     }
 
     private void setListeners(){
-        binding.imageSignOut.setOnClickListener(v-> signOut());
+        binding.imageSignOut.setOnClickListener(view->{
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+        });
         FloatingActionButton fab = findViewById(R.id.fabNewChat);
         fab.setOnClickListener(view-> {
             Intent intent = new Intent(this, UsersActivity.class);
@@ -190,6 +201,7 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
     public void onConversionClicked(Users user) {
         Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
         intent.putExtra(Constants.KEY_USER, user);
+        intent.putExtra("rollNo",rollNo);
         startActivity(intent);
     }
 }

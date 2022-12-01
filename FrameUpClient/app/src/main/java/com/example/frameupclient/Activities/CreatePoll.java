@@ -30,7 +30,7 @@ public class CreatePoll extends AppCompatActivity {
     Button uploadBtn;
     String rollNo;
     TextInputEditText caption, option1, option2, option3,option4;
-    boolean O1,O2,O3,O4;
+    boolean O1=true,O2=true,O3=true,O4=true;
     ProgressBar prg;
     int count=5;
     int sid;
