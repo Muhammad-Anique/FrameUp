@@ -31,4 +31,9 @@ public class PollDao {
         return repository.retrievePollById(pollid);
     }
 
+    public String DeletePoll(int id){
+        repository.deleteById(id);
+        return "true";
+
+    }
 }

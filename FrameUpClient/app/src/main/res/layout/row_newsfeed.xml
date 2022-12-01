@@ -195,11 +195,23 @@ app:cardUseCompatPadding="false">
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="#AnsolutelyNot"
             android:textColor="@color/Primary_Color_2"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/post_id_field_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Id : 24"
+            android:textColor="@color/grey"
+            android:textSize="9sp" />
 
 
     </LinearLayout>

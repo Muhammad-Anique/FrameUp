@@ -66,4 +66,16 @@ public class VisitorController {
         System.out.println(EmailAddress);
         return visitorDao.getOTPByEmail(EmailAddress);
     }
+
+    @PutMapping("/visitor/status/update/{roll}/{st}")
+    public Visitor updateStatusOfVisitor(@PathVariable String roll,@PathVariable String st){
+        Visitor V =  visitorDao.getVisitorByRoll(roll);
+        if(st.compareTo("inactive")==0){
+        V.setIsVerified(false);}
+        else{
+            V.setIsVerified(true);
+        }
+        V.setAccountStatus(st);
+        return visitorDao.saveVisitor(V);
+    }
 }

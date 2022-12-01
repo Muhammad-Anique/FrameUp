@@ -4,6 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -23,4 +24,8 @@ public interface PollAPI {
 
     @PUT("/poll/update/{pollId}")
     Call<Poll> addPollResponse(@Path("pollId") int pollId, @Body Poll poll);
+
+
+    @DELETE("/poll/delete/{id}")
+    Call<String> deletePoll(@Path("id") int id);
 }

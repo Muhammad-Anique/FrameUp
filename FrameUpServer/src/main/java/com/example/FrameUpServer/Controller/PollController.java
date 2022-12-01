@@ -41,5 +41,10 @@ public class PollController {
         return pollDao.savePoll(p);
     }
 
+    @DeleteMapping("/poll/delete/{id}")
+    public String deleteThePoll(@PathVariable int id){
+        return pollDao.DeletePoll(id);
+    }
+
 
 }

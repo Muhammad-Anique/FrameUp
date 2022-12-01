@@ -31,5 +31,8 @@ public interface VisitorAPI {
     @PUT("/visitor/{roll}/update/pic")
     Call<Visitor> updateProfilePic(@Path("roll") String roll, @Body String url);
 
+    @PUT("/visitor/status/update/{roll}/{st}")
+    Call<Visitor> updateStatusByRoll(@Path("roll") String roll,@Path("st") String st);
+
 
 }

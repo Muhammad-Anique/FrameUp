@@ -25,4 +25,11 @@ public class PostDoa {
                 .forEach(post::add);
         return post;
     }
+
+    public String DeletePost(int id){
+
+        postRepository.deleteById(id);
+        return "true";
+
+    }
 }

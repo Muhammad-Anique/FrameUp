@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 class RowHolder extends RecyclerView.ViewHolder {
     ImageView postImg, authorImg;
-    TextView authorName, authorEmail, caption, hashtag, noOfLikes ;
+    TextView authorName, authorEmail, caption, hashtag, noOfLikes,id_for ;
     public RowHolder(@NonNull View itemView) {
         super(itemView);
         authorName = itemView.findViewById(R.id.post_author_name);
@@ -38,13 +38,14 @@ class RowHolder extends RecyclerView.ViewHolder {
         noOfLikes =itemView.findViewById(R.id.post_noof_likes);
         authorImg = itemView.findViewById(R.id.author_image_post);
         postImg =itemView.findViewById(R.id.post_image_media);
+        id_for=itemView.findViewById(R.id.post_id_field_tv);
     }
 
 }
 
 class AdHolder extends RecyclerView.ViewHolder {
     ImageView img;
-    TextView sdate,stime,etime,caption_e,e_type;
+    TextView sdate,stime,etime,caption_e,e_type,id_for;
     public AdHolder(@NonNull View itemView) {
         super(itemView);
         img=itemView.findViewById(R.id.img_event);
@@ -53,6 +54,7 @@ class AdHolder extends RecyclerView.ViewHolder {
         etime=itemView.findViewById(R.id.end_time_tv);
         caption_e=itemView.findViewById(R.id.Caption_event_tv);
         e_type=itemView.findViewById(R.id.e_type_tv);
+        id_for=itemView.findViewById(R.id.id__id_post_id);
 
     }
 }
@@ -109,6 +111,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     ((RowHolder) holder).hashtag.setText(post.getHashtag());
                     ((RowHolder) holder).caption.setText(post.getPostText());
                     ((RowHolder) holder).noOfLikes.setText(post.getPostCreationDate());
+                    ((RowHolder) holder).id_for.setText("Id : " + post.getPostId());
 
                 }
 
@@ -121,6 +124,8 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     ((RowHolder) holder).authorEmail.setText(Email);
                     ((RowHolder) holder).hashtag.setText(post.getHashtag());
                     ((RowHolder) holder).caption.setText(post.getPostText());
+                    ((RowHolder) holder).id_for.setText("Id : "+post.getPostId());
+
                 }
             });
 
@@ -159,7 +164,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ((AdHolder) holder).sdate.setText(post.getEventDate());
             ((AdHolder) holder).stime.setText(post.getEventStartTime());
             ((AdHolder) holder).etime.setText(post.getEventEndTime());
-
+            ((AdHolder) holder).id_for.setText("Id : "+post.getPostId());
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             DatabaseReference databaseReference = firebaseDatabase.getReference();
             DatabaseReference getImage = databaseReference.child("image");

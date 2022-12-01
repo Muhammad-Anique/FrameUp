@@ -16,13 +16,14 @@ import java.util.List;
 
 class PollHolder extends RecyclerView.ViewHolder {
 
-    TextView poll_caption, poll_responses,popular_option, poll_society_related;
+    TextView poll_caption, poll_responses,popular_option, poll_society_related,poll_id_p;
     public PollHolder(@NonNull View itemView, PollRecyclerViewInterface pollRecyclerViewInterface) {
         super(itemView);
         poll_caption =itemView.findViewById(R.id.poll_statement_in_view);
         poll_responses=itemView.findViewById(R.id.poll_responses_in_row_poll);
         popular_option=itemView.findViewById(R.id.popular_option);
         poll_society_related=itemView.findViewById(R.id.poll_society_related);
+        poll_id_p=itemView.findViewById(R.id.poll_id_row_poll);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +67,7 @@ public class PollAdapter extends RecyclerView.Adapter<PollHolder> {
         holder.popular_option.setText("Options  : " + poll.getPollOption1() + "....");
         holder.poll_responses.setText(String.valueOf("Responses : " + poll.getNoOfResponses()));
         holder.poll_caption.setText(poll.getPollStatement());
+        holder.poll_id_p.setText("Poll Id : "+poll.getPollId());
     }
 
     @Override

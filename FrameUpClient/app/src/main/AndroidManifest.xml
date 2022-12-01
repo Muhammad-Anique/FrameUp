@@ -17,18 +17,16 @@
         android:theme="@style/Theme.FrameUpClient"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".Activities.Deletions"
+            android:exported="false" />
         <activity
             android:name=".Activities.ChatActivity"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".Activities.SignInActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".Activities.SignUpActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -50,8 +48,7 @@
 
         <activity
             android:name=".Activities.ViewReport"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Activities.CreateRequest"
             android:exported="false" />
@@ -96,10 +93,7 @@
             android:exported="true" />
         <activity
             android:name=".Activities.CreateEvent"
-            android:exported="true" >
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".Activities.ViewPoll"
             android:exported="true" />
@@ -129,6 +123,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

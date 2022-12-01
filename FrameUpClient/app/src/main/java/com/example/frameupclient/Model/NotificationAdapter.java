@@ -57,39 +57,51 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationHolder
 
         if(req.getRequestType().compareTo("suspension")==0){
             holder.noti.setBackgroundColor((Color.parseColor("#A90303")));
+
         }
         else if(req.getRequestType().compareTo("warning")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
+            holder.sign.setImageResource(R.drawable.warning_sign);
         }
         else if(req.getRequestType().compareTo("becameMember")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+            holder.sign.setImageResource(R.drawable.sign_popper);
         }
         else if(req.getRequestType().compareTo("becameAdvisor")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+            holder.sign.setImageResource(R.drawable.sign_popper);
         }
         else if(req.getRequestType().compareTo("meetingCall")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+            holder.sign.setImageResource(R.drawable.sign_meeting);
         }
         else if(req.getRequestType().compareTo("interviewCall")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#ff8767")));
+            holder.sign.setImageResource(R.drawable.sign_meeting);
         }
         else if(req.getRequestType().compareTo("reminder")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#ffb606")));
+            holder.sign.setImageResource(R.drawable.sign_reminder);
         }
         else if(req.getRequestType().compareTo("welcome")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#ca4b78")));
+            holder.sign.setImageResource(R.drawable.sign_meeting);
         }
         else if(req.getRequestType().compareTo("advertisement")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#ff2f9b")));
+            holder.sign.setImageResource(R.drawable.sign_ad);
         }
         else if(req.getRequestType().compareTo("info")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#9453ff")));
+            holder.sign.setImageResource(R.drawable.sign_info);
         }
         else if(req.getRequestType().compareTo("call")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#4f95ff")));
+            holder.sign.setImageResource(R.drawable.sign_meeting);
         }
         else if(req.getRequestType().compareTo("notice")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+            holder.sign.setImageResource(R.drawable.sign_info);
         }
         else{
             holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
