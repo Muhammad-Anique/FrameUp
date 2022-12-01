@@ -167,7 +167,7 @@ app:cardUseCompatPadding="false">
 
             <TextView
                 android:id="@+id/post_caption_name"
-                android:layout_width="12dp"
+                android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_medium"
@@ -178,10 +178,11 @@ app:cardUseCompatPadding="false">
 
             <TextView
                 android:id="@+id/post_caption_text"
-                android:layout_width="wrap_content"
+                android:layout_width="273dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto"
+                android:gravity="start"
                 android:text="Looking Amazing on the top of mount everest"
                 android:textColor="@color/grey"
                 android:textSize="12sp" />

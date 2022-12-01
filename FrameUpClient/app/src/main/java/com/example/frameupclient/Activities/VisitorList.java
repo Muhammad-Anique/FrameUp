@@ -38,12 +38,8 @@ public class VisitorList extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
-
         Rul = findViewById(R.id.rerere);
         Rul.setLayoutManager(new LinearLayoutManager(this));
-
-        System.out.println(";;;;44;;;");
-        System.out.println(";;;;44;;;");
         loadAdvisors();
     }
 
@@ -68,7 +64,7 @@ public class VisitorList extends AppCompatActivity {
 
     public void populate(List<String> s){
 
-        UserListAdapter userListAdapter = new UserListAdapter(s);
+        UserListAdapter userListAdapter = new UserListAdapter(s,2);
         Rul.setAdapter(userListAdapter);
     }
 }

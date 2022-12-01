@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,12 +20,14 @@ import java.util.List;
 class NotificationHolder extends RecyclerView.ViewHolder{
 
     TextView Heading,Text;
+    ImageView sign;
     ConstraintLayout noti;
     public NotificationHolder(@NonNull View itemView) {
         super(itemView);
         Heading=itemView.findViewById(R.id.warningHeading);
         Text=itemView.findViewById(R.id.waringText);
         noti=itemView.findViewById(R.id.noti_boti);
+        sign=itemView.findViewById(R.id.warningSign);
     }
 }
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationHolder> {
@@ -58,22 +61,39 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationHolder
         else if(req.getRequestType().compareTo("warning")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
         }
-        else if(req.getRequestType().compareTo("youBecameMember")==0) {
+        else if(req.getRequestType().compareTo("becameMember")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+        }
+        else if(req.getRequestType().compareTo("becameAdvisor")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+        }
+        else if(req.getRequestType().compareTo("meetingCall")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+        }
+        else if(req.getRequestType().compareTo("interviewCall")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#ff8767")));
+        }
+        else if(req.getRequestType().compareTo("reminder")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#ffb606")));
+        }
+        else if(req.getRequestType().compareTo("welcome")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#ca4b78")));
+        }
+        else if(req.getRequestType().compareTo("advertisement")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#ff2f9b")));
+        }
+        else if(req.getRequestType().compareTo("info")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#9453ff")));
+        }
+        else if(req.getRequestType().compareTo("call")==0) {
+            holder.noti.setBackgroundColor((Color.parseColor("#4f95ff")));
+        }
+        else if(req.getRequestType().compareTo("notice")==0) {
             holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
         }
         else{
             holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
         }
-//        else if(req.getRequestType().compareTo("SocietyCreated")==0){
-//            holder.Heading.setText(req.getRequestSubject());
-//            holder.Text.setText(req.getRequestText());
-//        }
-//        else if(req.getRequestType().compareTo("youBecameAdvisor")==0){
-//            holder.Heading.setText(req.getRequestSubject());
-//            holder.Text.setText(req.getRequestText());
-//            holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
-//        }
-
 
     }
 

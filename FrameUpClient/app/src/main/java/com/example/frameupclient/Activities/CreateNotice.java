@@ -14,14 +14,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.frameupclient.Model.Request;
 import com.example.frameupclient.Model.RequestAPI;
+import com.example.frameupclient.Model.SocietyParticipation;
+import com.example.frameupclient.Model.SocietyParticipationAPI;
 import com.example.frameupclient.Model.Visitor;
 import com.example.frameupclient.Model.VisitorAPI;
 import com.example.frameupclient.R;
 import com.example.frameupclient.Retrofit.RetrofitService;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,12 +35,14 @@ import retrofit2.Response;
 public class CreateNotice extends AppCompatActivity {
 
     String rollNo;
-    TextInputEditText IssueType,IssueSubject,IssueComment,VictimRoll;
+    TextInputEditText IssueType,IssueSubject,IssueComment,VictimRoll,society_ideee;
     ImageView img;
     TextView heading,userName,userEmail;;
     Button sendNotice;
     ProgressBar progressBar;
     ConstraintLayout preview;
+    List<String> allRolls;
+    int sid;
 
     String issue_type,issue_subject,issue_comment,victim_roll;
     @Override
@@ -57,6 +64,7 @@ public class CreateNotice extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
         userName=findViewById(R.id.name_notice_lay_rm);
         userEmail=findViewById(R.id.email_ru_notice_rm);
+        society_ideee =findViewById(R.id.issue_Request_society_id);
         preview=findViewById(R.id.user_preview_rm);
         preview.setVisibility(View.INVISIBLE);
 
@@ -121,30 +129,92 @@ public class CreateNotice extends AppCompatActivity {
             issue_subject= String.valueOf(IssueSubject.getText());
             issue_comment= String.valueOf(IssueComment.getText());
             victim_roll= String.valueOf(VictimRoll.getText());
-
+            sid=Integer.valueOf(society_ideee.getText().toString());
             RetrofitService retrofitService = new RetrofitService();
-            RequestAPI requestAPI = retrofitService.getRetrofit().create(RequestAPI.class);
-            Request request = new Request();
-            request.setRequestText(issue_comment);
-            request.setSendTo(victim_roll);
-            request.setRequestColor("Red");
-            request.setSocietyId(0);
-            request.setRequestSubject(issue_subject);
-            request.setRequestType(issue_type);
-            request.setSendBy(rollNo);
 
-            requestAPI.save(request).enqueue(new Callback<Request>() {
-                @Override
-                public void onResponse(Call<Request> call, Response<Request> response) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                }
 
-                @Override
-                public void onFailure(Call<Request> call, Throwable t) {
 
-                }
-            });
 
+
+            if(victim_roll.compareTo("allMembers")==0){
+                System.out.println("gotot");
+                SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+                societyParticipationAPI.getMemberBySId(sid).enqueue(new Callback<List<String>>() {
+                    @Override
+                    public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                        if(response.body()!=null) {
+                            for(int i=0;i<response.body().size();i++) {
+                                RequestAPI requestAPI = retrofitService.getRetrofit().create(RequestAPI.class);
+                                Request request = new Request();
+                                request.setRequestText(issue_comment);
+                                request.setSendTo(response.body().get(i));
+                                request.setRequestColor("pink");
+                                request.setSocietyId(sid);
+                                request.setRequestSubject(issue_subject);
+                                request.setRequestType(issue_type);
+                                request.setSendBy(rollNo);
+                                String index = String.valueOf(i);
+                                String total = String.valueOf(response.body().size());
+                                String rolly  = response.body().get(i);
+
+                                requestAPI.save(request).enqueue(new Callback<Request>() {
+                                    @Override
+                                    public void onResponse(Call<Request> call, Response<Request> response) {
+                                        Toast.makeText(CreateNotice.this, "Sent to "+ rolly+ " " + index + "/" + total, Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Request> call, Throwable t) {
+
+                                    }
+                                });
+
+                            }
+                            Toast.makeText(CreateNotice.this, "The Request/Message Sent", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<String>> call, Throwable t) {
+                        Toast.makeText(CreateNotice.this, "The Request/Message Failed", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+                });
+
+
+
+
+            }
+            else
+            {
+
+
+                RequestAPI requestAPI = retrofitService.getRetrofit().create(RequestAPI.class);
+                Request request = new Request();
+                request.setRequestText(issue_comment);
+                request.setSendTo(victim_roll);
+                request.setRequestColor("Red");
+                request.setSocietyId(0);
+                request.setRequestSubject(issue_subject);
+                request.setRequestType(issue_type);
+                request.setSendBy(rollNo);
+
+                requestAPI.save(request).enqueue(new Callback<Request>() {
+                    @Override
+                    public void onResponse(Call<Request> call, Response<Request> response) {
+                        Toast.makeText(CreateNotice.this, "The Request/Message Has Been Sent", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Request> call, Throwable t) {
+                        Toast.makeText(CreateNotice.this, "The Request/Message  Failed", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
 
 
         });

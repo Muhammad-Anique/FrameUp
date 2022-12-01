@@ -216,17 +216,20 @@ public class UserProfile extends AppCompatActivity {
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
                     if(Integer.valueOf(response.body())>0){
                         startActivity(intent1);
+                        finish();
                     }else{
                         startActivity(intent2);
+                        finish();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Integer> call, Throwable t) {
                     startActivity(intent2);
+                    finish();
                 }
             });
-            finish();
+
         });
 
 

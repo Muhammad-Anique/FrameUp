@@ -45,9 +45,11 @@ class UserListHolder extends RecyclerView.ViewHolder {
 public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
 
     List<String> memberRolls;
+    int type;
 
-    public UserListAdapter(List<String> memberRolls) {
+    public UserListAdapter(List<String> memberRolls,int type) {
         this.memberRolls = memberRolls;
+        this.type=type;
             }
 
 
@@ -74,24 +76,29 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
                 holder.userEmail.setText(response.body().getEmail());
                 RetrofitService retrofitService = new RetrofitService();
 
-                SocietyAPI societyAPI = retrofitService.getRetrofit().create(SocietyAPI.class);
-                societyAPI.isHead(response.body().getRollNo()).enqueue(new Callback<Integer>() {
-                    @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        if(Integer.valueOf(response.body())>0){
-                            holder.userType.setText("Head");
-                            holder.userType.setBackgroundResource(R.drawable.orange_box);
-                        }else{
+
+                if(type==1) {
+                    SocietyAPI societyAPI = retrofitService.getRetrofit().create(SocietyAPI.class);
+                    societyAPI.isHead(response.body().getRollNo()).enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            if(response.body()!=null)
+                            if (Integer.valueOf(response.body()) > 0) {
+                                holder.userType.setText("Head");
+                                holder.userType.setBackgroundResource(R.drawable.orange_box);
+                            } else {
+                                holder.userType.setText("Member");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
                             holder.userType.setText("Member");
                         }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Integer> call, Throwable t) {
-                        holder.userType.setText("Member");
-                    }
-                });
-
+                    });
+                }else{
+                    holder.userType.setText("Advisor");
+                }
 
                 holder.userName.setText(response.body().getName());
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();

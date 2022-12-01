@@ -150,12 +150,29 @@ public class RequestList extends AppCompatActivity implements RequestRvInterface
            societyParticipationAPI.save(societyParticipation).enqueue(new Callback<SocietyParticipation>() {
                @Override
                public void onResponse(Call<SocietyParticipation> call, Response<SocietyParticipation> response) {
-                   System.out.println("Particiaption Created");
+                   System.out.println("Participation Created");
                    RequestAPI requestAPI = retrofitService.getRetrofit().create(RequestAPI.class);
                    requestAPI.deleteReq(Req.get(position).getRequestId()).enqueue(new Callback<Void>() {
                        @Override
                        public void onResponse(Call<Void> call, Response<Void> response) {
+                           Request congratulate = new Request();
+                           congratulate.setRequestType("becameMember");
+                           congratulate.setRequestSubject("Congratulations");
+                           congratulate.setRequestText("Your membership request has been accepted by the head of the society. Now you have became the official member of the Society");
+                           congratulate.setSendTo(Req.get(position).getSendBy());
+                           requestAPI.save(congratulate).enqueue(new Callback<Request>() {
+                               @Override
+                               public void onResponse(Call<Request> call, Response<Request> response) {
+
+                               }
+
+                               @Override
+                               public void onFailure(Call<Request> call, Throwable t) {
+
+                               }
+                           });
                            loadRequests();
+
 
                        }
 

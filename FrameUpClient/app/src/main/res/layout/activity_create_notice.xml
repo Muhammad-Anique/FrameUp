@@ -114,6 +114,31 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_up" />
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/issue_Request_society_id"
+        android:layout_width="72dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/white_bg_for_profile"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="start"
+        android:hint="sid"
+        android:inputType="textEmailAddress|textMultiLine"
+        android:lines="20"
+        android:minLines="5"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_up" />
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/Issue_Request_Subject"
         android:layout_width="289dp"
         android:layout_height="42dp"
