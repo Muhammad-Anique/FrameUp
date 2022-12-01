@@ -94,9 +94,9 @@ public class ViewReport extends AppCompatActivity {
                 mCount22= response.body().getNoOfMalesBatch22();
 
                 barDataSet1 = new BarDataSet(getBarEntriesOne(), "Males");
-                barDataSet1.setColor(getApplicationContext().getResources().getColor(R.color.purple_200));
+                barDataSet1.setColor(getApplicationContext().getResources().getColor(R.color.Primary_Color_1));
                 barDataSet2 = new BarDataSet(getBarEntriesTwo(), "Females");
-                barDataSet2.setColor(Color.BLUE);
+                barDataSet2.setColor(R.color.purple_200);
 
                 BarData data = new BarData(barDataSet1, barDataSet2);
                 barChart.setData(data);

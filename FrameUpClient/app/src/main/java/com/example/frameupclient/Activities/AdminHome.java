@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.frameupclient.R;
 
@@ -16,6 +17,7 @@ public class AdminHome extends AppCompatActivity {
 
     Button create_society,view_notices,create_notice, messenger_btn,management_btn;
     CardView create_report,view_society;
+    ImageView logout_admin;
     String rollNo ="admin";
 
     @Override
@@ -39,6 +41,12 @@ public class AdminHome extends AppCompatActivity {
         create_society=findViewById(R.id.admin_create_society_btn);
         messenger_btn=findViewById(R.id.messagener_icon_ah);
         management_btn=findViewById(R.id.admin_management);
+        logout_admin=findViewById(R.id.imageView_logo_admin_home);
+
+        logout_admin.setOnClickListener(view->{
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+        });
 
         create_report.setOnClickListener(view->{
             Intent intent = new Intent(this, CreateReport.class);

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.frameupclient.Model.Report;
 import com.example.frameupclient.Model.ReportAPI;
@@ -64,12 +65,12 @@ public class CreateReport extends AppCompatActivity {
             reportAPI.save(report).enqueue(new Callback<Report>() {
                 @Override
                 public void onResponse(Call<Report> call, Response<Report> response) {
-
+                    Toast.makeText(CreateReport.this, "Report Created", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onFailure(Call<Report> call, Throwable t) {
-
+                    Toast.makeText(CreateReport.this, "Report Created", Toast.LENGTH_SHORT).show();
                 }
             });
 

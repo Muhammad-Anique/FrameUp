@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView_logo_up"
+            android:id="@+id/imageView_logo_admin_home"
             android:layout_width="118dp"
             android:layout_height="38dp"
             android:layout_marginStart="24dp"
@@ -36,7 +36,7 @@
             android:background="@drawable/messanger_icon_not_clicked"
             app:backgroundTint="@color/Primary_Color_1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_logo_up"
+            app:layout_constraintStart_toEndOf="@+id/imageView_logo_admin_home"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.473" />
 

@@ -69,9 +69,16 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, VisitorHome.class);
-        intent.putExtra("rollNo",rollNo);
-        startActivity(intent);
+        if(rollNo.compareTo("admin")==0){
+            Intent intent = new Intent(this, AdminHome.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, VisitorHome.class);
+            intent.putExtra("rollNo",rollNo);
+            startActivity(intent);
+        }
+
 
     }
 
@@ -85,6 +92,7 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
     private void setListeners(){
         binding.imageSignOut.setOnClickListener(view->{
             Intent intent = new Intent(this, Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
         FloatingActionButton fab = findViewById(R.id.fabNewChat);
@@ -94,9 +102,15 @@ public class StartActivity extends AppCompatActivity implements ConversionListen
         });
 
         binding.homeInMessanger.setOnClickListener(view->{
-            Intent intent = new Intent(this, VisitorHome.class);
-            intent.putExtra("rollNo",rollNo);
-            startActivity(intent);
+            if(rollNo.compareTo("admin")==0){
+                Intent intent = new Intent(this, AdminHome.class);
+                intent.putExtra("rollNo",rollNo);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(this, VisitorHome.class);
+                intent.putExtra("rollNo",rollNo);
+                startActivity(intent);
+            }
         });
     }
 

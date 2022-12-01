@@ -181,7 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:fontFamily="@font/montserrat_medium"
-        android:text="Mange Users And Newsfeed"
+        android:text="Manage Users And Newsfeed"
         android:textColor="@color/Primary_Color_1"
         android:textSize="20sp"
         android:textStyle="bold"
