@@ -224,62 +224,67 @@ public class SocietyPage extends AppCompatActivity {
         });
 
 
-        switch (memType) {
-            case 1:
-                System.out.println("here");
-                manage_user_card_text.setText("Hi Head, Manage Members");
-                joinUs.setVisibility(View.VISIBLE);
-                joinUs.setText("Manage");
-                break;
-            case 2:
-                manage_user_card_text.setText("Hi Advisor !! ");
-                joinUs.setVisibility(View.INVISIBLE);
-                break;
-            case 3:
-                manage_user_card_text.setText("Hi Dear Member ........");
-                joinUs.setText("Become");
-                joinUs.setVisibility(View.INVISIBLE);
-                break;
-            case 4:
-                RetrofitService retrofitService3 = new RetrofitService();
-                RequestAPI requestAPI2 = retrofitService3.getRetrofit().create(RequestAPI.class);
-                requestAPI2.getRequestTypeByRoll(rollNo,"becomeMember",sid).enqueue(new Callback<Integer>() {
-                    @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        System.out.println("hey i am in reqqy");
-                        if(response.body()!=null)
-                        {
-                            if(Integer.valueOf(response.body())>0){
-                                joinUs.setVisibility(View.INVISIBLE);
-                                manage_user_card_text.setText("You Request has been Sent");
+        if(rollNo.compareTo("admin")==0){
+            manage_user_card_text.setText("Delete Society");
+            joinUs.setVisibility(View.VISIBLE);
+            joinUs.setText("delete");
+        }
+        else {
 
-                            }
-                            else{
+            switch (memType) {
+                case 1:
+                    System.out.println("here");
+                    manage_user_card_text.setText("Hi Head, Manage Members");
+                    joinUs.setVisibility(View.VISIBLE);
+                    joinUs.setText("Manage");
+                    break;
+                case 2:
+                    manage_user_card_text.setText("Hi Advisor !! ");
+                    joinUs.setVisibility(View.INVISIBLE);
+                    break;
+                case 3:
+                    manage_user_card_text.setText("Hi Dear Member ........");
+                    joinUs.setText("Become");
+                    joinUs.setVisibility(View.INVISIBLE);
+                    break;
+                case 4:
+                    RetrofitService retrofitService3 = new RetrofitService();
+                    RequestAPI requestAPI2 = retrofitService3.getRetrofit().create(RequestAPI.class);
+                    requestAPI2.getRequestTypeByRoll(rollNo, "becomeMember", sid).enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            System.out.println("hey i am in reqqy");
+                            if (response.body() != null) {
+                                if (Integer.valueOf(response.body()) > 0) {
+                                    joinUs.setVisibility(View.INVISIBLE);
+                                    manage_user_card_text.setText("You Request has been Sent");
+
+                                } else {
+                                    manage_user_card_text.setText("Join our Society");
+                                    joinUs.setVisibility(View.VISIBLE);
+                                    joinUs.setText("Join");
+                                }
+                            } else {
                                 manage_user_card_text.setText("Join our Society");
                                 joinUs.setVisibility(View.VISIBLE);
                                 joinUs.setText("Join");
                             }
-                        }else{
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
                             manage_user_card_text.setText("Join our Society");
                             joinUs.setVisibility(View.VISIBLE);
                             joinUs.setText("Join");
                         }
+                    });
 
-                    }
+                    break;
 
-                    @Override
-                    public void onFailure(Call<Integer> call, Throwable t) {
-                        manage_user_card_text.setText("Join our Society");
-                        joinUs.setVisibility(View.VISIBLE);
-                        joinUs.setText("Join");
-                    }
-                });
-
-                break;
+            }
 
         }
-
-
 
 
         joinUs.setOnClickListener(view->{

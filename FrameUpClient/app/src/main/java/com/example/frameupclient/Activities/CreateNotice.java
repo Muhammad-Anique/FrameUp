@@ -93,23 +93,25 @@ public class CreateNotice extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 RetrofitService retrofitService = new RetrofitService();
                 VisitorAPI visitorAPI =retrofitService.getRetrofit().create(VisitorAPI.class);
-                visitorAPI.getVisitorByRollNo(VictimRoll.getText().toString()).enqueue(new Callback<Visitor>() {
-                    @Override
-                    public void onResponse(Call<Visitor> call, Response<Visitor> response) {
-                        preview.setVisibility(View.VISIBLE);
-                        userEmail.setText(response.body().getEmail());
-                        userName.setText(response.body().getName());
+                if(VictimRoll.getText().length()>5) {
+                    visitorAPI.getVisitorByRollNo(VictimRoll.getText().toString()).enqueue(new Callback<Visitor>() {
+                        @Override
+                        public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                            if (response.body() != null) {
+                                preview.setVisibility(View.VISIBLE);
+                                userEmail.setText(response.body().getEmail());
+                                userName.setText(response.body().getName());
+                            }
 
+                        }
 
-                    }
+                        @Override
+                        public void onFailure(Call<Visitor> call, Throwable t) {
+                            preview.setVisibility(View.INVISIBLE);
+                        }
+                    });
 
-                    @Override
-                    public void onFailure(Call<Visitor> call, Throwable t) {
-                        preview.setVisibility(View.INVISIBLE);
-                    }
-                });
-
-
+                }
             }
         });
 

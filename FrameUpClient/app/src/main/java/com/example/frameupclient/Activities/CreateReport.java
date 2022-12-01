@@ -58,7 +58,7 @@ public class CreateReport extends AppCompatActivity {
             report.setReportType("SocietyReport");
             report.setReportSubject(rs);
             report.setReportBody(rb);
-            report.setSocietyId(Integer.getInteger(society_id.getText().toString()));
+            report.setSocietyId(Integer.valueOf(society_id.getText().toString()));
             report.setReportConclusion(rc);
             report.setDateReportCreated(formattedDate);
             reportAPI.save(report).enqueue(new Callback<Report>() {

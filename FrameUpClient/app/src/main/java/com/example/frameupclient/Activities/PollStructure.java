@@ -57,6 +57,8 @@ public class PollStructure extends AppCompatActivity {
           rollNo=extras.getString("rollNo");
           System.out.println(PollId);;
         }
+
+
         Window window =this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -68,11 +70,12 @@ public class PollStructure extends AppCompatActivity {
         pollRespondedAPI.getResponseExistence(rollNo).enqueue(new Callback<PollResponded>() {
             @Override
             public void onResponse(Call<PollResponded> call, Response<PollResponded> response) {
+                if(response.body()!=null){
                 if(response.body().getPollId()==PollId)
-                submit.setVisibility(View.INVISIBLE);
+                    submit.setVisibility(View.INVISIBLE);
                 else{
                     submit.setVisibility(View.VISIBLE);
-                }
+                }}
             }
             @Override
             public void onFailure(Call<PollResponded> call, Throwable t) {
