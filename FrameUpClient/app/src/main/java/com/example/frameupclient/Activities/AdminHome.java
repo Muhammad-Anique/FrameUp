@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -40,6 +41,7 @@ public class AdminHome extends AppCompatActivity {
         create_notice=findViewById(R.id.admin_issue_notice);
         create_society=findViewById(R.id.admin_create_society_btn);
         messenger_btn=findViewById(R.id.messagener_icon_ah);
+        messenger_btn.setVisibility(View.INVISIBLE);
         management_btn=findViewById(R.id.admin_management);
         logout_admin=findViewById(R.id.imageView_logo_admin_home);
 
@@ -65,12 +67,7 @@ public class AdminHome extends AppCompatActivity {
             intent.putExtra("rollNo","admin");
             startActivity(intent);
         });
-        messenger_btn.setOnClickListener(view->{
-            Intent intent = new Intent(getApplicationContext(), com.example.frameupclient.Activities.StartActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("rollNo",rollNo);
-            startActivity(intent);
-        });
+
 
         management_btn.setOnClickListener(view->{
             Intent intent = new Intent(this, Deletions.class);

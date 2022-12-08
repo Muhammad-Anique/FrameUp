@@ -41,7 +41,7 @@ public class CreateReport extends AppCompatActivity {
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         window.setNavigationBarColor(ContextCompat.getColor(this,R.color.Primary_Color_1));
         report_subject=findViewById(R.id.Report_Subject);
-        report_body=findViewById(R.id.Report_Subject);
+        report_body=findViewById(R.id.Report_Body);
         society_id=findViewById(R.id.society_id_tv);
         report_conclusion=findViewById(R.id.Report_Conculsion);
         CreateReport=findViewById(R.id.create_report_btn_rr);
@@ -67,17 +67,19 @@ public class CreateReport extends AppCompatActivity {
                 report.setSocietyId(Integer.valueOf(society_id.getText().toString()));
                 report.setReportConclusion(rc);
                 report.setDateReportCreated(formattedDate);
-                reportAPI.save(report).enqueue(new Callback<Report>() {
+
+                reportAPI.save(report).enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<Report> call, Response<Report> response) {
+                    public void onResponse(Call<String> call, Response<String> response) {
                         Toast.makeText(CreateReport.this, "Report Created", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
-                    public void onFailure(Call<Report> call, Throwable t) {
-                        Toast.makeText(CreateReport.this, "Report not Created", Toast.LENGTH_SHORT).show();
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(CreateReport.this, "Report Not Created", Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
         });
 

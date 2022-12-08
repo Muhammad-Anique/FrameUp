@@ -136,12 +136,12 @@ public class CreateNotice extends AppCompatActivity {
                 Toast.makeText(CreateNotice.this, "Invalid Entries", Toast.LENGTH_SHORT).show();
             else {
                 if(society_ideee.getText().toString()==null || society_ideee.getText().toString().isEmpty()){
-
+                    sid=0;
                    }
                 else{
                     sid=Integer.valueOf(society_ideee.getText().toString());
                 }
-                if (victim_roll.compareTo("allMembers") == 0) {
+                if (victim_roll.compareTo("allMembers") == 0 && sid>0) {
                     System.out.println("gotot");
                     SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
                     societyParticipationAPI.getMemberBySId(sid).enqueue(new Callback<List<String>>() {

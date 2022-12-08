@@ -24,6 +24,7 @@ public class VisitorController {
     @PostMapping("/visitor/save")
     public Visitor save(@RequestBody Visitor visitor) {
         int i = (int) (Math.random() * 10000);
+        if(i<1000) i=i+1000;
         String otp = Integer.toString(i);
         visitor.setOTP(otp);
         return visitorDao.saveVisitor(visitor);

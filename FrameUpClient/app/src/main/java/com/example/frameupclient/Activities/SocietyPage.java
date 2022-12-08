@@ -194,7 +194,14 @@ public class SocietyPage extends AppCompatActivity {
         societyParticipationAPI.getRatingBySID(sid).enqueue(new Callback<Float>() {
             @Override
             public void onResponse(Call<Float> call, Response<Float> response) {
-                society_rating_val_card.setText(String.valueOf(response.body()));
+                String rate =String.valueOf(response.body());
+                String value = "0.0";
+                if(rate.length()>3)
+                    value=rate.substring(0,4);
+                else
+                    value=rate;
+
+                society_rating_val_card.setText((String.valueOf(value)));
             }
 
             @Override

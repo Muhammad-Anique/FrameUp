@@ -62,6 +62,6 @@ public class SocietyParticipationController {
 
     @DeleteMapping("/society-participation/delete/{sid}/{roll}")
     public String deleteParticipation(@PathVariable int sid, @PathVariable String roll) {
-        return deleteParticipation(sid, roll);
+        return societyParticipationDao.deleteMember(sid, roll);
     }
 }

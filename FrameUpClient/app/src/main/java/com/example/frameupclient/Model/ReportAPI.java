@@ -14,7 +14,7 @@ public interface ReportAPI {
     Call<List<Report>> getAllReport();
 
     @POST("/report/save")
-    Call<Report> save(@Body Report report);
+    Call<String> save(@Body Report report);
 
     @GET("/report/{sid}")
     Call<Report> getReportBySid(@Path("sid") int sid);

@@ -131,7 +131,7 @@ public class Registeration extends AppCompatActivity {
         VisitorAPI visitorAPI =  retrofitService.getRetrofit().create(VisitorAPI.class);
 
         verify.setOnClickListener(view -> {
-            verify.setEnabled(false);
+
             String name = String.valueOf(name_TF.getText());
             String email = String.valueOf(email_TF.getText());
             String phone = String.valueOf(phone_TF.getText());
@@ -218,47 +218,72 @@ public class Registeration extends AppCompatActivity {
                 System.out.println(v);
 
                 displayErrors();
-
                 visitorAPI.getVisitorByRollNo(rollno).enqueue(new Callback<Visitor>() {
                     @Override
                     public void onResponse(Call<Visitor> call, Response<Visitor> response) {
                         if(response.body()!=null) {
-                            accountExist=true;
                             Toast.makeText(Registeration.this, "Account Already Exist", Toast.LENGTH_SHORT).show();
+                            progressBar_reg.setVisibility(TextView.INVISIBLE);
+                        }else{
+                            if (isPassword_valid() && isPhone_valid() && isEmail_valid()) {
+                                reg_error.setText("All Entries are Acceptable");
+
+                                System.out.println("sending Api");
+
+                                visitorAPI.save(v).enqueue(new Callback<Visitor>() {
+                                    @Override
+                                    public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                                        Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
+                                        System.out.println("hi");
+                                        start_verify_activity(email, rollno, name, password);
+                                        progressBar_reg.setVisibility(TextView.INVISIBLE);
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Visitor> call, Throwable t) {
+                                        Toast.makeText(Registeration.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+                                        reg_error.setText("Account Already Exist or Server is Down");
+                                        Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
+                                    }
+
+                                });
+
+                            }
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Visitor> call, Throwable t) {
-                        accountExist=false;
+                        if (isPassword_valid() && isPhone_valid() && isEmail_valid()) {
+
+                            reg_error.setText("All Entries are Acceptable");
+
+                            System.out.println("sending Api");
+
+                            visitorAPI.save(v).enqueue(new Callback<Visitor>() {
+                                @Override
+                                public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                                    Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
+                                    System.out.println("hi");
+                                    start_verify_activity(email, rollno, name, password);
+                                    progressBar_reg.setVisibility(TextView.INVISIBLE);
+                                }
+
+                                @Override
+                                public void onFailure(Call<Visitor> call, Throwable t) {
+                                    Toast.makeText(Registeration.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+                                    reg_error.setText("Account Already Exist or Server is Down");
+                                    Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
+                                }
+
+                            });
+
+                        }
                     }
                 });
 
 
-                if (isPassword_valid() && isPhone_valid() && isEmail_valid() && !accountExist) {
-                    reg_error.setText("All Entries are Acceptable");
 
-                    System.out.println("sending Api");
-
-                    visitorAPI.save(v).enqueue(new Callback<Visitor>() {
-                        @Override
-                        public void onResponse(Call<Visitor> call, Response<Visitor> response) {
-                            Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
-                            System.out.println("hi");
-                            start_verify_activity(email, rollno, name, password);
-                            progressBar_reg.setVisibility(TextView.INVISIBLE);
-                        }
-
-                        @Override
-                        public void onFailure(Call<Visitor> call, Throwable t) {
-                            Toast.makeText(Registeration.this, "Error Occurred", Toast.LENGTH_SHORT).show();
-                            reg_error.setText("Account Already Exist or Server is Down");
-                            Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
-                        }
-
-                    });
-
-                }
 
 
             }

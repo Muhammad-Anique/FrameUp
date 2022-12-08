@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +36,9 @@ public class  Login extends AppCompatActivity {
     public String firebaseEmail;
     public String firebasePassword;
 
+    public ProgressBar pl;
+
+
     public int getIsVerifiedBit() { return IsVerifiedBit;}
 
     public void setIsVerifiedBit(int isVerifiedBit) {IsVerifiedBit = isVerifiedBit;}
@@ -53,6 +58,7 @@ public class  Login extends AppCompatActivity {
         TextView error = findViewById(R.id.Error);
 
         if(getPasswordValidity()==1 && getIsVerifiedBit()==1){
+            pl.setVisibility(View.INVISIBLE);
             if(RollNumber.compareTo("admin")==0 || RollNumber.compareTo("Admin")==0 )
             {
                 Intent intent = new Intent(this, AdminHome.class);
@@ -67,6 +73,7 @@ public class  Login extends AppCompatActivity {
             }
         }
         else if(getPasswordValidity()==1 && getIsVerifiedBit()==0){
+            pl.setVisibility(View.INVISIBLE);
             System.out.println("notverified");
             Intent intent = new Intent(this, OTP_verification.class);
             startActivity(intent);
@@ -74,11 +81,13 @@ public class  Login extends AppCompatActivity {
 
         }
         else if(getPasswordValidity()==0 && getIsVerifiedBit()==1){
+            pl.setVisibility(View.INVISIBLE);
             error.setText("Wrong Password");
             System.out.println("worng pass");
         }
         else
         {
+            pl.setVisibility(View.INVISIBLE);
             error.setText("Wrong Password");
             System.out.println("wrong pass");
         }
@@ -93,11 +102,14 @@ public class  Login extends AppCompatActivity {
         //initalization
         TextInputEditText Roll = findViewById(R.id.rollno_lg_tf);
         TextInputEditText Pass = findViewById(R.id.password_lg_tf);
+        pl=findViewById(R.id.progress_login);
+        pl.setVisibility(View.INVISIBLE);
         Button login = findViewById(R.id.log_btn);
 
         //login click
         login.setOnClickListener(view -> {
 
+            pl.setVisibility(View.VISIBLE);
             //retrofitService
             RetrofitService retrofitService = new RetrofitService();
             VisitorAPI visitorAPI =  retrofitService.getRetrofit().create(VisitorAPI.class);

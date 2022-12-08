@@ -102,8 +102,8 @@
 
     <TextView
         android:id="@+id/userEmailid"
-        android:layout_width="114dp"
-        android:layout_height="17dp"
+        android:layout_width="267dp"
+        android:layout_height="20dp"
         android:text=" "
         android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
