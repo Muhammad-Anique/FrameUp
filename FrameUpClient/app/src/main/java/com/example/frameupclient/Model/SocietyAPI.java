@@ -31,6 +31,12 @@ public interface SocietyAPI {
     @GET("/society/who-is-this/{sid}/{roll}")
     Call<Integer> whoIsThis(@Path("sid") int sid, @Path("roll") String roll);
 
+    @GET("/society/is-head/{rollNo}/{sid}")
+    Call<Integer> isHead(@Path("rollNo") String rollNo, @Path("sid") int sid);
+
+
     @GET("/society/is-head/{rollNo}")
-    Call<Integer> isHead(@Path("rollNo") String rollNo );
+    Call<Integer> isHeadAnyone(@Path("rollNo") String rollNo);
+
+
 }

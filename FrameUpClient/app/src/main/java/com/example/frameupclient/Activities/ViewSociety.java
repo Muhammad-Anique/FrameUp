@@ -80,7 +80,7 @@ public class ViewSociety extends AppCompatActivity implements SocietyRecyclerVie
             intent2.putExtra("rollNo", rollNo);
             RetrofitService retrofitService = new RetrofitService();
             SocietyAPI societyAPI =  retrofitService.getRetrofit().create(SocietyAPI.class);
-            societyAPI.isHead(rollNo).enqueue(new Callback<Integer>() {
+            societyAPI.isHeadAnyone(rollNo).enqueue(new Callback<Integer>() {
                 @Override
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
                     if(Integer.valueOf(response.body())>0){

@@ -46,10 +46,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
 
     List<String> memberRolls;
     int type;
+    int sid;
 
-    public UserListAdapter(List<String> memberRolls,int type) {
+    public UserListAdapter(List<String> memberRolls,int type,int sid) {
         this.memberRolls = memberRolls;
         this.type=type;
+        this.sid=sid;
             }
 
 
@@ -79,7 +81,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListHolder>{
 
                 if(type==1) {
                     SocietyAPI societyAPI = retrofitService.getRetrofit().create(SocietyAPI.class);
-                    societyAPI.isHead(response.body().getRollNo()).enqueue(new Callback<Integer>() {
+                    societyAPI.isHead(response.body().getRollNo(),sid).enqueue(new Callback<Integer>() {
                         @Override
                         public void onResponse(Call<Integer> call, Response<Integer> response) {
                             if(response.body()!=null)

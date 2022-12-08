@@ -103,45 +103,49 @@ public class RemoveMember extends AppCompatActivity {
 
         Remove_Member.setOnClickListener(view->{
 
-            if(rollNo.compareTo(removeRoll.getText().toString())!=0) {
-                p.setVisibility(View.VISIBLE);
-                RetrofitService retrofitService = new RetrofitService();
-                SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
-                societyParticipationAPI.getSocietyPByRollAndSid(sid, removeRoll.getText().toString()).enqueue(new Callback<Integer>() {
-                    @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        if (Integer.valueOf(response.body()) > 0) {
-                            SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
-                            societyParticipationAPI.deleteParticipation(sid, removeRoll.getText().toString()).enqueue(new Callback<String>() {
-                                @Override
-                                public void onResponse(Call<String> call, Response<String> response) {
-                                    Toast.makeText(getApplicationContext(), "Member Deleted", Toast.LENGTH_SHORT).show();
-                                    p.setVisibility(View.INVISIBLE);
-                                }
-
-                                @Override
-                                public void onFailure(Call<String> call, Throwable t) {
-                                    Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_SHORT).show();
-                                    p.setVisibility(View.INVISIBLE);
-                                }
-                            });
-                        } else {
-                            Toast.makeText(getApplicationContext(), "The selected member is not in this Society", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Integer> call, Throwable t) {
-                        name.setText("Member Does not Exists");
-
-                    }
-                });
-
-            }else{
-                Toast.makeText(getApplicationContext(), "You cannot select your roll", Toast.LENGTH_SHORT).show();
+            if(removeRoll.getText().toString().isEmpty()){
+                Toast.makeText(RemoveMember.this, "Invalid Roll", Toast.LENGTH_SHORT).show();
             }
+            else {
+                if (rollNo.compareTo(removeRoll.getText().toString()) != 0) {
+                    p.setVisibility(View.VISIBLE);
+                    RetrofitService retrofitService = new RetrofitService();
+                    SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+                    societyParticipationAPI.getSocietyPByRollAndSid(sid, removeRoll.getText().toString()).enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            if (Integer.valueOf(response.body()) > 0) {
+                                SocietyParticipationAPI societyParticipationAPI = retrofitService.getRetrofit().create(SocietyParticipationAPI.class);
+                                societyParticipationAPI.deleteParticipation(sid, removeRoll.getText().toString()).enqueue(new Callback<String>() {
+                                    @Override
+                                    public void onResponse(Call<String> call, Response<String> response) {
+                                        Toast.makeText(getApplicationContext(), "Member Deleted", Toast.LENGTH_SHORT).show();
+                                        p.setVisibility(View.INVISIBLE);
+                                    }
 
+                                    @Override
+                                    public void onFailure(Call<String> call, Throwable t) {
+                                        Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_SHORT).show();
+                                        p.setVisibility(View.INVISIBLE);
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(getApplicationContext(), "The selected member is not in this Society", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+                            name.setText("Member Does not Exists");
+
+                        }
+                    });
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "You cannot select your roll", Toast.LENGTH_SHORT).show();
+                }
+
+            }
         });
 
 

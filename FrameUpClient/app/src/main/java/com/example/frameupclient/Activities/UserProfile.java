@@ -211,7 +211,7 @@ public class UserProfile extends AppCompatActivity {
             intent2.putExtra("rollNo", rollNo);
             RetrofitService retrofitService1 = new RetrofitService();
             SocietyAPI societyAPI =  retrofitService1.getRetrofit().create(SocietyAPI.class);
-            societyAPI.isHead(rollNo).enqueue(new Callback<Integer>() {
+            societyAPI.isHeadAnyone(rollNo).enqueue(new Callback<Integer>() {
                 @Override
                 public void onResponse(Call<Integer> call, Response<Integer> response) {
                     if(Integer.valueOf(response.body())>0){
@@ -265,7 +265,6 @@ public class UserProfile extends AppCompatActivity {
             Intent intent = new Intent(this, CreateNotice.class);
             intent.putExtra("rollNo",rollNo);
             startActivity(intent);
-            finish();
         });
 
         home_btn =findViewById(R.id.home_button_up);

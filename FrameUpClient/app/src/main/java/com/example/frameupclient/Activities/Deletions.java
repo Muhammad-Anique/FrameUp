@@ -47,49 +47,62 @@ public class Deletions extends AppCompatActivity {
         pollID=findViewById(R.id.poll_id_deletion);
 
         Delpost.setOnClickListener(view->{
-            PostAPI postAPI = retrofitService.getRetrofit().create(PostAPI.class);
-            postAPI.deletePost(Integer.valueOf(postId.getText().toString())).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    Toast.makeText(Deletions.this, "Post/Event Deleted", Toast.LENGTH_SHORT).show();
-                }
+            if(postId.getText().toString()==null || postId.getText().toString().isEmpty()) {
+                Toast.makeText(Deletions.this, "Invalid Post or Event Id", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                PostAPI postAPI = retrofitService.getRetrofit().create(PostAPI.class);
+                postAPI.deletePost(Integer.valueOf(postId.getText().toString())).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Toast.makeText(Deletions.this, "Post/Event Deleted", Toast.LENGTH_SHORT).show();
+                    }
 
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(Deletions.this, "Post/Event Failed Deletion", Toast.LENGTH_SHORT).show();
-                }
-            });
-
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(Deletions.this, "Post/Event Failed Deletion", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
 
         Delroll.setOnClickListener(view->{
-            VisitorAPI visitorAPI = retrofitService.getRetrofit().create(VisitorAPI.class);
-            visitorAPI.updateStatusByRoll(roll.getText().toString(),st.getText().toString()).enqueue(new Callback<Visitor>() {
-                @Override
-                public void onResponse(Call<Visitor> call, Response<Visitor> response) {
-                    Toast.makeText(Deletions.this, "Status Updated", Toast.LENGTH_SHORT).show();
-                }
+            if((roll.getText().toString()==null || roll.getText().toString().isEmpty() || st.getText().toString().isEmpty() || st.getText().toString()==null) || (st.getText().toString().compareTo("inactive")!=0 || st.getText().toString().compareTo("active")!=0) ) {
+                Toast.makeText(Deletions.this, "Roll OR Status Invalid", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                VisitorAPI visitorAPI = retrofitService.getRetrofit().create(VisitorAPI.class);
+                visitorAPI.updateStatusByRoll(roll.getText().toString(), st.getText().toString()).enqueue(new Callback<Visitor>() {
+                    @Override
+                    public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                        Toast.makeText(Deletions.this, "Status Updated", Toast.LENGTH_SHORT).show();
+                    }
 
-                @Override
-                public void onFailure(Call<Visitor> call, Throwable t) {
-                    Toast.makeText(Deletions.this, "Failure", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Visitor> call, Throwable t) {
+                        Toast.makeText(Deletions.this, "Failure", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
 
         Delpoll.setOnClickListener(view->{
-            PollAPI pollAPI = retrofitService.getRetrofit().create(PollAPI.class);
-            pollAPI.deletePoll(Integer.valueOf(pollID.getText().toString())).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    Toast.makeText(Deletions.this, "Poll Deleted", Toast.LENGTH_SHORT).show();
-                }
+            if(pollID.getText().toString()==null || pollID.getText().toString().isEmpty()) {
+                Toast.makeText(Deletions.this, "Invalid PollId", Toast.LENGTH_SHORT).show();
+            }else{
+                PollAPI pollAPI = retrofitService.getRetrofit().create(PollAPI.class);
+                pollAPI.deletePoll(Integer.valueOf(pollID.getText().toString())).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Toast.makeText(Deletions.this, "Poll Deleted", Toast.LENGTH_SHORT).show();
+                    }
 
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(Deletions.this, "Poll Deletion Failed", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(Deletions.this, "Poll Deletion Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
 
 

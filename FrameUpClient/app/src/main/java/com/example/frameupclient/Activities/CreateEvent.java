@@ -119,13 +119,24 @@ public class CreateEvent extends AppCompatActivity {
         create_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                eDate = String.valueOf(e_start_date.getText());
+                eSTime = String.valueOf(e_start_time.getText());
+                eETime = String.valueOf(e_end_time.getText());
+                eCap = String.valueOf(e_caption.getText());
+                venue = String.valueOf(e_venue.getText());
+                type = String.valueOf(e_event_type.getText());
 
-                if (uri != null){
-                    uploadToFirebase(uri);
-                }else{
-                    Toast.makeText(CreateEvent.this, "Please Select Image", Toast.LENGTH_SHORT).show();
+                if(eDate==null || eDate.isEmpty() || e_start_time.getText().toString().isEmpty() || e_start_date.getText().toString().isEmpty() || e_end_time.getText().toString().isEmpty() || eSTime==null || eSTime.isEmpty() || eETime==null || eETime.isEmpty() || venue.isEmpty() || venue==null ){
+                    Toast.makeText(CreateEvent.this, "Invalid Entries", Toast.LENGTH_SHORT).show();
                 }
+                else {
+                    if (uri != null) {
 
+                        uploadToFirebase(uri);
+                    } else {
+                        Toast.makeText(CreateEvent.this, "Please Select Image", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
@@ -159,51 +170,57 @@ public class CreateEvent extends AppCompatActivity {
         eCap = String.valueOf(e_caption.getText());
         venue = String.valueOf(e_venue.getText());
         type = String.valueOf(e_event_type.getText());
-        int priority = 2;
-        Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String date = df.format(c);
-        String roll ="20l-2179";
-        String AuthorRoll= String.valueOf(roll);
-
-        PostAPI postAPI = retrofitService.getRetrofit().create(PostAPI.class);
-        Post post = new Post();
-
-        post.setEventDate(eDate);
-        post.setEventType(type);
-        post.setEventStartTime(eSTime);
-        post.setAuthorRoll(rollNo);
-        post.setHashtag(null);
-        post.setLink(MediaUrl);
-        post.setPriority(2);
-        post.setEventVenue(venue);
-        post.setEventEndTime(eETime);
-        post.setPostCreationDate(date);
-        post.setPostText(eCap);
-        post.setSocietyAssociated(sid);
 
 
-        System.out.println(post);
+        if(eDate==null || eDate.isEmpty() || !checkDate(eDate) || e_start_time.getText().toString().isEmpty() || e_start_date.getText().toString().isEmpty() || e_end_time.getText().toString().isEmpty() || eSTime==null || eSTime.isEmpty() || eETime==null || eETime.isEmpty() || venue.isEmpty() || venue==null ){
+            Toast.makeText(CreateEvent.this, "Invalid Entries", Toast.LENGTH_SHORT).show();
+        }
+        else {
+                int priority = 2;
+                Date c = Calendar.getInstance().getTime();
+                System.out.println("Current time => " + c);
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                String date = df.format(c);
+                String roll = "20l-2179";
+                String AuthorRoll = String.valueOf(roll);
 
-        if(eCap!=null && venue!=null && imageUploaded) {
-            eventError.setText("Wait for Server Response");
-            postAPI.save(post).enqueue(new Callback<Post>() {
-                @Override
-                public void onResponse(Call<Post> call, Response<Post> response) {
-                    eventError.setText("Successfully Uploaded");
+                PostAPI postAPI = retrofitService.getRetrofit().create(PostAPI.class);
+                Post post = new Post();
+
+                post.setEventDate(eDate);
+                post.setEventType(type);
+                post.setEventStartTime(eSTime);
+                post.setAuthorRoll(rollNo);
+                post.setHashtag(null);
+                post.setLink(MediaUrl);
+                post.setPriority(2);
+                post.setEventVenue(venue);
+                post.setEventEndTime(eETime);
+                post.setPostCreationDate(date);
+                post.setPostText(eCap);
+                post.setSocietyAssociated(sid);
+                System.out.println(post);
+
+                if (eCap != null && venue != null && imageUploaded) {
+                    eventError.setText("Wait for Server Response");
+                    postAPI.save(post).enqueue(new Callback<Post>() {
+                        @Override
+                        public void onResponse(Call<Post> call, Response<Post> response) {
+                            eventError.setText("Successfully Uploaded");
+                        }
+
+                        @Override
+                        public void onFailure(Call<Post> call, Throwable t) {
+                            eventError.setText("Server Down");
+                        }
+                    });
+                } else {
+                    eventError.setText("Caption, Image And Subject Cannot Be Null");
+
                 }
-                @Override
-                public void onFailure(Call<Post> call, Throwable t) {
-                   eventError.setText("Server Down");
-                }
-            });
-        }else{
-           eventError.setText("Caption, Image And Subject Cannot Be Null");
+
 
         }
-
-
     }
 
 
@@ -225,7 +242,7 @@ public class CreateEvent extends AppCompatActivity {
                         System.out.println("********");
                         root.child(modelId).setValue(model);
                         progressbar.setVisibility(View.INVISIBLE);
-                        Toast.makeText(CreateEvent.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateEvent.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
                         cover.setImageResource(R.drawable.gradient_grey);
                         eventError.setText("image is uploaded wait for data to upload");
                         imageUploaded=true;
@@ -256,4 +273,45 @@ public class CreateEvent extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cr.getType(mUri));
 
     }
+
+    boolean checkDate(String d)
+    {
+
+        int d1 = Character.getNumericValue(d.charAt(0));
+        int d2 = Character.getNumericValue(d.charAt(1));
+        char s1 = d.charAt(2);
+        int d4 = Character.getNumericValue(d.charAt(3));
+        int d5 = Character.getNumericValue(d.charAt(4));
+        char s2 =d.charAt(5);
+        int d6 = Character.getNumericValue(d.charAt(6));
+        int d7 =Character.getNumericValue(d.charAt(7));
+        int d8 = Character.getNumericValue(d.charAt(8));
+        int d9 = Character.getNumericValue(d.charAt(9));
+
+        System.out.println(d1);
+        if(d1>=0 && d1<4) {
+            if(d2>=0 && d2<=10){
+                if(s1=='/'){
+                    if(d4>=0 && d4<=1){
+                        if(d5>=0 && d5<=2){
+                            if(s2=='/' && d6==2 && d7==0 && d8==2 && d9>=2)
+                            {
+                                return true;
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+        else{
+            return false;
+        }
+
+        return false;
+    }
+
 }

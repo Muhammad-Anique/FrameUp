@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,8 +36,9 @@ public class Registeration extends AppCompatActivity {
     private boolean password_valid=false;
     private boolean email_valid=false;
     private boolean phone_valid=false;
-    boolean maleState;
-    boolean femaleState;
+    public boolean accountExist = false;
+    boolean maleState=false;
+    boolean femaleState=false;
      public boolean verifyOTP =false;
 
 
@@ -114,11 +116,12 @@ public class Registeration extends AppCompatActivity {
         RadioButton male = (RadioButton) findViewById(R.id.male);
         RadioButton female = (RadioButton) findViewById(R.id.female);
         Button verify = findViewById(R.id.verify_btn);
+        ProgressBar progressBar_reg = findViewById(R.id.reg_progress);
+        progressBar_reg.setVisibility(TextView.INVISIBLE);
 
 
 
-
-
+        TextView reg_error = findViewById(R.id.Reg_Error);
 
         male.setOnClickListener(view -> {female.setChecked(false); maleState=true; femaleState=false; });
         female.setOnClickListener(view -> {male.setChecked(false); maleState=false; femaleState=true; });
@@ -128,127 +131,137 @@ public class Registeration extends AppCompatActivity {
         VisitorAPI visitorAPI =  retrofitService.getRetrofit().create(VisitorAPI.class);
 
         verify.setOnClickListener(view -> {
+            verify.setEnabled(false);
             String name = String.valueOf(name_TF.getText());
             String email = String.valueOf(email_TF.getText());
             String phone = String.valueOf(phone_TF.getText());
             String password = String.valueOf(password_TF.getText());
             String confirm_password = String.valueOf(confirm_password_TF.getText());
+            progressBar_reg.setVisibility(TextView.VISIBLE);
+            if(name_TF.getText().toString()==null || name_TF.getText().toString().isEmpty() || email_TF.getText().toString()==null || email_TF.getText().toString().isEmpty() ||
+            password_TF.getText().toString().isEmpty() || password_TF.getText().toString()==null || (!maleState  && !femaleState)){
 
-            System.out.println("comparing password");
-
-            if (password.compareTo(confirm_password) != 0)
-            {
-               setPassword_valid(false);
+                reg_error.setText("Invalid Entries");
             }
-            else
-            {
-                setPassword_valid(true);
-            }
-
-            System.out.println("Comparing password");
-
-            if(phone.length()==11)
-            {
-                setPhone_valid(true);
-            }
-            else
-            {
-                setPhone_valid(false);
-            }
-
-            System.out.println("Comparing Email");
+            else{
 
 
-            if(email.length()==21){
-                String pattern = email.substring(7);
-                if(pattern.compareTo("@lhr.nu.edu.pk")==0 && email.charAt(0)=='l')
-                {
-                    System.out.println("Email Compared");
-                    setEmail_valid(true);
+                System.out.println("comparing password");
+
+                if (password.compareTo(confirm_password) != 0) {
+                    setPassword_valid(false);
+                } else {
+                    setPassword_valid(true);
                 }
-                else
-                {
+
+                System.out.println("Comparing password");
+
+                if (phone.length() == 11) {
+                    setPhone_valid(true);
+                } else {
+                    setPhone_valid(false);
+                }
+
+                System.out.println("Comparing Email");
+
+
+                if (email.length() == 21) {
+                    String pattern = email.substring(7);
+                    if (pattern.compareTo("@lhr.nu.edu.pk") == 0 && email.charAt(0) == 'l') {
+                        System.out.println("Email Compared");
+                        setEmail_valid(true);
+                    } else {
+                        setEmail_valid(false);
+                    }
+                } else {
                     setEmail_valid(false);
                 }
-            }else{
-                setEmail_valid(false);
-            }
 
 
+                char[] r = new char[8];
+                r[0] = email.charAt(1);
+                r[1] = email.charAt(2);
+                r[2] = email.charAt(0);
+                r[3] = '-';
+                r[4] = email.charAt(3);
+                r[5] = email.charAt(4);
+                r[6] = email.charAt(5);
+                r[7] = email.charAt(6);
+
+                String rollno = new String(r);
+
+                Gender g = Gender.Male;
+
+                if (maleState) {
+                    g = Gender.Male;
+                } else if (femaleState) {
+                    g = Gender.Female;
+                }
 
 
-            char[] r = new char[8];
-            r[0] = email.charAt(1);
-            r[1] = email.charAt(2);
-            r[2] = email.charAt(0);
-            r[3] = '-';
-            r[4] = email.charAt(3);
-            r[5] = email.charAt(4);
-            r[6] = email.charAt(5);
-            r[7] = email.charAt(6);
+                Visitor v = new Visitor();
+                v.setAccountStatus("uv");
+                v.setIsVerified(false);
+                v.setPassword(password);
+                v.setEmail(email);
+                v.setName(name);
+                v.setRollNo(rollno);
+                v.setPhoneNumber(phone);
+                Date c = Calendar.getInstance().getTime();
+                System.out.println("Current time => " + c);
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                String formattedDate = df.format(c);
+                v.setJoiningDate(formattedDate);
+                v.setGender(g);
 
-            String rollno = new String(r);
+                System.out.println("*************************************************");
+                System.out.println(v);
 
-            Gender g = Gender.Male;
+                displayErrors();
 
-            if (maleState) {
-                g = Gender.Male;
-            } else if (femaleState) {
-                g = Gender.Female;
-            }
-
-
-            Visitor v = new Visitor();
-            v.setAccountStatus("uv");
-            v.setIsVerified(false);
-            v.setPassword(password);
-            v.setEmail(email);
-            v.setName(name);
-            v.setRollNo(rollno);
-            v.setPhoneNumber(phone);
-            Date c = Calendar.getInstance().getTime();
-            System.out.println("Current time => " + c);
-            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-            String formattedDate = df.format(c);
-            v.setJoiningDate(formattedDate);
-            v.setGender(g);
-
-            System.out.println("*************************************************");
-            System.out.println(v);
-
-            displayErrors();
-            TextView reg_error = findViewById(R.id.Reg_Error);
-
-
-
-            if(isPassword_valid() && isPhone_valid() && isEmail_valid()) {
-                reg_error.setText("All Entries are Acceptable");
-
-                System.out.println("sending Api");
-
-                visitorAPI.save(v).enqueue(new Callback<Visitor>() {
+                visitorAPI.getVisitorByRollNo(rollno).enqueue(new Callback<Visitor>() {
                     @Override
                     public void onResponse(Call<Visitor> call, Response<Visitor> response) {
-                        Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
-                        System.out.println("hi");
-                        start_verify_activity(email,rollno,name,password);
+                        if(response.body()!=null) {
+                            accountExist=true;
+                            Toast.makeText(Registeration.this, "Account Already Exist", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<Visitor> call, Throwable t) {
-                        Toast.makeText(Registeration.this, "Error Occurred", Toast.LENGTH_SHORT).show();
-                        reg_error.setText("Account Already Exist or Server is Down");
-                        Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
+                        accountExist=false;
                     }
-
                 });
 
+
+                if (isPassword_valid() && isPhone_valid() && isEmail_valid() && !accountExist) {
+                    reg_error.setText("All Entries are Acceptable");
+
+                    System.out.println("sending Api");
+
+                    visitorAPI.save(v).enqueue(new Callback<Visitor>() {
+                        @Override
+                        public void onResponse(Call<Visitor> call, Response<Visitor> response) {
+                            Toast.makeText(Registeration.this, "Registeration Successful", Toast.LENGTH_SHORT).show();
+                            System.out.println("hi");
+                            start_verify_activity(email, rollno, name, password);
+                            progressBar_reg.setVisibility(TextView.INVISIBLE);
+                        }
+
+                        @Override
+                        public void onFailure(Call<Visitor> call, Throwable t) {
+                            Toast.makeText(Registeration.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+                            reg_error.setText("Account Already Exist or Server is Down");
+                            Logger.getLogger(Registeration.class.getName()).log(Level.SEVERE, "Error Anique", t);
+                        }
+
+                    });
+
+                }
+
+
             }
-
-
-
-
-
         });
 
 

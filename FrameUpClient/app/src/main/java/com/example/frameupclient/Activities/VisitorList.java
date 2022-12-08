@@ -64,7 +64,7 @@ public class VisitorList extends AppCompatActivity {
 
     public void populate(List<String> s){
 
-        UserListAdapter userListAdapter = new UserListAdapter(s,2);
+        UserListAdapter userListAdapter = new UserListAdapter(s,2, 999);
         Rul.setAdapter(userListAdapter);
     }
 }

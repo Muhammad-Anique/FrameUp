@@ -73,7 +73,7 @@ public class UserList extends AppCompatActivity {
 
     public void populate(List<String> s){
 
-        UserListAdapter userListAdapter = new UserListAdapter(s,1);
+        UserListAdapter userListAdapter = new UserListAdapter(s,1,societyID);
         Rul.setAdapter(userListAdapter);
     }
 }

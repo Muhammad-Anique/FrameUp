@@ -68,11 +68,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationHolder
             holder.sign.setImageResource(R.drawable.sign_popper);
         }
         else if(req.getRequestType().compareTo("becameAdvisor")==0) {
-            holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+            holder.noti.setBackgroundColor((Color.parseColor("#3D90DC")));
             holder.sign.setImageResource(R.drawable.sign_popper);
         }
         else if(req.getRequestType().compareTo("meetingCall")==0) {
-            holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+            holder.noti.setBackgroundColor((Color.parseColor("#993299")));
             holder.sign.setImageResource(R.drawable.sign_meeting);
         }
         else if(req.getRequestType().compareTo("interviewCall")==0) {
@@ -100,7 +100,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationHolder
             holder.sign.setImageResource(R.drawable.sign_meeting);
         }
         else if(req.getRequestType().compareTo("notice")==0) {
-            holder.noti.setBackgroundColor((Color.parseColor("#1bac10")));
+            holder.noti.setBackgroundColor((Color.parseColor("#E6CB1C")));
             holder.sign.setImageResource(R.drawable.sign_info);
         }
         else{
