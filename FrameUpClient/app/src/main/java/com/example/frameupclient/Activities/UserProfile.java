@@ -128,7 +128,7 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onResponse(Call<SocietyOperative> call, Response<SocietyOperative> response) {
                 if(response.body()!=null){
-                    if(Integer.valueOf(response.body().getOperativeType())==2){
+                    if(Integer.valueOf(response.body().getOperativeType())==2 || Integer.valueOf(response.body().getOperativeType())==1 ){
 
                         become_ad.setVisibility(View.INVISIBLE);
                     }

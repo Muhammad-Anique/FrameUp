@@ -55,7 +55,7 @@ public class Deletions extends AppCompatActivity {
                 postAPI.deletePost(Integer.valueOf(postId.getText().toString())).enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-                        Toast.makeText(Deletions.this, "Post/Event Deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Deletions.this, "Wait for Post/Event Deletion", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -94,7 +94,7 @@ public class Deletions extends AppCompatActivity {
                 pollAPI.deletePoll(Integer.valueOf(pollID.getText().toString())).enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-                        Toast.makeText(Deletions.this, "Poll Deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Deletions.this, "Wait for Poll Deletion", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
